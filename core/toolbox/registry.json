@@ -99,6 +99,22 @@
       "fallback": "skip; use project design system",
       "risk": "medium",
       "optional": true
+    },
+    {
+      "id": "lighthouse-ci",
+      "capability": "performance",
+      "source": "https://github.com/GoogleChrome/lighthouse-ci",
+      "pin": "pinned release/tag",
+      "install": {
+        "antigravity": "npm i -D @lhci/cli (pin); or npx lighthouse for a single run",
+        "qoder": "npm i -D @lhci/cli (pin); or npx lighthouse",
+        "claude": "npm i -D @lhci/cli (pin); or npx lighthouse",
+        "generic": "npm i -D @lhci/cli (pin); or npx lighthouse"
+      },
+      "verify": "lhci --version; 3 runs produce reports",
+      "fallback": "npx lighthouse single run; or blocked",
+      "risk": "low",
+      "optional": true
     }
   ]
 }

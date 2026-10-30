@@ -4,7 +4,9 @@
       "Read",
       "Grep",
       "Glob",
-      "Bash(node scripts/check-docs.mjs)"
+      "Bash(node scripts/check-docs.mjs)",
+      "Bash(npx lighthouse:*)",
+      "Bash(npx lhci:*)"
     ],
     "deny": [
       "Bash(git push:*)",

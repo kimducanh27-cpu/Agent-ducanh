@@ -30,7 +30,9 @@
 - Persona cards: `kits/audit-fix/personas/P01–P10`; preference cap P3; no cascade.
 - Fix: main/`/teamwork` sửa; `/plan` nếu nhiều bước; `/goal` chỉ có 5+10 + stop rule.
 - Verify: `verifier` chạy `run_command` sandbox + main `/browser`.
-- Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web` (5; tránh thêm).
+- Perf: `/perf-web` 3 run mobile/desktop, before/after; thiếu Lighthouse → blocked.
+- Release: `core/prompts/release-web.md` + `/release-web`; không phải skill để tránh tự deploy; chỉ chạy khi owner gọi.
+- Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web`, `perf-web` (6; tránh thêm).
 
 ## Native commands
 `/browser`, `/plan`, `/goal`, `/teamwork`, `/boost`, `/plugin`, `/mcp`, `/agents`, `/diff`, `/grill-me`, `/schedule`.
@@ -47,5 +49,5 @@
 ## Pitfalls
 - Custom subagent browser = không có; dùng `/browser`.
 - 0×0 viewport/screenshot path sai: kiểm lại qua `/browser`.
-- Skill directory quá nhiều → context overload; giữ 5 skill.
+- Skill directory quá nhiều → context overload; giữ 6 skill.
 - `replace_file_content` chỉ dùng cho test/fixture; fix do main.

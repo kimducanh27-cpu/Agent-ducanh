@@ -1,4 +1,4 @@
-# Agent-ducanh — bộ kit AI làm website (Demo v0.1)
+# Agent-ducanh — bộ kit AI làm website
 
 Bộ kit cho AI agent làm website theo 5 việc:
 
@@ -12,15 +12,15 @@ Bộ kit cho AI agent làm website theo 5 việc:
 
 Tất cả dùng chung `core/` và một sổ dự án `agent-state/`. Kit sau đọc `HANDOFF.md` để tiếp tục, không hỏi lại từ đầu.
 
-## Demo này có gì
+## Bộ kit có gì
 
-- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, checklist, skill `/web-kit`.
+- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
 - `kits/new-web/`: 4 prompt — hỏi brief, lập plan, build, verify.
-- `kits/audit-fix/`: audit 10 góc nhìn, fix, verify độc lập.
-- `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: khung + prompt tóm tắt (bản đầy đủ ở v0.2).
+- `kits/audit-fix/`: audit 10 góc nhìn + 10 persona, fix, verify độc lập.
+- `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: 4 prompt mỗi kit.
 - `examples/demo-site/`: một web tĩnh nhỏ đã có brief, để xem kit hoạt động thế nào.
 
-Chưa có trong demo: push GitHub, deploy, ảnh GDCT1 đã che PII, prompt đầy đủ cho 3 kit sau.
+Chưa đưa vào repo: deploy thật, ảnh GDCT1 gốc, dữ liệu người dùng.
 
 ## Dùng thử trong 5 bước
 
@@ -92,7 +92,7 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Audit: `/browser` capture một lần → 10 lens auditor đọc evidence, batch ≤3 → report-editor → main confirm.
 - Custom subagent không có browser; chỉ `/browser` ở main.
 - Tool whitelist: `view_file`, `grep_search`, `run_command`, `replace_file_content`; kiểm bằng `node scripts/check-antigravity.mjs`.
-- Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web` (5).
+- Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web` (5; 0.7.0 thêm `perf-web` = 6).
 - Rule: `core/.agents/rules/50-antigravity-subagents.md`.
 
 ## Persona bug hunt (0.5.0)
@@ -111,6 +111,13 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Output lỗi (`invalid`/`blocked`) không được sang skeptic/judge/score.
 - File: `core/prompts/leader-dispatch.md`, `core/templates/subagent-mission.md`, `subagent-result.md`, rule `70-leader-dispatch.md`.
 - Kiểm bằng `node scripts/check-dispatch.mjs`.
+
+## Perf và release (0.7.0)
+
+- **`perf-web`** — skill Antigravity thứ 6: baseline 3 run mobile/desktop, before/after, regression; lab ≠ field.
+- **`release-web`** — prompt/command có cổng xác nhận, rollback và smoke production; cố tình không thành skill để AI không tự deploy.
+- File: `core/prompts/perf-web.md`, `core/prompts/release-web.md`, `core/templates/perf-report.md`, `core/templates/release-report.md`.
+- Lighthouse CI optional: `docs/tools/lighthouse-ci.md`; lệnh Claude: `/perf-web`, `/release-web`.
 
 ## Cấu trúc chính
 

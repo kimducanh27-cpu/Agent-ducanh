@@ -15,13 +15,20 @@
 - AI đề xuất; owner nói “lite”/“full”. Lite vẫn verify + handoff.
 
 ## Lệnh gõ nhanh
-- Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
-- Antigravity/Qoder: `/web-kit new|audit|fix|verify|feature|ui|triage`.
+- Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`, `/perf-web`, `/release-web`.
+- Antigravity/Qoder: `/web-kit new|audit|fix|verify|feature|ui|triage|perf|release`.
+
+## Stage phụ
+
+- **Perf:** `/perf-web` — 3 run mobile/desktop, before/after, regression; không đoán từ code.
+- **Release:** `core/prompts/release-web.md` — gate, rollback, smoke; chỉ deploy khi owner cho phép.
+- Hai stage này dùng trong kit hiện tại, không phải kit mới.
 
 ## Optional
 - GitHub research khi API/version/hành vi chưa chắc.
 - Impeccable cho ui-rework/new-web; audit-fix chỉ second opinion.
-- Antigravity: `/audit-web` dùng 5 subagent read-only; custom subagent không có browser.
+- Lighthouse CI cho perf-web; xem `docs/tools/lighthouse-ci.md`.
+- Antigravity: `/audit-web` dùng 10 persona read-only; custom subagent không có browser.
 
 ## Chuyển kit
 

@@ -17,6 +17,7 @@
 - **Playwright MCP**: `npx @playwright/mcp@latest` (cài browser nếu cần)
 - **Context7**: `npx -y @upstash/context7-mcp@latest`
 - **GitHub MCP**: remote OAuth chính thức
+- **Lighthouse**: `npx lighthouse <url> ...`; hoặc cài `@lhci/cli` pinned để chạy 3 run
 
 ## Không làm
 - Không cài tool ngoài allowlist.

@@ -7,6 +7,7 @@
 | MCP | `list_tools`/settings list | Tool cần dùng xuất hiện |
 | Skill | Gọi `/web-kit` hoặc `/audit-web` | Skill được nhận |
 | Superpowers | Gọi `using-superpowers` | Skill load, không lỗi |
+| Lighthouse | `npx lighthouse --version` + 1 URL | Có version, JSON tạo |
 | OAuth | Trạng thái authorize | Có quyền cần thiết, không lộ token |
 | Install log | `agent-state/installed.json` | Có version/ngày/nguồn/verify |
 

@@ -33,4 +33,7 @@ Explicit Antigravity skills:
 - `/audit-web` — 10 persona + leader dispatch (batch ≤3) + `bug-skeptic` + `report-editor`; lens-auditor là second opinion.
 - `/fix-web` — owner authorize + 5+10 + verifier.
 - `/verify-web` — read-only verifier.
+- `/perf-web` — 3 run, before/after, regression; skill thứ 6.
+
+Release: đọc `core/prompts/release-web.md`; dùng `/release-web` ở Claude/Qoder. Không phải skill Antigravity để tránh tự kích hoạt deploy.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0-perf-release — 2026-10-30
+
+- Added `perf-web` as the 6th Antigravity skill: 3-run baseline, before/after, regression, lab-vs-field.
+- Added shared `core/prompts/perf-web.md`, perf report template, Lighthouse CI doc, Claude command.
+- Added `release-web` gated prompt + template + Claude command; kept manual to prevent auto-deploy.
+- Added Lighthouse CI to the toolbox registry and healthcheck.
+- Wired perf/release into router, kit map, web-kit aliases, checks, and plugin manifests 0.7.0.
+
 ## 0.6.1-portable — 2026-10-30
 
 - Vendored the self-contained CDP harness at `scripts/lib/cdp-harness.cjs`.

@@ -71,7 +71,9 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 - Antigravity subagent: `lens-auditor` (flash), `report-editor` (pro), `verifier`, `security-reviewer`, `test-engineer`; max 3/batch; custom subagent không được cấp browser.
 - Leader dispatch: mission packet, batch ≤3, validate, spot-check 3, repair 1 lần; xem `core/prompts/leader-dispatch.md`.
 - Persona bug hunt: `user-auditor` ×10 (P01–P10), P0/P1/P2 qua `bug-skeptic`; preference cap P3.
-- Antigravity skills: `audit-web`, `fix-web`, `verify-web`; browser chỉ qua `/browser`.
+- Antigravity skills: `audit-web`, `fix-web`, `verify-web`, `perf-web`; browser chỉ qua `/browser`.
+- Perf: `/perf-web` — 3 run, before/after, không đoán từ code; xem `core/prompts/perf-web.md`.
+- Release: `core/prompts/release-web.md` + `/release-web`; chỉ deploy khi owner cho phép.
 - `/toolbox` — dò/cài tool từ allowlist; app xác nhận.
 - Superpowers là tùy chọn; dùng đúng routing trong `core/toolbox/superpowers-routing.md`; tối đa 1 skill chính + 1 kiểm chứng mỗi bước.
 - Impeccable là optional cho `ui-rework`/`new-web`; `audit-fix` chỉ second opinion; không auto `/bolder`/`live`.
