@@ -184,6 +184,9 @@ async function openSession(options = {}) {
 
   const args = [
     '--headless=new',
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
     '--disable-gpu',
     '--no-first-run',
     '--no-default-browser-check',
