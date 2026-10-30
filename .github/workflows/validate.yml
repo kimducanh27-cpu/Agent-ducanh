@@ -33,6 +33,8 @@ jobs:
         run: node scripts/check-style.mjs
       - name: Check page layout
         run: node scripts/check-layout.mjs
+      - name: Check Impeccable workflow
+        run: node scripts/check-impeccable.mjs
       - name: Run kit evals
         run: node scripts/eval-kits.mjs
 

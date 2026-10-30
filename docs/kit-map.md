@@ -29,7 +29,8 @@
 
 ## Optional
 - GitHub research khi API/version/hành vi chưa chắc.
-- Impeccable cho ui-rework/new-web; audit-fix chỉ second opinion.
+- Impeccable cho ui-rework/new-web; audit-fix chỉ second opinion một lần, `proposed`, không P0/P1.
+- CLI persona + Impeccable: xem `docs/tools/impeccable.md` + `docs/tools/antigravity-cli.md`.
 - Lighthouse CI cho perf-web; xem `docs/tools/lighthouse-ci.md`.
 - Antigravity: `/audit-web` dùng 10 persona read-only; custom subagent không có browser.
 - CLI `agy -p`/`/agents` cho batch read-only; `/teamwork` cho multi-file; browser main. Xem `docs/tools/antigravity-cli.md`.

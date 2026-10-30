@@ -120,6 +120,14 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - **`transport`** trong mission: `native`, `cli`, `teamwork`; browser chỉ main `/browser`.
 - Không dùng CLI để kết luận UI; không auto-deploy. Chi tiết: `docs/tools/antigravity-cli.md`.
 
+## CLI persona + Impeccable (0.12.0)
+
+- Main `/browser` capture evidence; CLI persona P01–P10 read-only, batch ≤3, `transport: cli`.
+- Impeccable chạy **một lần** trên cùng evidence + `DESIGN.md`; không chạy 10 lần.
+- Impeccable-only finding là `proposed`, không P0/P1 nếu chưa repro; `DESIGN.md`/owner thắng.
+- Output `IMPECCABLE_REVIEW.md`; `report-editor` reconcile persona + design.
+- Không dùng Impeccable thay user testing; không auto `bolder/overdrive/live`.
+
 ## Perf và release (0.7.0)
 
 - **`perf-web`** — skill Antigravity thứ 6: baseline 3 run mobile/desktop, before/after, regression; lab ≠ field.

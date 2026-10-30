@@ -41,6 +41,11 @@ repos:
         entry: node scripts/check-layout.mjs
         language: system
         pass_filenames: false
+      - id: check-impeccable
+        name: Agent-ducanh check Impeccable workflow
+        entry: node scripts/check-impeccable.mjs
+        language: system
+        pass_filenames: false
       - id: eval-kits
         name: Agent-ducanh eval routing
         entry: node scripts/eval-kits.mjs

@@ -11,4 +11,5 @@ description: "Khi audit persona: 10 user-auditor đọc evidence, P0/P1/P2 qua b
 - P0/P1/P2 → `bug-skeptic` (pro, view/grep, off); verdict confirmed/rejected/needs-repro.
 - Preference cap P3; không P0/P1 nếu thiếu evidence/repro.
 - `report-editor` merge/score; dedupe root cause; không cascade output lỗi.
+- CLI persona read-only (`transport: cli`); Impeccable một lần sau persona, `proposed`, không P0/P1; output `IMPECCABLE_REVIEW`.
 - Không sửa code trong audit.

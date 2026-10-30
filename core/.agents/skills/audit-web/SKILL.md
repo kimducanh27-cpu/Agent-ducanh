@@ -16,10 +16,11 @@ description: "Audit 10 persona người dùng bằng browser + subagent Antigrav
 5. Dispatch `user-auditor` theo batch ≤3, transport `native` hoặc `cli` read-only. Không gửi history/secret/output mission khác; không browser, không code.
 6. Validate từng output bằng `core/templates/subagent-result.md`; mission lỗi repair đúng mission đó 1 lần, không cascade.
 7. P0/P1/P2 confirmed → `bug-skeptic`; verdict confirmed/rejected/needs-repro. Preference cap P3.
-8. `report-editor` (model pro) merge/dedupe/score; chỉ dùng output `ok`.
-9. Main `/browser` spot-check 3 confirmed; verifier độc lập.
-10. Main ghi `PERSONA_BUGS.md`, `SKEPTIC_LOG.md`, `AUDIT_REPORT.md`, `OWNER_SUMMARY.md`.
-11. Kết thúc bằng 1 câu hỏi: chọn việc sửa trước.
+8. Optional Impeccable `critique`/`audit` **một lần** trên cùng evidence + `DESIGN.md`; ghi `IMPECCABLE_REVIEW.md`; không P0/P1 nếu chưa repro.
+9. `report-editor` (model pro) merge/dedupe/score; chỉ dùng output `ok`; reconcile persona + Impeccable.
+10. Main `/browser` spot-check 3 confirmed; verifier độc lập.
+11. Main ghi `PERSONA_BUGS.md`, `SKEPTIC_LOG.md`, `IMPECCABLE_REVIEW.md` (nếu dùng), `AUDIT_REPORT.md`, `OWNER_SUMMARY.md`.
+12. Kết thúc bằng 1 câu hỏi: chọn việc sửa trước.
 
 ## Guard
 - Tool subagent đúng tên: `view_file`, `grep_search`; không thêm `browser`.
@@ -27,3 +28,4 @@ description: "Audit 10 persona người dùng bằng browser + subagent Antigrav
 - Pause nếu budget/quota; không chạy 10 subagent cùng lúc.
 - Không chấm điểm từ output `invalid`/`blocked`; không claim verified thiếu `project_verified`.
 - Persona là người dùng, không phải developer; preference không P0/P1.
+- Impeccable một lần, `docs/source`/`proposed`, không thay persona evidence; không auto `bolder/overdrive`.

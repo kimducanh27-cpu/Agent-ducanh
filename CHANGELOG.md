@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.0-impeccable — 2026-10-30
+
+- Added CLI persona + one Impeccable pass workflow: main browser evidence → CLI personas → Impeccable critique/audit → reconcile.
+- Added `IMPECCABLE_REVIEW.md` template; Impeccable-only findings are proposed, never P0/P1 without repro.
+- Updated persona prompt, audit-web skill, audit kit prompt, rule 60, and CLI doc.
+- Added `scripts/check-impeccable.mjs`; wired CI/pre-commit; manifests 0.12.0.
+
 ## 0.11.0-cli — 2026-10-30
 
 - Added `docs/tools/antigravity-cli.md`: CLI vs `/teamwork` vs native, official facts, decision matrix, limits.

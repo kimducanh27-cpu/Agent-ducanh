@@ -43,7 +43,8 @@ Dùng `personas/index.md` + `core/prompts/persona-bug-hunt.md` + `core/prompts/l
 - Persona là người dùng, không phải developer; first-person log + bugs.
 - Validate output bằng `subagent-result.md`; lỗi repair đúng mission 1 lần.
 - P0/P1/P2 confirmed → `bug-skeptic`; preference cap P3.
-- Output `PERSONA_BUGS.md` + `SKEPTIC_LOG.md`.
+- Optional Impeccable `critique`/`audit` **một lần** trên cùng evidence; output `IMPECCABLE_REVIEW.md`; đề xuất `proposed`, không P0/P1 nếu chưa repro.
+- Output `PERSONA_BUGS.md` + `SKEPTIC_LOG.md` + `IMPECCABLE_REVIEW.md` (nếu dùng).
 - Không cascade output `invalid`/`blocked`; không chấm từ output lỗi.
 
 ## 3. Scoring
@@ -55,6 +56,7 @@ Dedupe theo root cause; finding trùng giữ severity cao nhất.
 ## 4. Output
 - `agent-state/PERSONA_BUGS.md`: log + bug reports.
 - `agent-state/SKEPTIC_LOG.md`: verdict từng P0/P1/P2.
+- `agent-state/IMPECCABLE_REVIEW.md`: design second opinion (nếu dùng).
 - `agent-state/AUDIT_REPORT.md`: verdict, scorecard, top 10, findings, evidence, limitations.
 - `agent-state/OWNER_SUMMARY.md`: 1 trang, 3 việc trước, 1 câu hỏi.
 - Kết thúc: “Chọn việc nào để sửa trước?”

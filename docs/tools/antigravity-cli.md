@@ -34,6 +34,12 @@ agy -p "Chạy mission P01-A1 read-only theo mission packet; trả result schema
 ```
 Kiểm `agy --help` trên máy trước khi dùng flag mới; không hardcode version.
 
+## Persona + Impeccable
+- CLI persona P01–P10 read-only, batch ≤3, `transport: cli`; đọc persona card + evidence.
+- Impeccable chạy **một lần** ở main/app trên cùng evidence + `DESIGN.md`; không chạy theo từng persona.
+- Reconcile: map A1/A10/F-UI; Impeccable-only không P0/P1; `DESIGN.md`/owner thắng.
+- Output `IMPECCABLE_REVIEW.md`; `report-editor` chỉ dùng finding hợp lệ.
+
 ## Guard
 - CLI chỉ cho audit/batch read-only; fix do main/`/teamwork`.
 - Browser chỉ main; CLI không thêm browser.

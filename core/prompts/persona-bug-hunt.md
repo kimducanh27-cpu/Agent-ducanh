@@ -3,6 +3,11 @@
 ## Vai
 `user-auditor` là **người dùng được giao persona**, không phải developer. Nó chỉ dùng persona card + evidence pack; không browser, không code.
 
+## Transport
+- `native` hoặc `cli`; CLI dùng `agy -p`/`/agents`, read-only, batch ≤3.
+- Main `/browser` capture evidence trước; CLI không thay browser.
+- Mission ghi `transport`, evidence paths, output schema; không gửi history/secret.
+
 ## Bug là gì
 Bug = vi phạm task/kỳ vọng nhất quán/standard, tái hiện được, có evidence.
 Preference = gu/thẩm mỹ không ảnh hưởng task; cap P3.
@@ -39,5 +44,12 @@ Verdict: `confirmed` / `rejected` / `needs-repro`. Không tự tạo bug mới.
 - Dedupe theo root cause; giữ severity cao nhất.
 - Lens score từ confirmed findings + coverage; không bịa.
 
+## Impeccable — design second opinion
+- Chạy **một lần** ở main/app trên cùng evidence + `agent-state/DESIGN.md`; không chạy 10 lần theo persona.
+- Dùng `critique`/`audit`; output `IMPECCABLE_REVIEW.md`.
+- Finding là `docs/source`/`proposed`; **không P0/P1** nếu chưa được persona/browser tái hiện; cap P2/P3.
+- Map A1/A10/F-UI; dedupe root cause; `DESIGN.md`/owner thắng khi mâu thuẫn.
+- Không auto `bolder/overdrive/live`.
+
 ## Không cascade
-Output lỗi/không đủ schema → repair đúng mission đó; không đưa output lỗi sang skeptic/judge.
+Output lỗi/không đủ schema → repair đúng mission đó; không đưa output lỗi sang skeptic/judge/Impeccable.

@@ -102,6 +102,8 @@ const required = [
   "core/templates/design-spec.md",
   "core/templates/ui-review.md",
   "core/templates/page-spec.md",
+  "core/templates/impeccable-review.md",
+  "scripts/check-impeccable.mjs",
   "examples/demo-site/agent-state/DESIGN.md",
   "examples/demo-site/agent-state/UI_REVIEW.md",
   "examples/demo-site/agent-state/PAGE_SPEC.md",
