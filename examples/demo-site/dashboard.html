@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visual Agent Dashboard — Agent-ducanh v0.13.0</title>
+  <meta name="description" content="Bảng điều phối trực quan 11 Custom Subagents, tiến độ nhiệm vụ, phân quyền file, lỗi tồn đọng và báo cáo từ agent-state/TASK_TRACKER.json.">
+  <meta name="theme-color" content="#F7F6F2">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #F7F6F2;
+      --surface: #FFFFFF;
+      --surface-alt: #F0EFE9;
+      --ink: #1F2A24;
+      --muted: #4A554E;
+      --brand: #174D3E;
+      --brand-soft: #E3F1EC;
+      --brand-ink: #14533D;
+      --warn-bg: #FBF0E4;
+      --warn-ink: #7C370B;
+      --border: #D5D3CA;
+      --radius: 12px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0.5rem;
+      background: var(--brand);
+      color: #FFFFFF;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      z-index: 100;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 1rem; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-ink);
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    h1 {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+      max-width: 72ch;
+    }
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-btn:hover, .nav-btn:focus-visible {
+      border-color: var(--brand);
+      color: var(--brand-ink);
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--brand-soft);
+      color: var(--brand-ink);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+    }
+    .kpi-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .kpi-value {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 0.2rem;
+    }
+    .kpi-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      background: var(--surface-alt);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      border: 1px solid var(--border);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--brand);
+      width: 100%;
+    }
+    .grid-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (min-width: 860px) {
+      .grid-top {
+        grid-template-columns: 1fr 1.25fr;
+      }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid-top .panel {
+      margin-bottom: 0;
+    }
+    .panel h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .panel p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .section-heading {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin: 1.75rem 0 0.85rem;
+    }
+    .section-heading h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .section-heading span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      min-width: 0;
+    }
+    .agent-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      min-width: 0;
+    }
+    .agent-card.coordinator {
+      background: var(--surface-alt);
+      border-width: 2px;
+      border-color: var(--brand);
+    }
+    .agent-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .agent-name {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--ink);
+    }
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      background: var(--brand-soft);
+      color: var(--brand-ink);
+    }
+    .badge-readonly {
+      background: var(--surface-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .badge-warn {
+      background: var(--warn-bg);
+      color: var(--warn-ink);
+    }
+    .agent-role {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .agent-desc {
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+    .agent-meta {
+      margin-top: auto;
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      background: var(--surface-alt);
+      color: var(--ink);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      overflow-wrap: anywhere;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .table-wrap:focus-visible {
+      outline: 3px solid var(--brand);
+      outline-offset: 2px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      text-align: left;
+    }
+    th, td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-alt);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .split-panels {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.25rem;
+      min-width: 0;
+    }
+    .split-panels > .panel {
+      min-width: 0;
+    }
+    @media (min-width: 860px) {
+      .split-panels {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .agent-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .agent-card {
+        min-width: 0;
+      }
+      .badge {
+        overflow-wrap: anywhere;
+      }
+    }
+    .list-clean {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .list-item {
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-alt);
+      font-size: 0.86rem;
+    }
+    .list-item-title {
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .list-item-sub {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--brand-ink);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body data-has-tracker="false">
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <div class="container">
+    <header>
+      <div>
+        <div class="eyebrow">Antigravity Custom Subagents · v0.13.0</div>
+        <h1>Visual Agent Dashboard</h1>
+        <p class="subtitle">Tiến độ · Agent · Nhiệm vụ · File · Lỗi · Báo cáo — đồng bộ trực tiếp từ <code>agent-state/TASK_TRACKER.json</code></p>
+      </div>
+      <div class="header-actions">
+        <a class="nav-btn" href="index.html">← Về trang demo Focus Board</a>
+        <div class="status-pill" id="tracker-status-pill" role="status" aria-live="polite">
+          Đang tải TASK_TRACKER.json...
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="kpi-strip" aria-label="Chỉ số tổng quan">
+        <div class="kpi-card">
+          <div class="kpi-label">Tiến độ nhiệm vụ</div>
+          <div class="kpi-value" id="kpi-progress-text">6 / 6 (100%)</div>
+          <div class="progress-bar-track" role="progressbar" aria-label="Tiến độ hoàn thành nhiệm vụ" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar-fill" id="kpi-progress-bar" style="width: 100%"></div>
+          </div>
+          <div class="kpi-note" id="kpi-updated-at">Cập nhật: 2026-10-30T15:00:00Z</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Tổng số Subagents</div>
+          <div class="kpi-value" id="kpi-agent-count">11 Subagents</div>
+          <div class="kpi-note">6 Core App/Dev + 5 Audit/TDD</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Phân quyền ghi (Write Gate)</div>
+          <div class="kpi-value" id="kpi-writer-count">4 Writer / 7 Read-only</div>
+          <div class="kpi-note">Read-only có <code>files_owned: []</code></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Lỗi tồn đọng &amp; Báo cáo</div>
+          <div class="kpi-value" id="kpi-issues-reports">1 Open (P3) · 8 Báo cáo</div>
+          <div class="kpi-note">0 lỗi P0 / P1 / P2</div>
+        </div>
+      </section>
+
+      <div class="grid-top">
+        <section class="panel" aria-labelledby="coord-heading">
+          <h2 id="coord-heading">1. Main Coordinator (Leader Agent)</h2>
+          <p>Nhận yêu cầu từ người dùng, lập <code>MISSION_PACKET</code> (18 trường), phân quyền <code>files_owned</code> không chồng chéo và ghi sổ <code>agent-state/TASK_TRACKER.json</code>.</p>
+          <div class="agent-card coordinator" id="coordinator-card">
+            <div class="agent-header">
+              <span class="agent-name">Main Coordinator</span>
+              <span class="badge" id="coord-kit-badge">new-web -&gt; audit-fix</span>
+            </div>
+            <p class="agent-desc">Điều phối viên trung tâm: giữ quyền ghi các file trạng thái cốt lõi và tổng hợp báo cáo từ 11 Subagents.</p>
+            <div class="agent-meta" id="coord-meta">
+              <div><strong>Chế độ:</strong> <code id="coord-mode">implement</code> · <strong>Trạng thái:</strong> <code id="coord-status">completed</code></div>
+              <div><strong>File sở hữu:</strong> <code id="coord-files">agent-state/PROJECT.md, agent-state/HANDOFF.md, agent-state/TASK_TRACKER.json</code></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="flow-heading">
+          <h2 id="flow-heading">2. Luồng điều phối &amp; Cổng kiểm soát (Gates)</h2>
+          <p>Mọi Subagent đều khai báo <code>mainAgent: false</code> và <code>subagent: true</code>, giới hạn công cụ theo đúng vai trò:</p>
+          <div class="list-clean">
+            <div class="list-item">
+              <div class="list-item-title">
+                <span>Bước 1 · Khảo sát &amp; Thiết kế</span>
+                <span class="badge">M-01 → M-02</span>
+              </div>
+              <div class="list-item-sub"><code>researcher</code> (read-only, <code>bash: "off"</code>) xuất brief cho Coordinator → <code>ui-ux-designer</code> (writer) tạo <code>DESIGN.md</code> &amp; <code>PAGE_SPEC.md</code>.</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-title">
+                <span>Bước 2 · Xây dựng &amp; Kiểm thử trình duyệt</span>
+                <span class="badge">M-03 → M-04</span>
+              </div>
+              <div class="list-item-sub"><code>frontend-developer</code> (writer) code UI → <code>qa-tester</code> &amp; <code>test-engineer</code> chạy Chromium + axe-core ở 4 cỡ màn hình.</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-title">
+                <span>Bước 3 · Đánh giá đa chiều &amp; Nghiệm thu độc lập</span>
+                <span class="badge">M-05 → M-06 · A-01 → A-05</span>
+              </div>
+              <div class="list-item-sub"><code>user-auditor</code>, <code>lens-auditor</code>, <code>bug-skeptic</code>, <code>security-reviewer</code>, <code>report-editor</code> và <code>verifier</code> kiểm tra chéo trước khi đóng nhiệm vụ.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="section-heading">
+        <h2>3. Nhóm 6 Core App/Dev Subagents (Luồng <code>new-web</code> &amp; <code>feature</code>)</h2>
+        <span>Tải động từ mảng <code>agents</code> trong <code>TASK_TRACKER.json</code></span>
+      </div>
+      <section class="agent-grid" id="core-agents-grid" aria-label="Danh sách 6 Core App/Dev Subagents"></section>
+
+      <div class="section-heading">
+        <h2>4. Nhóm 5 Audit &amp; TDD Subagents (Luồng <code>audit-fix</code> &amp; <code>maintenance</code>)</h2>
+        <span>Tải động từ mảng <code>audit_agents</code> trong <code>TASK_TRACKER.json</code></span>
+      </div>
+      <section class="agent-grid" id="audit-agents-grid" aria-label="Danh sách 5 Audit và TDD Subagents"></section>
+
+      <section class="panel" aria-labelledby="missions-heading">
+        <h2 id="missions-heading">5. Bảng phân quyền Nhiệm vụ &amp; File (<code>files_owned</code> vs <code>outputs</code>)</h2>
+        <p>Quy tắc bất biến: Agent chỉ đọc (<code>write_access: false</code>) có <code>files_owned: []</code> và chỉ trả kết quả qua <code>outputs</code> cho Main Coordinator.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Bảng nhiệm vụ và phân quyền file của 11 Subagents">
+          <table aria-label="Bảng nhiệm vụ và phân quyền file của 11 Subagents">
+            <thead>
+              <tr>
+                <th scope="col">Mission ID</th>
+                <th scope="col">Subagent</th>
+                <th scope="col">Quyền ghi</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">File sở hữu (<code>files_owned</code>)</th>
+                <th scope="col">Đầu ra / Đóng góp (<code>outputs</code>)</th>
+              </tr>
+            </thead>
+            <tbody id="missions-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="split-panels">
+        <section class="panel" aria-labelledby="changes-heading">
+          <h2 id="changes-heading">6. Nhật ký thay đổi Workspace (<code>workspace_changes</code>)</h2>
+          <p>Các file vừa được tạo, cập nhật hoặc kiểm chứng trong phiên làm việc hiện tại:</p>
+          <ul class="list-clean" id="workspace-changes-list"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="issues-reports-heading">
+          <h2 id="issues-reports-heading">7. Lỗi tồn đọng (<code>open_issues</code>) &amp; Báo cáo (<code>reports</code>)</h2>
+          <p>Theo dõi các vấn đề chưa đóng và danh mục báo cáo bàn giao trong <code>agent-state/</code>:</p>
+          <div id="open-issues-box" style="margin-bottom: 1rem;"></div>
+          <ul class="list-clean" id="reports-list"></ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <span>Focus Board &amp; Visual Agent Dashboard — Bộ công cụ Agent-ducanh v0.13.0</span>
+      <span><a href="index.html">Trang chủ Focus Board</a> · <a href="agent-state/TASK_TRACKER.json">Xem JSON gốc (TASK_TRACKER.json)</a></span>
+    </footer>
+  </div>
+
+  <script id="tracker-fallback" type="application/json">
+{
+  "updated_at": "2026-10-30T15:00:00Z",
+  "coordinator": {
+    "role": "Main Coordinator (Leader Agent)",
+    "active_kit": "new-web -> audit-fix",
+    "mode": "implement",
+    "status": "completed",
+    "files_owned": [
+      "agent-state/PROJECT.md",
+      "agent-state/NEW_WEB_PLAN.md",
+      "agent-state/HANDOFF.md",
+      "agent-state/AUDIT_REPORT.md",
+      "agent-state/VERIFICATION_REPORT.md",
+      "agent-state/TASK_TRACKER.json"
+    ]
+  },
+  "progress": {
+    "completed": 6,
+    "total": 6,
+    "percent": 100
+  },
+  "agents": [
+    {
+      "agent": "researcher",
+      "role": "Product & UX Researcher (read-only)",
+      "write_access": false,
+      "mission_id": "M-01-RESEARCH",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/PROJECT.md (input brief cho Main Coordinator)",
+        "agent-state/LESSONS.md (insights)"
+      ],
+      "summary": "Khảo sát mục tiêu trang tĩnh Focus Board, 3 nhóm người dùng chính và tiêu chuẩn chống AI-slop.",
+      "events": [
+        {
+          "time": "2026-10-30T10:00:00Z",
+          "type": "started",
+          "note": "Đọc yêu cầu dự án và khảo sát đối tượng người dùng."
+        },
+        {
+          "time": "2026-10-30T10:05:00Z",
+          "type": "completed",
+          "note": "Bàn giao tóm tắt khảo sát cho Main Coordinator ghi PROJECT.md."
+        }
+      ]
+    },
+    {
+      "agent": "ui-ux-designer",
+      "role": "UI/UX & Design System Architect (writer)",
+      "write_access": true,
+      "mission_id": "M-02-DESIGN-SPEC",
+      "status": "done",
+      "files_owned": [
+        "agent-state/DESIGN.md",
+        "agent-state/PAGE_SPEC.md"
+      ],
+      "outputs": [
+        "agent-state/DESIGN.md",
+        "agent-state/PAGE_SPEC.md"
+      ],
+      "summary": "Thiết kế hệ màu warm editorial (#f6f1e7 / #1d5c4b), font Instrument Serif + Plus Jakarta Sans, 5 nhịp bố cục.",
+      "events": [
+        {
+          "time": "2026-10-30T10:06:00Z",
+          "type": "started",
+          "note": "Khởi tạo token màu, chữ, khoảng cách và thông số trang."
+        },
+        {
+          "time": "2026-10-30T10:15:00Z",
+          "type": "completed",
+          "note": "Hoàn tất DESIGN.md và PAGE_SPEC.md."
+        }
+      ]
+    },
+    {
+      "agent": "frontend-developer",
+      "role": "Frontend Developer (writer)",
+      "write_access": true,
+      "mission_id": "M-03-FRONTEND-BUILD",
+      "status": "done",
+      "files_owned": [
+        "index.html",
+        "styles.css",
+        "script.js",
+        "dashboard.html",
+        "favicon.svg"
+      ],
+      "outputs": [
+        "index.html",
+        "styles.css",
+        "script.js",
+        "dashboard.html"
+      ],
+      "summary": "Hiện thực hóa giao diện Focus Board và Visual Agent Dashboard chuẩn semantic HTML5, responsive 4 cỡ màn hình.",
+      "events": [
+        {
+          "time": "2026-10-30T10:16:00Z",
+          "type": "started",
+          "note": "Xây dựng HTML/CSS/JS theo DESIGN.md và PAGE_SPEC.md."
+        },
+        {
+          "time": "2026-10-30T10:35:00Z",
+          "type": "completed",
+          "note": "Hoàn thành giao diện chính, form validation và trang dashboard."
+        }
+      ]
+    },
+    {
+      "agent": "qa-tester",
+      "role": "Browser QA & Accessibility Tester (writer: screenshots/)",
+      "write_access": true,
+      "mission_id": "M-04-BROWSER-QA",
+      "status": "done",
+      "files_owned": [
+        "screenshots/verify.json",
+        "screenshots/axe.json"
+      ],
+      "outputs": [
+        "screenshots/verify.json",
+        "screenshots/axe.json",
+        "agent-state/UI_REVIEW.md (input cho Main Coordinator)"
+      ],
+      "summary": "Kiểm thử trên Chromium ở 1440/768/390/320: scrollWidth = clientWidth, axe 0 lỗi trên cả index.html và dashboard.html.",
+      "events": [
+        {
+          "time": "2026-10-30T10:36:00Z",
+          "type": "started",
+          "note": "Chạy verify-demo.cjs và audit-demo.cjs trên trình duyệt thật."
+        },
+        {
+          "time": "2026-10-30T10:48:00Z",
+          "type": "completed",
+          "note": "Xuất verify.json, axe.json và ảnh chụp 4 cỡ màn hình."
+        }
+      ]
+    },
+    {
+      "agent": "security-reviewer",
+      "role": "Security & Privacy Reviewer (read-only)",
+      "write_access": false,
+      "mission_id": "M-05-SEC-AUDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (security section input)"
+      ],
+      "summary": "Rà soát XSS, form action, external scripts và quy tắc bảo mật dữ liệu.",
+      "events": [
+        {
+          "time": "2026-10-30T10:40:00Z",
+          "type": "started",
+          "note": "Quét mã nguồn HTML/JS và cấu hình form."
+        },
+        {
+          "time": "2026-10-30T10:46:00Z",
+          "type": "completed",
+          "note": "0 lỗ hổng bảo mật; form xử lý cục bộ an toàn."
+        }
+      ]
+    },
+    {
+      "agent": "verifier",
+      "role": "Independent Verification Gate (read-only + runner)",
+      "write_access": false,
+      "mission_id": "M-06-FINAL-VERIFY",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/VERIFICATION_REPORT.md (evidence input cho Main Coordinator)"
+      ],
+      "summary": "Đối chiếu độc lập toàn bộ tiêu chí nghiệm thu trước khi đóng tiến trình.",
+      "events": [
+        {
+          "time": "2026-10-30T10:50:00Z",
+          "type": "started",
+          "note": "Kiểm tra chéo kết quả từ QA và Security."
+        },
+        {
+          "time": "2026-10-30T11:00:00Z",
+          "type": "completed",
+          "note": "Xác nhận PASS 100% tiêu chí bàn giao."
+        }
+      ]
+    }
+  ],
+  "audit_agents": [
+    {
+      "agent": "user-auditor",
+      "role": "Persona & Journey Auditor (read-only)",
+      "write_access": false,
+      "mission_id": "A-01-USER-JOURNEY",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (persona findings P1-P3)"
+      ],
+      "summary": "Đóng vai 3 persona (Minh Cần Gọn, Lan Dùng Điện Thoại, Hùng Hoài Nghi) kiểm tra hành trình dùng thử."
+    },
+    {
+      "agent": "lens-auditor",
+      "role": "Specialist Lens Auditor (read-only)",
+      "write_access": false,
+      "mission_id": "A-02-LENS-AUDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (lens findings L1-L4)"
+      ],
+      "summary": "Kiểm tra theo góc nhìn accessibility, responsive, copywriting và form UX."
+    },
+    {
+      "agent": "bug-skeptic",
+      "role": "Counter-Evidence & Repro Skeptic (read-only + runner)",
+      "write_access": false,
+      "mission_id": "A-03-BUG-SKEPTIC",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (verified vs downgraded findings)"
+      ],
+      "summary": "Phản biện các lỗi đề xuất, xác nhận repro thật trên DOM/viewport trước khi giữ mức P0-P2."
+    },
+    {
+      "agent": "report-editor",
+      "role": "Audit Report Editor (read-only)",
+      "write_access": false,
+      "mission_id": "A-04-REPORT-EDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (deduplicated executive summary)"
+      ],
+      "summary": "Gộp trùng lặp, chuẩn hóa mức độ ưu tiên P0-P3 và soạn tóm tắt cho chủ dự án."
+    },
+    {
+      "agent": "test-engineer",
+      "role": "Regression Test Engineer (writer: tests/scripts)",
+      "write_access": true,
+      "mission_id": "A-05-TEST-ENG",
+      "status": "done",
+      "files_owned": [
+        "scripts/verify-demo.cjs",
+        "scripts/audit-demo.cjs",
+        "scripts/ci-browser-smoke.mjs"
+      ],
+      "outputs": [
+        "scripts/verify-demo.cjs",
+        "scripts/audit-demo.cjs",
+        "scripts/ci-browser-smoke.mjs"
+      ],
+      "summary": "Viết và chạy kiểm thử tự động kiểm tra Focus Board + Visual Agent Dashboard (DOM, overflow, axe contrast)."
+    }
+  ],
+  "workspace_changes": [
+    {
+      "file": "examples/demo-site/index.html",
+      "owner": "frontend-developer",
+      "action": "updated",
+      "detail": "Trang đích Focus Board kèm liên kết tới Visual Agent Dashboard ở footer."
+    },
+    {
+      "file": "examples/demo-site/dashboard.html",
+      "owner": "frontend-developer",
+      "action": "updated",
+      "detail": "Visual Agent Dashboard tải động TASK_TRACKER.json, hiển thị đủ 11 subagents, tiến độ, nhiệm vụ, file, lỗi, báo cáo, đạt chuẩn tương phản WCAG AA."
+    },
+    {
+      "file": "examples/demo-site/agent-state/TASK_TRACKER.json",
+      "owner": "Main Coordinator",
+      "action": "updated",
+      "detail": "Tách rõ files_owned (chỉ cho agent có quyền ghi) và outputs (cho agent read-only)."
+    },
+    {
+      "file": "examples/demo-site/screenshots/verify.json",
+      "owner": "qa-tester",
+      "action": "updated",
+      "detail": "Kết quả kiểm tra viewport 1440/768/390/320 cho cả index.html và dashboard.html."
+    },
+    {
+      "file": "examples/demo-site/screenshots/axe.json",
+      "owner": "qa-tester",
+      "action": "updated",
+      "detail": "Kết quả quét axe-core 0 violation trên cả index.html và dashboard.html."
+    }
+  ],
+  "open_issues": [
+    {
+      "id": "U1",
+      "severity": "P3",
+      "status": "open",
+      "title": "Select goal dùng native dropdown của hệ điều hành",
+      "detail": "Select #goal dùng phần tử native <select> để ưu tiên khả năng truy cập bàn phím và mobile; giao diện popup phụ thuộc trình duyệt."
+    }
+  ],
+  "reports": [
+    {
+      "name": "PROJECT.md",
+      "path": "agent-state/PROJECT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "researcher"
+      ]
+    },
+    {
+      "name": "DESIGN.md",
+      "path": "agent-state/DESIGN.md",
+      "writer": "ui-ux-designer",
+      "contributors": []
+    },
+    {
+      "name": "PAGE_SPEC.md",
+      "path": "agent-state/PAGE_SPEC.md",
+      "writer": "ui-ux-designer",
+      "contributors": []
+    },
+    {
+      "name": "NEW_WEB_PLAN.md",
+      "path": "agent-state/NEW_WEB_PLAN.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "frontend-developer"
+      ]
+    },
+    {
+      "name": "UI_REVIEW.md",
+      "path": "agent-state/UI_REVIEW.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "qa-tester"
+      ]
+    },
+    {
+      "name": "AUDIT_REPORT.md",
+      "path": "agent-state/AUDIT_REPORT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "user-auditor",
+        "lens-auditor",
+        "bug-skeptic",
+        "security-reviewer",
+        "report-editor"
+      ]
+    },
+    {
+      "name": "VERIFICATION_REPORT.md",
+      "path": "agent-state/VERIFICATION_REPORT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "verifier",
+        "qa-tester",
+        "test-engineer"
+      ]
+    },
+    {
+      "name": "HANDOFF.md",
+      "path": "agent-state/HANDOFF.md",
+      "writer": "Main Coordinator",
+      "contributors": []
+    }
+  ]
+}
+  </script>
+  <script>
+    (function () {
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderAgentCard(item) {
+        var isWriter = Boolean(item.write_access);
+        var badgeClass = isWriter ? "badge" : "badge badge-readonly";
+        var accessLabel = isWriter ? "Writer" : "Read-only";
+        var filesOwnedText = (item.files_owned && item.files_owned.length > 0)
+          ? item.files_owned.map(function (f) { return "<code>" + escapeHtml(f) + "</code>"; }).join(", ")
+          : "<code>[]</code> (không giữ quyền ghi)";
+        var outputsText = (item.outputs && item.outputs.length > 0)
+          ? item.outputs.map(function (o) { return "<code>" + escapeHtml(o) + "</code>"; }).join(", ")
+          : "<code>[]</code>";
+        var lastEvent = (item.events && item.events.length > 0)
+          ? item.events[item.events.length - 1]
+          : null;
+
+        return (
+          '<article class="agent-card" data-agent="' + escapeHtml(item.agent) + '">' +
+            '<div class="agent-header">' +
+              '<span class="agent-name">' + escapeHtml(item.agent) + '</span>' +
+              '<div class="badge-group">' +
+                '<span class="' + badgeClass + '">' + accessLabel + '</span>' +
+                '<span class="badge">' + escapeHtml(item.mission_id || "N/A") + ' · ' + escapeHtml(item.status) + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="agent-role">' + escapeHtml(item.role || "") + '</div>' +
+            '<p class="agent-desc">' + escapeHtml(item.summary || "") + '</p>' +
+            '<div class="agent-meta">' +
+              '<div><strong>files_owned:</strong> ' + filesOwnedText + '</div>' +
+              '<div><strong>outputs:</strong> ' + outputsText + '</div>' +
+              (lastEvent
+                ? '<div><strong>Sự kiện cuối:</strong> <code>' + escapeHtml(lastEvent.type) + '</code> (' + escapeHtml(lastEvent.time) + ') — ' + escapeHtml(lastEvent.note) + '</div>'
+                : '') +
+            '</div>' +
+          '</article>'
+        );
+      }
+
+      function renderDashboard(data, sourceLabel) {
+        window.__TASK_TRACKER__ = data;
+        document.body.dataset.hasTracker = "true";
+
+        var prog = data.progress || { completed: 0, total: 0, percent: 0 };
+        var coreAgents = data.agents || [];
+        var auditAgents = data.audit_agents || [];
+        var allAgents = coreAgents.concat(auditAgents);
+        var writersCount = allAgents.filter(function (a) { return Boolean(a.write_access); }).length;
+        var readonlyCount = allAgents.length - writersCount;
+        var openIssues = data.open_issues || [];
+        var reports = data.reports || [];
+
+        document.getElementById("tracker-status-pill").textContent =
+          "TASK_TRACKER.json (" + sourceLabel + ") · " + prog.completed + "/" + prog.total + " Missions Done";
+        document.getElementById("kpi-progress-text").textContent =
+          prog.completed + " / " + prog.total + " (" + prog.percent + "%)";
+        document.getElementById("kpi-progress-bar").style.width = prog.percent + "%";
+        document.getElementById("kpi-updated-at").textContent = "Cập nhật: " + (data.updated_at || "N/A");
+        document.getElementById("kpi-agent-count").textContent = allAgents.length + " Subagents";
+        document.getElementById("kpi-writer-count").textContent =
+          writersCount + " Writer / " + readonlyCount + " Read-only";
+        document.getElementById("kpi-issues-reports").textContent =
+          openIssues.length + " Open · " + reports.length + " Báo cáo";
+
+        if (data.coordinator) {
+          document.getElementById("coord-kit-badge").textContent = data.coordinator.active_kit || "";
+          document.getElementById("coord-mode").textContent = data.coordinator.mode || "";
+          document.getElementById("coord-status").textContent = data.coordinator.status || "";
+          document.getElementById("coord-files").textContent = (data.coordinator.files_owned || []).join(", ");
+        }
+
+        document.getElementById("core-agents-grid").innerHTML = coreAgents.map(renderAgentCard).join("");
+        document.getElementById("audit-agents-grid").innerHTML = auditAgents.map(renderAgentCard).join("");
+
+        document.getElementById("missions-tbody").innerHTML = allAgents.map(function (a) {
+          var owned = (a.files_owned && a.files_owned.length > 0)
+            ? a.files_owned.map(function (f) { return "<code>" + escapeHtml(f) + "</code>"; }).join(", ")
+            : "<code>[]</code>";
+          var outs = (a.outputs && a.outputs.length > 0)
+            ? a.outputs.map(function (o) { return "<code>" + escapeHtml(o) + "</code>"; }).join(", ")
+            : "<code>[]</code>";
+          return (
+            "<tr>" +
+              "<td><code>" + escapeHtml(a.mission_id || "") + "</code></td>" +
+              "<td><code>" + escapeHtml(a.agent) + "</code></td>" +
+              "<td>" + (a.write_access ? '<span class="badge">Writer</span>' : '<span class="badge badge-readonly">Read-only</span>') + "</td>" +
+              "<td><code>" + escapeHtml(a.status) + "</code></td>" +
+              "<td>" + owned + "</td>" +
+              "<td>" + outs + "</td>" +
+            "</tr>"
+          );
+        }).join("");
+
+        var changes = data.workspace_changes || [];
+        document.getElementById("workspace-changes-list").innerHTML = changes.map(function (c) {
+          return (
+            '<li class="list-item">' +
+              '<div class="list-item-title">' +
+                '<code>' + escapeHtml(c.file) + '</code>' +
+                '<span class="badge">' + escapeHtml(c.owner) + ' · ' + escapeHtml(c.action) + '</span>' +
+              '</div>' +
+              '<div class="list-item-sub">' + escapeHtml(c.detail) + '</div>' +
+            '</li>'
+          );
+        }).join("");
+
+        document.getElementById("open-issues-box").innerHTML = openIssues.map(function (iss) {
+          return (
+            '<div class="list-item">' +
+              '<div class="list-item-title">' +
+                '<span>[' + escapeHtml(iss.id) + '] ' + escapeHtml(iss.title) + '</span>' +
+                '<span class="badge badge-warn">' + escapeHtml(iss.severity) + ' · ' + escapeHtml(iss.status) + '</span>' +
+              '</div>' +
+              '<div class="list-item-sub">' + escapeHtml(iss.detail) + '</div>' +
+            '</div>'
+          );
+        }).join("");
+
+        document.getElementById("reports-list").innerHTML = reports.map(function (rep) {
+          var contrib = (rep.contributors && rep.contributors.length > 0)
+            ? "Đóng góp: " + rep.contributors.join(", ")
+            : "Trực tiếp";
+          return (
+            '<li class="list-item">' +
+              '<div class="list-item-title">' +
+                '<code>' + escapeHtml(rep.path) + '</code>' +
+                '<span class="badge">Writer: ' + escapeHtml(rep.writer) + '</span>' +
+              '</div>' +
+              '<div class="list-item-sub">' + escapeHtml(contrib) + '</div>' +
+            '</li>'
+          );
+        }).join("");
+      }
+
+      var fallbackEl = document.getElementById("tracker-fallback");
+      var fallbackData = JSON.parse(fallbackEl.textContent);
+      renderDashboard(fallbackData, "embedded");
+
+      fetch("./agent-state/TASK_TRACKER.json")
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (liveData) {
+          renderDashboard(liveData, "fetched");
+        })
+        .catch(function () {
+          // Keep embedded fallback when opened via file://
+        });
+    })();
+  </script>
+</body>
+</html>

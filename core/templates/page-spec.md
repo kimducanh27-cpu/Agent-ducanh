@@ -1,4 +1,4 @@
-# PAGE SPEC — <route>
+# PAGE SPEC (PAGE_SPEC) — <route>
 
 - Loại web/trang:
 - Mục tiêu người dùng:

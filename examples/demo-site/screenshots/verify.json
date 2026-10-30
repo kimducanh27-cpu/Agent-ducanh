@@ -30,12 +30,35 @@
     "nameInvalid": null,
     "emailInvalid": null
   },
-  "console": {
-    "consoleErrors": [],
-    "exceptions": [],
-    "httpErrors": [],
-    "external": [],
-    "dialogs": []
+  "dashboard": {
+    "title": "Visual Agent Dashboard — Agent-ducanh v0.13.0",
+    "h1": "Visual Agent Dashboard",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "hasTracker": true,
+    "agentCards": 11,
+    "missionRows": 11,
+    "reportItems": 8
+  },
+  "dashboardMobile": {
+    "title": "Visual Agent Dashboard — Agent-ducanh v0.13.0",
+    "h1": "Visual Agent Dashboard",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "hasTracker": true,
+    "agentCards": 11,
+    "missionRows": 11,
+    "reportItems": 8
+  },
+  "dashboardNarrow": {
+    "title": "Visual Agent Dashboard — Agent-ducanh v0.13.0",
+    "h1": "Visual Agent Dashboard",
+    "scrollWidth": 320,
+    "clientWidth": 320,
+    "hasTracker": true,
+    "agentCards": 11,
+    "missionRows": 11,
+    "reportItems": 8
   },
   "mobile": {
     "title": "Focus Board — 3 việc mỗi ngày, xong là nghỉ",
@@ -43,7 +66,7 @@
     "scrollWidth": 390,
     "clientWidth": 390,
     "innerWidth": 390,
-    "bodyHeight": 3377,
+    "bodyHeight": 3398,
     "h1Rect": {
       "top": 187.640625,
       "left": 12,
@@ -83,7 +106,7 @@
     "scrollWidth": 320,
     "clientWidth": 320,
     "innerWidth": 320,
-    "bodyHeight": 3760,
+    "bodyHeight": 3782,
     "h1Rect": {
       "top": 220.578125,
       "left": 12,
@@ -96,5 +119,12 @@
       "Mẫu một ngày",
       "Nhận kế hoạch"
     ]
+  },
+  "console": {
+    "consoleErrors": [],
+    "exceptions": [],
+    "httpErrors": [],
+    "external": [],
+    "dialogs": []
   }
 }

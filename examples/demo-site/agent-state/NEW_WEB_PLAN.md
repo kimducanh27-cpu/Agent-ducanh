@@ -20,7 +20,7 @@ Một trang `/index.html`:
 - Mobile: 1 cột; board không nghiêng.
 
 ## Tokens
-- Paper `#f6f1e7`, ink `#1f2a24`, accent `#1f7a5a`, warm `#c96f2d`.
+- Paper `#f6f1e7`, ink `#1f2a24`, accent `#1f7a5a`, warm `#92450f` (đổi từ `#c96f2d` sau khi kiểm contrast axe).
 - Radius 18px; shadow mềm; spacing theo cụm.
 
 ## Content

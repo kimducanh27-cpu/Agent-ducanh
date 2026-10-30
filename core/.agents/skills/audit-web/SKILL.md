@@ -1,6 +1,6 @@
 ---
 name: audit-web
-description: "Audit 10 persona người dùng bằng browser + subagent Antigravity; leader dispatch theo batch, validate, review-only."
+description: "Audit 10 persona người dùng bằng browser + subagent Antigravity; leader dispatch theo batch, validate, review_only."
 ---
 
 # /audit-web
@@ -9,7 +9,7 @@ description: "Audit 10 persona người dùng bằng browser + subagent Antigrav
 `review_only`; không sửa code.
 
 ## Chạy
-1. Đọc `core/AGENTS.md`, `router.md`, `protocol/README.md`, `prompts/scoring.md`, `prompts/capture-brief.md`, `prompts/persona-bug-hunt.md`, `prompts/leader-dispatch.md`.
+1. Đọc `core/AGENTS.md`, `core/router.md`, `core/protocol/README.md`, `core/prompts/scoring.md`, `core/prompts/capture-brief.md`, `core/prompts/persona-bug-hunt.md`, `core/prompts/leader-dispatch.md`.
 2. Đọc `agent-state/PROJECT.md` + `HANDOFF.md`; xác nhận URL/scope.
 3. Main agent dùng `/browser` capture evidence một lần; ghi `agent-state/evidence/<run-id>/manifest.json`.
 4. Mission map 10 persona → 4 batch (3/3/3/1); mỗi mission theo `core/templates/subagent-mission.md`.

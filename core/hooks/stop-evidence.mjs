@@ -6,7 +6,9 @@ function block(reason) {
 }
 
 if (!existsSync("agent-state/HANDOFF.md")) {
-  // Initial sessions may not have a handoff yet; pre-tool still blocks edits.
+  if (existsSync("agent-state")) {
+    block("Đã có thư mục agent-state/ nhưng thiếu agent-state/HANDOFF.md. Cập nhật handoff trước khi kết thúc.");
+  }
   process.exit(0);
 }
 

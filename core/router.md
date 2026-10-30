@@ -12,11 +12,7 @@
 
 ## Lite hay Full?
 
-- **Lite:** 1 route/component, reversible, không auth/data/payment/migration/launch.
-  - 1 kit + 1 prompt; audit 1 lens; fix vẫn 5+10; before/after + handoff.
-- **Full:** web mới, audit toàn site, nhiều route, auth/data/payment/migration, launch.
-  - Protocol đầy đủ, 10 lens, verifier độc lập, human gate.
-- AI đề xuất; owner có thể nói “lite”/“full”. Không dùng Lite cho dữ liệu/quyền/thanh toán.
+Xem nguồn chính tại `core/prompts/lite.md`: **Lite** cho 1 route/component nhỏ, reversible (1 kit + 1 prompt, vẫn giữ 5+10 và handoff); **Full** cho web mới, nhiều route, auth/data/payment/migration/launch (10 lens + verifier độc lập).
 
 ## Nếu không chắc, hỏi tối đa 3 câu
 
@@ -38,7 +34,7 @@ Không hỏi lại thông tin đã có trong `agent-state/PROJECT.md` hoặc `HA
 
 - Tối ưu tốc độ: giữ kit hiện tại + `/perf-web` hoặc `core/prompts/perf-web.md`.
 - Style: `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
-- Page: `core/rules/ui-layout.md` + `docs/style/site-goals.md` + `page-patterns.md`; `/page-web`.
+- Page: `core/rules/ui-layout.md` + `docs/style/site-goals.md` + `docs/style/page-patterns.md`; `/page-web`.
 - Release/deploy: giữ kit hiện tại + `core/prompts/release-web.md`; chỉ deploy khi owner cho phép.
 - Perf/release/style/page không phải kit mới; không tạo kit thứ 6.
 

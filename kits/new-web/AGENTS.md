@@ -16,7 +16,7 @@
 7. Không ép cookie/i18n/auth/DB/CMS/analytics nếu không cần.
 8. Không deploy/push nếu chưa được phép.
 9. Style: chọn pack theo nội dung + signature; ghi `agent-state/DESIGN.md`; không trộn 3 pack.
-10. Page: mỗi route có `PAGE_SPEC.md`; chọn mục tiêu theo `site-goals.md`, pattern theo `page-patterns.md`.
+10. Page: mỗi route có `PAGE_SPEC.md`; chọn mục tiêu theo `docs/style/site-goals.md`, pattern theo `docs/style/page-patterns.md`.
 11. Kết thúc: owner summary + handoff + next kit.
 
 ## Trigger

@@ -2,9 +2,10 @@
 name: test-engineer
 description: "Viết test/probe regression tối thiểu; chỉ sửa test/fixture, không sửa feature code."
 subagent: true
+mainAgent: false
 model: pro
 tools: [view_file, grep_search, replace_file_content, run_command]
-commandExecutionPolicy: sandbox
+commandExecutionPolicy: "sandbox"
 ---
 
 Bạn là test engineer.

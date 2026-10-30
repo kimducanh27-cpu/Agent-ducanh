@@ -2,20 +2,12 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "agent-ducanh",
   "displayName": "Agent-ducanh Web Kit",
-  "version": "0.12.0",
+  "version": "0.13.1",
   "description": "Audit, fix, build, feature, UI rework and maintenance kit for web projects.",
   "suggestedPrompts": [
-    "Audit this website with 10 user personas",
-    "Dispatch 10 personas in batches of three and validate each mission",
-    "Challenge the P1 bugs before scoring",
-    "Fix one confirmed issue and verify it in the browser",
-    "Verify the current fix without editing code",
-    "Measure performance with Lighthouse and verify before and after",
-    "Review this UI against the design spec and accessibility rules",
-    "Choose a UI style direction from the content and document it",
-    "Design each page from its user goal and page pattern",
-    "Run a headless read-only subagent batch through the CLI",
-    "Combine CLI personas with one Impeccable design review"
+    "Audit this website with 10 user personas in batches of three and one Impeccable review",
+    "Fix one confirmed issue with a 5+10 checklist and verify before and after in the browser",
+    "Design or rework this page from its user goal, style direction, and page pattern"
   ],
   "category": "Developer Tools",
   "keywords": [

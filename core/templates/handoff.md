@@ -33,6 +33,7 @@ permissions:
   commit_push: <yes|no>
   deploy: <yes|no>
   payment_email: <yes|no>
+  allow_destructive: <yes|no>
 
 blockers:
   - <mô tả + cách mở>

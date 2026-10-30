@@ -20,6 +20,20 @@ const metrics = `(() => {
   };
 })()`;
 
+const dashMetrics = `(() => {
+  const h1 = document.querySelector("h1");
+  return {
+    title: document.title,
+    h1: h1 ? h1.innerText : null,
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth,
+    hasTracker: document.body.dataset.hasTracker === "true" && Boolean(window.__TASK_TRACKER__),
+    agentCards: document.querySelectorAll(".agent-card[data-agent]").length,
+    missionRows: document.querySelectorAll("#missions-tbody tr").length,
+    reportItems: document.querySelectorAll("#reports-list li").length
+  };
+})()`;
+
 (async () => {
   const s = await openSession({
     base,
@@ -60,7 +74,23 @@ const metrics = `(() => {
       nameInvalid: document.querySelector("#name").getAttribute("aria-invalid"),
       emailInvalid: document.querySelector("#email").getAttribute("aria-invalid")
     })`);
-    out.console = await s.takeErrors();
+
+    await s.goto("/dashboard.html");
+    await s.waitFor('document.body.dataset.hasTracker === "true"');
+    out.dashboard = await s.ev(dashMetrics);
+    await s.shot("dashboard", { fullPage: true });
+
+    await s.viewport(390, 844, true);
+    await s.goto("/dashboard.html");
+    await s.waitFor('document.body.dataset.hasTracker === "true"');
+    out.dashboardMobile = await s.ev(dashMetrics);
+    await s.shot("dashboard-mobile", { fullPage: true });
+
+    await s.viewport(320, 700, true);
+    await s.goto("/dashboard.html");
+    await s.waitFor('document.body.dataset.hasTracker === "true"');
+    out.dashboardNarrow = await s.ev(dashMetrics);
+    await s.shot("dashboard-narrow", { fullPage: true });
 
     await s.viewport(390, 844, true);
     await s.goto("/");
@@ -79,12 +109,26 @@ const metrics = `(() => {
     await s.waitFor('document.querySelector("h1")');
     out.narrow = await s.ev(metrics);
     await s.shot("narrow", { fullPage: true });
+
+    out.console = await s.takeErrors();
   } finally {
     await s.close();
   }
 
   fs.writeFileSync(`${shotsDir}/verify.json`, JSON.stringify(out, null, 2));
   console.log(JSON.stringify(out, null, 2));
+
+  const overflow = Object.entries(out)
+    .filter(([, value]) => value && typeof value === "object" && "scrollWidth" in value && value.scrollWidth !== value.clientWidth)
+    .map(([key, value]) => `${key}: ${value.scrollWidth}/${value.clientWidth}`);
+  if (overflow.length) {
+    console.error(`Horizontal overflow: ${overflow.join(", ")}`);
+    process.exitCode = 1;
+  }
+  if (!out.dashboard?.hasTracker || out.dashboard.agentCards !== 11) {
+    console.error("Dashboard did not render the tracker or 11 agents.");
+    process.exitCode = 1;
+  }
 })().catch((error) => {
   console.error(error);
   process.exit(1);

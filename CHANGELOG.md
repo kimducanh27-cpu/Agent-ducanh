@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.13.1-dashboard — 2026-10-30
+
+- Fixed dashboard horizontal overflow at 320/390: min-width grid tracks and panel/card constraints.
+- Made the mission table scroll region focusable (`tabindex="0"`, `role="region"`) for axe `scrollable-region-focusable`.
+- Extended `verify-demo.cjs` to measure dashboard at 1440/390/320 and fail on overflow/agent-count regressions; CI now runs it.
+- Extended `audit-demo.cjs` axe coverage to dashboard at 1440/390/320.
+- Updated dashboard/README claims with measured evidence; added `ci-dashboard.png` to gitignore.
+- Manifests 0.13.1.
+
+## 0.13.0-subagents — 2026-10-30
+
+- Expanded Antigravity Custom Subagents to 11 (`researcher`, `ui-ux-designer`, `frontend-developer`, `qa-tester`, `security-reviewer`, `verifier`, `user-auditor`, `lens-auditor`, `bug-skeptic`, `report-editor`, `test-engineer`) with `mainAgent: false`, `subagent: true`, and strict write-gate isolation.
+- Added interactive `examples/demo-site/dashboard.html` (Visual Agent Dashboard) dynamically rendering `agent-state/TASK_TRACKER.json` across all 6 dimensions (progress, 11 agents, missions, files owned vs outputs, open issues, and reports) with WCAG AA verified contrast (`--muted: #4A554E`, 6.75:1+).
+- Enforced `files_owned: []` and `outputs: [...]` for all read-only subagents in `TASK_TRACKER.json` and `core/templates/task-tracker.md`.
+- Added content-hash synchronization and drift checks between `core/.agents/`, root `.agents/`, and `dist/agent-ducanh-antigravity/` in `scripts/package-plugins.mjs` and `scripts/check-antigravity.mjs`.
+- Wired `dashboard.html` into `examples/demo-site/index.html`, `examples/demo-site/README.md`, `scripts/ci-browser-smoke.mjs`, `scripts/verify-demo.cjs`, and `scripts/audit-demo.cjs`; manifests 0.13.0.
+
 ## 0.12.0-impeccable — 2026-10-30
 
 - Added CLI persona + one Impeccable pass workflow: main browser evidence → CLI personas → Impeccable critique/audit → reconcile.
@@ -51,7 +68,7 @@
 ## 0.6.1-portable — 2026-10-30
 
 - Vendored the self-contained CDP harness at `scripts/lib/cdp-harness.cjs`.
-- `verify-demo.cjs` and `audit-demo.cjs` now use relative harness paths; no local drive dependency.
+- `scripts/verify-demo.cjs` and `scripts/audit-demo.cjs` now use relative harness paths; no local drive dependency.
 - `check-docs` scans `.cjs` files (excluding known browser-path constants) to prevent regression.
 - Verified both deep scripts from a temporary working directory; axe 0 violations.
 
@@ -59,7 +76,7 @@
 
 - Added `core/prompts/leader-dispatch.md`: recon → mission map → batch ≤3 → validate → spot-check 3 → repair once → merge → verify.
 - Added mission/result templates with 17 required fields and status enum.
-- Added rule `70-leader-dispatch.md`; workspace safety (share/inherit vs branch, one writer/file).
+- Added rule `core/.agents/rules/70-leader-dispatch.md`; workspace safety (share/inherit vs branch, one writer/file).
 - Audit-web now maps 10 personas to 4 batches and rejects invalid output before scoring.
 - Added `scripts/check-dispatch.mjs`; wired into CI/pre-commit/check-docs/evals.
 - Plugin manifest 0.6.0 + leader dispatch suggested prompt.
@@ -78,7 +95,7 @@
 - Deep Antigravity subagent profile: exact tool whitelist, models, command policy.
 - Added verifier, security-reviewer, test-engineer subagents; lens-auditor Flash, report-editor Pro.
 - Added audit-web/fix-web/verify-web skills; total 5 skills to avoid context overload.
-- Added `50-antigravity-subagents.md` rule and `docs/tools/antigravity-2.md`.
+- Added `core/.agents/rules/50-antigravity-subagents.md` rule and `docs/tools/antigravity-2.md`.
 - Added `scripts/check-antigravity.mjs`; wired into CI/pre-commit.
 - Plugin manifest version 0.4.0 + subagent suggested prompts.
 

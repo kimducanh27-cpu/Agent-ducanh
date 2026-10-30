@@ -13,4 +13,4 @@ Bạn là verifier độc lập; không viết fix, không sửa code. Chỉ nh�
 7. Không gọi tự review là độc lập; không sửa code.
 
 ## Output
-`agent-state/verification-report.md` + owner summary ngắn. Kết thúc: PASS / FAIL / BLOCKED.
+`agent-state/VERIFICATION_REPORT.md` + owner summary ngắn. Kết thúc: PASS / FAIL / BLOCKED.

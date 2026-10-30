@@ -1,6 +1,6 @@
 # Superpowers routing — gọi đúng skill theo việc
 
-Bản local đã kiểm tra: **6.3.0**, 14 skill. Nếu thiếu plugin → `/toolbox` hoặc fallback.
+Bản local đang pin: **6.3.0**, 14 skill core (bản upstream `v7.0.1` có thêm skill thứ 15 `diagnosing-superpowers`). Nếu thiếu plugin → `/toolbox` hoặc fallback.
 
 | Việc | Skill | Ghi chú |
 |---|---|---|

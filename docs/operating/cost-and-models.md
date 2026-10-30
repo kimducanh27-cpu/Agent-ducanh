@@ -21,7 +21,7 @@
 - Dùng `/effort` nếu app hỗ trợ; tăng effort cho final verify.
 
 ## `/goal`
-- Chỉ dùng khi có 5+10 + stop rule.
+- Chỉ dùng khi có 5+10 (5 câu hỏi chặn + 10 tiêu chí đo được) + stop rule.
 - Một goal/conversation; không có iteration cap.
 - Dừng sau 2 fail/30 phút.
 

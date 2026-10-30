@@ -63,6 +63,9 @@ async function waitForCdp(port, timeoutMs) {
 }
 
 function connect(wsUrl) {
+  if (typeof WebSocket === 'undefined') {
+    throw new Error('Global WebSocket is unavailable. Run with Node.js >= 22 (or node --experimental-websocket).');
+  }
   const ws = new WebSocket(wsUrl);
   let seq = 0;
   const pending = new Map();

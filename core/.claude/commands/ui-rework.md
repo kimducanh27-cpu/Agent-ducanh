@@ -3,7 +3,7 @@ description: Audit và sửa GUI/UI/UX theo phản hồi tự nhiên.
 argument-hint: [màn hình + điều chưa ưng]
 ---
 
-Đọc `AGENTS.md`, `agent-state/HANDOFF.md`, `agent-state/DESIGN.md` nếu có, `core/rules/ui-quality.md`, `core/rules/ui-style.md`, `docs/style/directions.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`, `kits/ui-rework/AGENTS.md`, `kits/ui-rework/prompts/01-ui-audit.md`.
+Đọc `core/AGENTS.md`, `agent-state/HANDOFF.md`, `agent-state/DESIGN.md` nếu có, `core/rules/ui-quality.md`, `core/rules/ui-style.md`, `docs/style/directions.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`, `kits/ui-rework/AGENTS.md`, `kits/ui-rework/prompts/01-ui-audit.md`.
 
 Dùng `$ARGUMENTS` làm feedback. Ghi F-UI; chụp before; giữ phần đã được chấp nhận.
 Nếu mơ hồ: 2 hướng thật trên cùng nội dung/viewport; owner chọn.

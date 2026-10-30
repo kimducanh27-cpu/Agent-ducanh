@@ -3,7 +3,7 @@ description: Thiết kế/audit một trang theo mục tiêu và pattern; ghi PA
 argument-hint: [route hoặc loại trang]
 ---
 
-Đọc `AGENTS.md`, `agent-state/PROJECT.md`, `agent-state/HANDOFF.md`, `core/rules/ui-layout.md`, `docs/style/site-goals.md`, `docs/style/page-patterns.md`, `core/templates/page-spec.md`.
+Đọc `core/AGENTS.md`, `agent-state/PROJECT.md`, `agent-state/HANDOFF.md`, `core/rules/ui-layout.md`, `docs/style/site-goals.md`, `docs/style/page-patterns.md`, `core/templates/page-spec.md`.
 
 Dùng `$ARGUMENTS` làm route/loại trang. Chọn loại + trả lời 10 câu hỏi; ghi `agent-state/PAGE_SPEC.md`.
 Chưa rõ: 2 layout khác thật trên cùng nội dung/viewport. Không thêm hiệu ứng nếu không phục vụ mục tiêu.

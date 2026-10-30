@@ -14,7 +14,7 @@ Tất cả dùng chung `core/` và một sổ dự án `agent-state/`. Kit sau �
 
 ## Bộ kit có gì
 
-- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, rule UI/page, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
+- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, rule UI/page, checklist, 6 skill (`/web-kit`, `/toolbox`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`).
 - `kits/new-web/`: 4 prompt — hỏi brief, lập plan, build, verify.
 - `kits/audit-fix/`: audit 10 góc nhìn + 10 persona, fix, verify độc lập.
 - `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: 4 prompt mỗi kit.
@@ -24,13 +24,13 @@ Chưa đưa vào repo: deploy thật, ảnh GDCT1 gốc, dữ liệu người d�
 
 ## Dùng thử trong 5 bước
 
-1. Copy **nội dung** thư mục `core/` vào **root project** (để `AGENTS.md`, `.agents/`, `.qoder/`, `.claude/`, `router.md`, `protocol/` nằm ngay root).
+1. Copy thư mục `core/` vào **root project** (giữ `core/...`) đồng thời đặt `core/AGENTS.md`, `core/CLAUDE.md`, `core/GEMINI.md`, `core/.agents/`, `core/.claude/`, `core/.qoder/` ở root project (hoặc dùng bundle trong `dist/`).
 2. Copy thư mục `kits/` vào root, giữ đường dẫn `kits/<kit>/...`; hoặc chỉ copy kit cần dùng vào `kits/<kit>/`.
 3. Mở project bằng Antigravity 2.0 (hoặc Qoder/Claude Code).
-4. Gõ `/web-kit` và nói việc bạn muốn. Nếu không chắc, nó hỏi tối đa 3 câu.
+4. Gõ `/web-kit` và nói việc bạn muốn. Nếu không chắc, AI hỏi tối đa 3 câu.
 5. Đọc bản tóm tắt 1 trang, duyệt phạm vi. AI làm, kiểm tra bằng browser thật, rồi ghi `agent-state/HANDOFF.md`.
 
-Mỗi kit cũng có `START-HERE.md` để dùng riêng, không cần router.
+Mỗi kit cũng có `kits/<kit>/START-HERE.md` để dùng riêng, không cần router.
 
 ## Xem web demo
 
@@ -47,22 +47,22 @@ Mở file `examples/demo-site/index.html` bằng browser, hoặc chạy một se
 - Console/network: 0 error/exception/HTTP ≥400.
 - Form invalid/valid: đúng; focus field lỗi; không gửi network.
 - axe: 0 violation, 1 incomplete.
-- Ảnh: `examples/demo-site/screenshots/desktop.png`, `tablet.png`, `mobile.png`, `narrow.png`.
-- Style: `style-before-desktop.png` / `style-before-mobile.png` và ảnh sau; `agent-state/DESIGN.md` + `UI_REVIEW.md`.
-- Kết quả máy đọc: `examples/demo-site/screenshots/verify.json`, `axe.json`; axe 0 violation.
-- Báo cáo mẫu: `examples/demo-site/agent-state/AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`, `OWNER_SUMMARY.md`.
+- Ảnh: `examples/demo-site/screenshots/desktop.png`, `examples/demo-site/screenshots/tablet.png`, `examples/demo-site/screenshots/mobile.png`, `examples/demo-site/screenshots/narrow.png`.
+- Style: `examples/demo-site/screenshots/style-before-desktop.png` / `examples/demo-site/screenshots/style-before-mobile.png` và ảnh sau; `examples/demo-site/agent-state/DESIGN.md` + `examples/demo-site/agent-state/UI_REVIEW.md`.
+- Kết quả máy đọc: `examples/demo-site/screenshots/verify.json`, `examples/demo-site/screenshots/axe.json`; axe 0 violation.
+- Báo cáo mẫu: `examples/demo-site/agent-state/AUDIT_REPORT.md`, `examples/demo-site/agent-state/VERIFICATION_REPORT.md`, `examples/demo-site/agent-state/OWNER_SUMMARY.md`.
 
 Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 
 ## P0 đã có
 
-- Hooks: `core/hooks/pre-tool-check.mjs`, `post-edit-check.mjs`, `stop-evidence.mjs` + `core/.claude/settings.json.example`.
+- Hooks: `core/hooks/pre-tool-check.mjs`, `core/hooks/post-edit-check.mjs`, `core/hooks/stop-evidence.mjs`, `core/hooks/session-log.mjs` + `core/.claude/settings.json.example`.
 - CI: `.github/workflows/validate.yml`; pre-commit: `.pre-commit-config.yaml`.
-- CI browser: `scripts/ci-browser-smoke.mjs` (portable Chrome); local full verify dùng `scripts/verify-demo.cjs` + `scripts/lib/cdp-harness.cjs` (portable, chỉ cần Chrome).
+- CI browser: `scripts/ci-browser-smoke.mjs` (portable Chrome); local full verify dùng `scripts/verify-demo.cjs` + `scripts/lib/cdp-harness.cjs` (portable, cần Chrome và Node.js >= 22 cho WebSocket gốc).
 - Audit sâu `scripts/audit-demo.cjs` cần `axe-core`: đặt `AXE_PATH` hoặc cài ngoài project.
-- Lệnh Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
+- Lệnh Claude (12 lệnh): `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`, `/perf-web`, `/release-web`, `/ui-review`, `/style-web`, `/page-web`.
 - Eval: `evals/cases.json` + `node scripts/eval-kits.mjs`.
-- Check: `node scripts/check-docs.mjs`, `check-superpowers`, `check-antigravity`, `check-personas`, `check-dispatch`, `check-ui`, `check-style`, `check-layout`.
+- Check: `node scripts/check-docs.mjs`, `scripts/check-superpowers.mjs`, `scripts/check-antigravity.mjs`, `scripts/check-personas.mjs`, `scripts/check-dispatch.mjs`, `scripts/check-ui.mjs`, `scripts/check-style.mjs`, `scripts/check-layout.mjs`, `scripts/check-impeccable.mjs`.
 - Checkpoint: `node scripts/checkpoint.mjs "label"`.
 - License MIT, SECURITY.md, VERSION, CHANGELOG.
 - Lite/Full: `core/prompts/lite.md`; GitHub research: `core/prompts/github-research.md`.
@@ -72,7 +72,7 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 
 - Đủ 10 lens A1–A10: `kits/audit-fix/lenses/`.
 - Full 4 prompt cho feature/ui-rework/maintenance.
-- Subagent Claude: `core/.claude/agents/` (lens-auditor, verifier, security-reviewer, test-engineer).
+- Subagent Claude (8): `core/.claude/agents/` (`researcher`, `ui-ux-designer`, `frontend-developer`, `qa-tester`, `security-reviewer`, `verifier`, `lens-auditor`, `test-engineer`).
 - Qoder agent guide: `core/.qoder/agents/README.md`.
 - MCP config mẫu: `core/toolbox/mcp_config.example.json`.
 - Settings allow/deny: `core/.claude/settings.json.example`.
@@ -87,14 +87,16 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Session log: `core/hooks/session-log.mjs` + `core/templates/runlog.md`.
 - 5 thẻ non-tech: `cards/README.md`.
 
-## Antigravity deep (0.4.0)
+## Antigravity subagents & dashboard (0.4.0 → 0.13.1)
 
-- 5 subagent: `lens-auditor` (flash), `report-editor` (pro), `verifier`, `security-reviewer`, `test-engineer`.
+- 11 Subagents (Kiến trúc 4 tầng Visual Agent Dashboard → Main Coordinator → Subagents → Task & Event Tracker): 6 Core App/Dev (`researcher`, `ui-ux-designer`, `frontend-developer`, `qa-tester`, `security-reviewer`, `verifier`) + 5 Audit/TDD (`user-auditor`, `bug-skeptic`, `lens-auditor`, `report-editor`, `test-engineer`).
 - Audit: `/browser` capture một lần → 10 lens auditor đọc evidence, batch ≤3 → report-editor → main confirm.
 - Custom subagent không có browser; chỉ `/browser` ở main.
 - Tool whitelist: `view_file`, `grep_search`, `run_command`, `replace_file_content`; kiểm bằng `node scripts/check-antigravity.mjs`.
 - Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web` (5; 0.7.0 thêm `perf-web` = 6).
 - Rule: `core/.agents/rules/50-antigravity-subagents.md`.
+- Visual Agent Dashboard & Tracker (0.13.0): `examples/demo-site/dashboard.html` đọc và hiển thị động `examples/demo-site/agent-state/TASK_TRACKER.json` (tiến độ, 11 subagents, nhiệm vụ, `files_owned` vs `outputs`, lỗi tồn đọng, báo cáo); mẫu chuẩn tại `core/templates/task-tracker.md`.
+- Dashboard mobile (0.13.1): không overflow 320/390; bảng cuộn focusable; `verify-demo` + axe kiểm cả 3 viewport.
 
 ## Persona bug hunt (0.5.0)
 
@@ -110,7 +112,7 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Mỗi mission đóng gói 18 field; không gửi chat history/secret/output mission khác.
 - 10 persona chia 4 batch (3/3/3/1), không chạy 10 cùng lúc.
 - Output lỗi (`invalid`/`blocked`) không được sang skeptic/judge/score.
-- File: `core/prompts/leader-dispatch.md`, `core/templates/subagent-mission.md`, `subagent-result.md`, rule `70-leader-dispatch.md`.
+- File: `core/prompts/leader-dispatch.md`, `core/templates/subagent-mission.md`, `core/templates/subagent-result.md`, rule `core/.agents/rules/70-leader-dispatch.md`.
 - Kiểm bằng `node scripts/check-dispatch.mjs`.
 
 ## CLI và teamwork (0.11.0)
@@ -154,7 +156,7 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 ## Page goals & layout (0.10.0)
 
 - `docs/style/site-goals.md`: 10 loại web; **learning platform** ưu tiên tập trung, tìm bài, tiến độ/XP, bài tập/quiz, quay lại; kèm e-commerce, SaaS, docs, community, media, portfolio, booking, nonprofit, dashboard.
-- `core/rules/ui-layout.md`: 10 câu hỏi mỗi trang, menu/navigation, phân cấp thị giác, palette 60-30-10, `PAGE_SPEC`.
+- `core/rules/ui-layout.md`: 10 câu hỏi mỗi trang, menu/navigation, phân cấp thị giác, gợi ý palette 60-30-10, `PAGE_SPEC`.
 - `docs/style/page-patterns.md`: 9 pattern — learning dashboard, catalog, course detail, lesson, quiz, landing, docs, checkout/booking, dashboard/table.
 - `core/templates/page-spec.md` + `/page-web`: mỗi route có mục tiêu, CTA, menu/IA, hierarchy, states, metrics.
 - GitHub pattern references: freeCodeCamp, Open edX, Moodle, Oppia; chỉ đọc pattern, không copy code/assets.

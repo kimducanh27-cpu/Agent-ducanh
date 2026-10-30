@@ -15,9 +15,9 @@ npx impeccable install
 Cài full skill pack; owner xác nhận; pin release/commit nếu có.
 Không auto-install; không dùng `live`/`generate` trên production.
 
-## Lệnh
-- Ý tưởng/plan: `shape`, `document`, `extract`.
-- Review: `critique`, `audit`, `component-review`.
+## Lệnh (24 lệnh `/impeccable <command>`)
+- Khởi tạo & plan: `init`, `craft`, `shape`, `document`, `extract`.
+- Review: `critique`, `audit`.
 - Chỉnh gu: `bolder`, `quieter`, `distill`, `colorize`, `typeset`, `layout`, `animate`, `delight`, `overdrive`.
 - Hoàn thiện: `polish`, `harden`, `clarify`, `adapt`, `optimize`, `onboard`.
 - Live: `live`, `generate` — chỉ local, có quyền.

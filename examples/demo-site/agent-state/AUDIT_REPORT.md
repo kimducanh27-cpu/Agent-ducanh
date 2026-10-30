@@ -2,7 +2,7 @@
 
 - `work_mode: review_only`
 - Ngày: 2026-10-30
-- URL: `http://127.0.0.1:8138/` (local)
+- URL: `http://127.0.0.1:8123/` (local)
 - Verdict: **Ready with caveats (demo partial)** — không có P0/P1; A5/A6/A7 chưa đo đủ.
 
 ## Scorecard (partial)

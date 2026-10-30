@@ -4,7 +4,7 @@
 Có lỗi, hotfix, chậm, bảo mật, hoặc cần sửa nhỏ. Nếu cần hành vi mới → `feature`.
 
 ## Chuẩn bị
-1. Copy **nội dung** `core/` vào root project.
+1. Copy `core/` vào root project (giữ `core/...`) và đặt `AGENTS.md` / `.agents/` / `.claude/` / `.qoder/` ở root.
 2. Copy thư mục này vào `<project>/kits/maintenance/` (giữ tên `kits`).
 3. Đọc PROJECT/HANDOFF; thu thập symptom/log.
 

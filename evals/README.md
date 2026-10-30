@@ -1,6 +1,6 @@
 # Evals — kiểm tra router/kit
 
-`cases.json` chứa 8 tình huống chuẩn. `scripts/eval-kits.mjs` kiểm tra:
+`evals/cases.json` chứa 10 tình huống chuẩn. `scripts/eval-kits.mjs` kiểm tra:
 
 - Task → đúng kit.
 - Kit → đúng mode.

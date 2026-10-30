@@ -8,9 +8,9 @@ node scripts/package-plugins.mjs
 
 Sinh ra `dist/`:
 
-- `agent-ducanh-antigravity/` — `.antigravity-plugin/plugin.json` + `.agents/` + `AGENTS.md` + `kits/` + `docs/tools/` + `docs/style/`.
-- `agent-ducanh-claude/` — `.claude-plugin/plugin.json` + `commands/` + `agents/` + `skills/` + `hooks/` + `docs/tools/` + `docs/style/`.
-- `agent-ducanh-qoder/` — `.qoder-plugin/plugin.json` + `skills/` + `AGENTS.md` + `docs/tools/` + `docs/style/`.
+- `agent-ducanh-antigravity/` — `.antigravity-plugin/plugin.json` + `agents/` (7 file `.md`) + `skills/` (6 thư mục Skill) + `rules/` (7 file Rule) + `.agents/` + `core/` + `kits/` + `README.md` + `docs/tools/` + `docs/style/`.
+- `agent-ducanh-claude/` — `.claude-plugin/plugin.json` + `commands/` + `agents/` + `skills/` + `hooks/` + `core/` + `kits/` + `docs/tools/` + `docs/style/`.
+- `agent-ducanh-qoder/` — `.qoder-plugin/plugin.json` + `skills/` + `AGENTS.md` + `core/` + `kits/` + `docs/tools/` + `docs/style/`.
 
 `dist/` là generated, không commit. Manifest nằm trong `plugins/manifests/`.
 

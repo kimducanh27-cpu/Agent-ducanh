@@ -1,4 +1,5 @@
-import { appendFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 
 function readStdin() {
   return new Promise((resolve) => {
@@ -25,7 +26,30 @@ if (existsSync("agent-state/HANDOFF.md")) {
   mode = (text.match(/^\s*mode:\s*(.+)$/m) || [])[1]?.trim() || mode;
 }
 
+const now = new Date().toISOString();
 const event = input.hook_event_name || input.hookEventName || "SessionEnd";
-const line = `- ${new Date().toISOString()} | ${event} | kit=${kit} | mode=${mode}\n`;
+const line = `- ${now} | ${event} | kit=${kit} | mode=${mode}\n`;
 appendFileSync("agent-state/RUNLOG.md", line);
+
+// Task & Event Tracker: record real workspace changes and session state
+const changedFiles = (spawnSync("git", ["status", "--short"], { encoding: "utf8" }).stdout || "")
+  .split(/\r?\n/)
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+const trackerPath = "agent-state/TASK_TRACKER.json";
+let tracker = {};
+if (existsSync(trackerPath)) {
+  try { tracker = JSON.parse(readFileSync(trackerPath, "utf8")); } catch { tracker = {}; }
+}
+tracker.updated_at = now;
+tracker.coordinator = {
+  role: "Main Coordinator",
+  kit,
+  mode,
+  last_event: event
+};
+tracker.workspace_changes = changedFiles;
+writeFileSync(trackerPath, JSON.stringify(tracker, null, 2) + "\n");
+
 process.exit(0);

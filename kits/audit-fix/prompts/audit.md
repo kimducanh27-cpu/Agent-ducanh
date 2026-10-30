@@ -22,7 +22,7 @@ Theo `core/prompts/capture-brief.md`:
 - Lưu `agent-state/evidence/<run-id>/manifest.json`.
 
 ## 2. 10 góc nhìn
-Dùng `lenses/index.md`:
+Dùng `kits/audit-fix/lenses/index.md`:
 - A1 first impression/clarity
 - A2 core task/conversion
 - A3 mobile
@@ -38,10 +38,10 @@ Mỗi lens trả finding: claim, evidence, measured/expected, severity, confiden
 Không claim lens nếu chưa đo; thiếu browser → blocked.
 
 ## 2b. Persona bug hunt
-Dùng `personas/index.md` + `core/prompts/persona-bug-hunt.md` + `core/prompts/leader-dispatch.md`:
-- `user-auditor` ×10 (P01–P10) chia 4 batch (3/3/3/1); mỗi mission theo `subagent-mission.md`.
+Dùng `kits/audit-fix/personas/index.md` + `core/prompts/persona-bug-hunt.md` + `core/prompts/leader-dispatch.md`:
+- `user-auditor` ×10 (P01–P10) chia 4 batch (3/3/3/1); mỗi mission theo `core/templates/subagent-mission.md`.
 - Persona là người dùng, không phải developer; first-person log + bugs.
-- Validate output bằng `subagent-result.md`; lỗi repair đúng mission 1 lần.
+- Validate output bằng `core/templates/subagent-result.md`; lỗi repair đúng mission 1 lần.
 - P0/P1/P2 confirmed → `bug-skeptic`; preference cap P3.
 - Optional Impeccable `critique`/`audit` **một lần** trên cùng evidence; output `IMPECCABLE_REVIEW.md`; đề xuất `proposed`, không P0/P1 nếu chưa repro.
 - Output `PERSONA_BUGS.md` + `SKEPTIC_LOG.md` + `IMPECCABLE_REVIEW.md` (nếu dùng).

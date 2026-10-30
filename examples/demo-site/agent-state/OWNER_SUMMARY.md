@@ -17,8 +17,8 @@
 3. Dark mode (nếu cần).
 
 ## Bằng chứng
-- `../screenshots/desktop.png`, `tablet.png`, `mobile.png`, `narrow.png`.
-- `../screenshots/verify.json`, `axe.json`.
+- `../screenshots/desktop.png`, `../screenshots/tablet.png`, `../screenshots/mobile.png`, `../screenshots/narrow.png`.
+- `../screenshots/verify.json`, `../screenshots/axe.json`.
 - `AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`.
 
 ## Cần bạn quyết

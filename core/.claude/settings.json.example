@@ -22,7 +22,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node hooks/pre-tool-check.mjs"
+            "command": "node core/hooks/pre-tool-check.mjs"
           }
         ]
       }
@@ -33,7 +33,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node hooks/post-edit-check.mjs"
+            "command": "node core/hooks/post-edit-check.mjs"
           }
         ]
       }
@@ -43,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node hooks/stop-evidence.mjs"
+            "command": "node core/hooks/stop-evidence.mjs"
           }
         ]
       }
@@ -53,7 +53,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node hooks/session-log.mjs"
+            "command": "node core/hooks/session-log.mjs"
           }
         ]
       }

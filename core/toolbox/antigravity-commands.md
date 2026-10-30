@@ -4,7 +4,7 @@
 |---|---|
 | `/grill-me` | Hỏi owner từng câu để chốt scope (tối đa 5 câu) |
 | `/plan` | Lập plan reviewable trước khi sửa/làm |
-| `/goal` | Làm đến khi đạt tiêu chí; phải có 5+10 + stop rule |
+| `/goal` | Làm đến khi đạt tiêu chí; phải có 5+10 (5 câu hỏi chặn + 10 tiêu chí đo được) + stop rule |
 | `/browser` | Browser Subagent: chụp/kiểm tra web |
 | `/teamwork` | Nhiều agent chia việc/review; file ownership rõ |
 | `/boost` | Debug cực khó |

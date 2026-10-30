@@ -4,7 +4,7 @@
 Chưa có web, hoặc làm lại từ đầu. Nếu đã có code, dùng `feature`/`audit-fix` thay vì new-web.
 
 ## Chuẩn bị
-1. Copy **nội dung** `core/` vào root project.
+1. Copy `core/` vào root project (giữ `core/...`) và đặt `AGENTS.md` / `.agents/` / `.claude/` / `.qoder/` ở root.
 2. Copy thư mục này vào `<project>/kits/new-web/` (giữ tên `kits`).
 3. Điền `agent-state/PROJECT.md` (brief). Nếu chưa có, dùng `core/templates/project-state.md`.
 

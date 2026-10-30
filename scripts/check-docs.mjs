@@ -169,7 +169,8 @@ function walk(dir, out = []) {
   return out;
 }
 
-const textExt = new Set([".md", ".json", ".html", ".css", ".js", ".mjs", ".cjs", ".txt", ".yml", ".yaml"]);
+const textExt = new Set([".md", ".json", ".html", ".css", ".js", ".mjs", ".cjs", ".txt", ".yml", ".yaml", ".svg", ".example"]);
+const textBasenames = new Set(["VERSION", "LICENSE", ".gitignore"]);
 const absolutePath = /(?:\b[A-Za-z]:[\\/]|\/(?:Users|home)\/|[\\/](?:Downloads|AppData)[\\/])/;
 const skipPathCheck = new Set(["docs/redaction.md", "scripts/lib/cdp-harness.cjs"]);
 const secret = /(?:ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY)/;
@@ -177,7 +178,8 @@ const email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 
 let scanned = 0;
 for (const file of walk(root)) {
-  if (!textExt.has(extname(file))) continue;
+  const baseName = file.split(/[\\/]/).pop();
+  if (!textExt.has(extname(file)) && !textBasenames.has(baseName)) continue;
   const rel = relative(root, file).replaceAll("\\", "/");
   const text = readFileSync(file, "utf8");
   scanned += 1;

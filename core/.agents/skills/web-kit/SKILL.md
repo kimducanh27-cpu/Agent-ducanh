@@ -17,7 +17,7 @@ Khi được gọi:
    - Việc tiếp theo / câu hỏi còn thiếu
 6. Không sửa code trước khi owner authorize scope.
 
-Alias: `/web-kit new|audit|fix|verify|feature|ui|triage` → kit tương ứng.
+Alias: `/web-kit new|audit|fix|verify|feature|ui|triage|perf|release` → kit/stage tương ứng.
 Chọn Lite/Full theo `core/prompts/lite.md`; GitHub research khi có trigger (`core/prompts/github-research.md`).
 
 Nếu thiếu browser/tool: chạy `/toolbox` hoặc ghi `blocked`; không suy từ code.

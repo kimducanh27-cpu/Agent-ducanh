@@ -14,4 +14,4 @@
 - Metrics: form demo success, time-to-CTA, không gửi email/lưu dữ liệu.
 - Non-goals: backend, auth, payment, tracking, email thật, deploy production.
 - Learning (nếu có): không phải learning platform; không áp dụng.
-- Evidence/owner: `screenshots/verify.json`, `axe.json`; owner F-UI pending.
+- Evidence/owner: `../screenshots/verify.json`, `../screenshots/axe.json`; owner F-UI pending.

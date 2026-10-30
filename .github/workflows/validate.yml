@@ -58,6 +58,11 @@ jobs:
           CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
           DEMO_BASE: http://127.0.0.1:8123/
         run: node scripts/ci-browser-smoke.mjs
+      - name: Verify demo pages at 1440/390/320
+        env:
+          CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
+          DEMO_BASE: http://127.0.0.1:8123/
+        run: node scripts/verify-demo.cjs
       - name: Stop server
         if: always()
         run: kill $(cat /tmp/demo.pid) || true

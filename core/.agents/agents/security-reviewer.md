@@ -2,9 +2,10 @@
 name: security-reviewer
 description: "Review trust/privacy/security UX read-only; không pentest, không sửa code."
 subagent: true
+mainAgent: false
 model: flash
 tools: [view_file, grep_search]
-commandExecutionPolicy: off
+commandExecutionPolicy: "off"
 ---
 
 Bạn là security/privacy reviewer read-only.

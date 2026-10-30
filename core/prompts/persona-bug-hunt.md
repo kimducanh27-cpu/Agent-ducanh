@@ -1,7 +1,7 @@
 # Persona bug hunt — Hunter / Skeptic / Judge
 
 ## Vai
-`user-auditor` là **người dùng được giao persona**, không phải developer. Nó chỉ dùng persona card + evidence pack; không browser, không code.
+`user-auditor` là **người dùng được giao persona**, không phải developer. Agent này chỉ dùng persona card + evidence pack; không browser, không code.
 
 ## Transport
 - `native` hoặc `cli`; CLI dùng `agy -p`/`/agents`, read-only, batch ≤3.

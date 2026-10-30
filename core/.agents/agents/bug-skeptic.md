@@ -2,9 +2,10 @@
 name: bug-skeptic
 description: "Phản biện bug P0/P1/P2: repro, bug vs preference, persona relevance, severity/reach; không browser, không sửa code."
 subagent: true
+mainAgent: false
 model: pro
 tools: [view_file, grep_search]
-commandExecutionPolicy: off
+commandExecutionPolicy: "off"
 ---
 
 Bạn là bug skeptic read-only.

@@ -40,13 +40,17 @@ if (editTools.has(tool)) {
 if (tool === "Bash") {
   const command = String(toolInput.command || "");
   const destructive = /\b(rm\s+-rf|git\s+reset\s+--hard|git\s+clean\s+-[a-z]*f|drop\s+table|delete\s+from|truncate\s+table|mkfs|dd\s+if=|shutdown|taskkill\s+\/f)\b/i;
-  const remote = /\b(git\s+push|npm\s+publish|vercel\s+--prod|netlify\s+deploy|firebase\s+deploy|aws\s+.*deploy)\b/i;
+  const pushCmd = /\b(git\s+push)\b/i;
+  const deployCmd = /\b(npm\s+publish|vercel(?:\s+--prod|\s+deploy)?|netlify\s+deploy|firebase\s+deploy|aws\s+.*deploy)\b/i;
 
   if (destructive.test(command) && permission(handoff, "allow_destructive") !== "yes") {
     block("Lệnh có thể phá dữ liệu. Cần allow_destructive: yes trong HANDOFF + owner xác nhận.");
   }
-  if (remote.test(command) && permission(handoff, "commit_push") !== "yes") {
-    block("Push/publish/deploy chưa được authorize trong HANDOFF.");
+  if (pushCmd.test(command) && permission(handoff, "commit_push") !== "yes") {
+    block("git push chưa được authorize (cần commit_push: yes trong HANDOFF).");
+  }
+  if (deployCmd.test(command) && permission(handoff, "deploy") !== "yes") {
+    block("Publish/deploy chưa được authorize (cần deploy: yes trong HANDOFF).");
   }
 }
 

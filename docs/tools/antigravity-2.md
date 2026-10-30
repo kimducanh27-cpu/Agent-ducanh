@@ -3,12 +3,13 @@
 ## File conventions
 - Rules: `.agents/rules/*.md`, frontmatter `trigger` + `description`; triggers `always_on`, `model_decision`, `glob`, `manual`; ≤24KB/file.
 - Skills: `.agents/skills/<name>/SKILL.md`; frontmatter `name` + `description`; ưu tiên ít skill để tránh overload context.
-- Subagents: `.agents/agents/<name>.md`; frontmatter `name`, `description`, `subagent: true`, `model`, `tools`, `commandExecutionPolicy`.
-- Plugin: `.antigravity-plugin/plugin.json`; install `agy plugin install <folder>` hoặc đặt dưới `.agents/plugins/`.
+- Subagents: `.agents/agents/<name>.md`; frontmatter `name`, `description`, `subagent: true`, `mainAgent: false`, `model`, `tools`, `commandExecutionPolicy` (đặt `"off"` trong dấu nháy kép để tương thích mọi YAML parser).
+- Plugin: `.antigravity-plugin/plugin.json` (tối đa 3 `suggestedPrompts`) + `agents/`, `skills/`, `rules/` ngay dưới thư mục plugin; install `agy plugin install <folder>` hoặc đặt dưới `.agents/plugins/`.
 
 ## Subagent facts
 - Tool hợp lệ đã xác minh: `view_file`, `grep_search`, `run_command`, `replace_file_content`.
-- Subagent set: 7 (`user-auditor`, `bug-skeptic`, `lens-auditor`, `report-editor`, `verifier`, `security-reviewer`, `test-engineer`).
+- Subagent set: 11 — gồm **6 Core App/Dev Subagents** (`researcher`, `ui-ux-designer`, `frontend-developer`, `qa-tester`, `security-reviewer`, `verifier`) và **5 Audit/TDD Subagents** (`user-auditor`, `bug-skeptic`, `lens-auditor`, `report-editor`, `test-engineer`).
+- Kiến trúc 4 tầng: **Visual Agent Dashboard** (`examples/demo-site/dashboard.html`) → **Main Coordinator** → **Subagents** → **Task & Event Tracker** (`agent-state/TASK_TRACKER.json` + `RUNLOG.md`).
 - Tool name sai có thể làm subagent treo; whitelist trong `scripts/check-antigravity.mjs`.
 - `invoke_subagent`: clean slate, không kế thừa history; workspace `inherit`/`branch`/`share`; chạy song song.
 - Nesting tối đa 10; kit thực tế dùng ≤2.
@@ -24,11 +25,11 @@
 - Không gửi chat history, output mission khác, secret/PII; subagent clean slate.
 - Read-only dùng `share`/`inherit`; ghi file dùng `branch`; một writer/file; leader merge.
 - Output `invalid`/`blocked` không sang skeptic/judge/score; repair lần 2 vẫn lỗi → `blocked`.
-- Chi tiết: `core/prompts/leader-dispatch.md`; rule `70-leader-dispatch.md`.
+- Chi tiết: `core/prompts/leader-dispatch.md`; rule `core/.agents/rules/70-leader-dispatch.md`.
 
 ## Kit mapping
 - Audit: main `/browser` capture → 10 `user-auditor` persona (flash, view/grep, off), batch ≤3 → `bug-skeptic` P0/P1/P2 → report-editor (pro) → main confirm 3 → verifier.
-- Persona cards: `kits/audit-fix/personas/P01–P10`; preference cap P3; no cascade.
+- Persona cards: `kits/audit-fix/personas/` (P01–P10); preference cap P3; no cascade.
 - Fix: main/`/teamwork` sửa; `/plan` nếu nhiều bước; `/goal` chỉ có 5+10 + stop rule.
 - Verify: `verifier` chạy `run_command` sandbox + main `/browser`.
 - Perf: `/perf-web` 3 run mobile/desktop, before/after; thiếu Lighthouse → blocked.
@@ -54,4 +55,4 @@
 - Custom subagent browser = không có; dùng `/browser`.
 - 0×0 viewport/screenshot path sai: kiểm lại qua `/browser`.
 - Skill directory quá nhiều → context overload; giữ 6 skill.
-- `replace_file_content` chỉ dùng cho test/fixture; fix do main.
+- `replace_file_content` chỉ cấp cho agent có quyền ghi theo scope (`ui-ux-designer` cho spec, `frontend-developer` cho slice UI/code trong `branch`, `qa-tester`/`test-engineer` cho test/fixture) với 1 writer/file.

@@ -1,0 +1,362 @@
+{
+  "updated_at": "2026-10-30T15:00:00Z",
+  "coordinator": {
+    "role": "Main Coordinator (Leader Agent)",
+    "active_kit": "new-web -> audit-fix",
+    "mode": "implement",
+    "status": "completed",
+    "files_owned": [
+      "agent-state/PROJECT.md",
+      "agent-state/NEW_WEB_PLAN.md",
+      "agent-state/HANDOFF.md",
+      "agent-state/AUDIT_REPORT.md",
+      "agent-state/VERIFICATION_REPORT.md",
+      "agent-state/TASK_TRACKER.json"
+    ]
+  },
+  "progress": {
+    "completed": 6,
+    "total": 6,
+    "percent": 100
+  },
+  "agents": [
+    {
+      "agent": "researcher",
+      "role": "Product & UX Researcher (read-only)",
+      "write_access": false,
+      "mission_id": "M-01-RESEARCH",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/PROJECT.md (input brief cho Main Coordinator)",
+        "agent-state/LESSONS.md (insights)"
+      ],
+      "summary": "Khảo sát mục tiêu trang tĩnh Focus Board, 3 nhóm người dùng chính và tiêu chuẩn chống AI-slop.",
+      "events": [
+        {
+          "time": "2026-10-30T10:00:00Z",
+          "type": "started",
+          "note": "Đọc yêu cầu dự án và khảo sát đối tượng người dùng."
+        },
+        {
+          "time": "2026-10-30T10:05:00Z",
+          "type": "completed",
+          "note": "Bàn giao tóm tắt khảo sát cho Main Coordinator ghi PROJECT.md."
+        }
+      ]
+    },
+    {
+      "agent": "ui-ux-designer",
+      "role": "UI/UX & Design System Architect (writer)",
+      "write_access": true,
+      "mission_id": "M-02-DESIGN-SPEC",
+      "status": "done",
+      "files_owned": [
+        "agent-state/DESIGN.md",
+        "agent-state/PAGE_SPEC.md"
+      ],
+      "outputs": [
+        "agent-state/DESIGN.md",
+        "agent-state/PAGE_SPEC.md"
+      ],
+      "summary": "Thiết kế hệ màu warm editorial (#f6f1e7 / #1d5c4b), font Instrument Serif + Plus Jakarta Sans, 5 nhịp bố cục.",
+      "events": [
+        {
+          "time": "2026-10-30T10:06:00Z",
+          "type": "started",
+          "note": "Khởi tạo token màu, chữ, khoảng cách và thông số trang."
+        },
+        {
+          "time": "2026-10-30T10:15:00Z",
+          "type": "completed",
+          "note": "Hoàn tất DESIGN.md và PAGE_SPEC.md."
+        }
+      ]
+    },
+    {
+      "agent": "frontend-developer",
+      "role": "Frontend Developer (writer)",
+      "write_access": true,
+      "mission_id": "M-03-FRONTEND-BUILD",
+      "status": "done",
+      "files_owned": [
+        "index.html",
+        "styles.css",
+        "script.js",
+        "dashboard.html",
+        "favicon.svg"
+      ],
+      "outputs": [
+        "index.html",
+        "styles.css",
+        "script.js",
+        "dashboard.html"
+      ],
+      "summary": "Hiện thực hóa giao diện Focus Board và Visual Agent Dashboard chuẩn semantic HTML5, responsive 4 cỡ màn hình.",
+      "events": [
+        {
+          "time": "2026-10-30T10:16:00Z",
+          "type": "started",
+          "note": "Xây dựng HTML/CSS/JS theo DESIGN.md và PAGE_SPEC.md."
+        },
+        {
+          "time": "2026-10-30T10:35:00Z",
+          "type": "completed",
+          "note": "Hoàn thành giao diện chính, form validation và trang dashboard."
+        }
+      ]
+    },
+    {
+      "agent": "qa-tester",
+      "role": "Browser QA & Accessibility Tester (writer: screenshots/)",
+      "write_access": true,
+      "mission_id": "M-04-BROWSER-QA",
+      "status": "done",
+      "files_owned": [
+        "screenshots/verify.json",
+        "screenshots/axe.json"
+      ],
+      "outputs": [
+        "screenshots/verify.json",
+        "screenshots/axe.json",
+        "agent-state/UI_REVIEW.md (input cho Main Coordinator)"
+      ],
+      "summary": "Kiểm thử trên Chromium ở 1440/768/390/320: scrollWidth = clientWidth, axe 0 lỗi trên cả index.html và dashboard.html.",
+      "events": [
+        {
+          "time": "2026-10-30T10:36:00Z",
+          "type": "started",
+          "note": "Chạy verify-demo.cjs và audit-demo.cjs trên trình duyệt thật."
+        },
+        {
+          "time": "2026-10-30T10:48:00Z",
+          "type": "completed",
+          "note": "Xuất verify.json, axe.json và ảnh chụp 4 cỡ màn hình."
+        }
+      ]
+    },
+    {
+      "agent": "security-reviewer",
+      "role": "Security & Privacy Reviewer (read-only)",
+      "write_access": false,
+      "mission_id": "M-05-SEC-AUDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (security section input)"
+      ],
+      "summary": "Rà soát XSS, form action, external scripts và quy tắc bảo mật dữ liệu.",
+      "events": [
+        {
+          "time": "2026-10-30T10:40:00Z",
+          "type": "started",
+          "note": "Quét mã nguồn HTML/JS và cấu hình form."
+        },
+        {
+          "time": "2026-10-30T10:46:00Z",
+          "type": "completed",
+          "note": "0 lỗ hổng bảo mật; form xử lý cục bộ an toàn."
+        }
+      ]
+    },
+    {
+      "agent": "verifier",
+      "role": "Independent Verification Gate (read-only + runner)",
+      "write_access": false,
+      "mission_id": "M-06-FINAL-VERIFY",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/VERIFICATION_REPORT.md (evidence input cho Main Coordinator)"
+      ],
+      "summary": "Đối chiếu độc lập toàn bộ tiêu chí nghiệm thu trước khi đóng tiến trình.",
+      "events": [
+        {
+          "time": "2026-10-30T10:50:00Z",
+          "type": "started",
+          "note": "Kiểm tra chéo kết quả từ QA và Security."
+        },
+        {
+          "time": "2026-10-30T11:00:00Z",
+          "type": "completed",
+          "note": "Xác nhận PASS 100% tiêu chí bàn giao."
+        }
+      ]
+    }
+  ],
+  "audit_agents": [
+    {
+      "agent": "user-auditor",
+      "role": "Persona & Journey Auditor (read-only)",
+      "write_access": false,
+      "mission_id": "A-01-USER-JOURNEY",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (persona findings P1-P3)"
+      ],
+      "summary": "Đóng vai 3 persona (Minh Cần Gọn, Lan Dùng Điện Thoại, Hùng Hoài Nghi) kiểm tra hành trình dùng thử."
+    },
+    {
+      "agent": "lens-auditor",
+      "role": "Specialist Lens Auditor (read-only)",
+      "write_access": false,
+      "mission_id": "A-02-LENS-AUDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (lens findings L1-L4)"
+      ],
+      "summary": "Kiểm tra theo góc nhìn accessibility, responsive, copywriting và form UX."
+    },
+    {
+      "agent": "bug-skeptic",
+      "role": "Counter-Evidence & Repro Skeptic (read-only + runner)",
+      "write_access": false,
+      "mission_id": "A-03-BUG-SKEPTIC",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (verified vs downgraded findings)"
+      ],
+      "summary": "Phản biện các lỗi đề xuất, xác nhận repro thật trên DOM/viewport trước khi giữ mức P0-P2."
+    },
+    {
+      "agent": "report-editor",
+      "role": "Audit Report Editor (read-only)",
+      "write_access": false,
+      "mission_id": "A-04-REPORT-EDIT",
+      "status": "done",
+      "files_owned": [],
+      "outputs": [
+        "agent-state/AUDIT_REPORT.md (deduplicated executive summary)"
+      ],
+      "summary": "Gộp trùng lặp, chuẩn hóa mức độ ưu tiên P0-P3 và soạn tóm tắt cho chủ dự án."
+    },
+    {
+      "agent": "test-engineer",
+      "role": "Regression Test Engineer (writer: tests/scripts)",
+      "write_access": true,
+      "mission_id": "A-05-TEST-ENG",
+      "status": "done",
+      "files_owned": [
+        "scripts/verify-demo.cjs",
+        "scripts/audit-demo.cjs",
+        "scripts/ci-browser-smoke.mjs"
+      ],
+      "outputs": [
+        "scripts/verify-demo.cjs",
+        "scripts/audit-demo.cjs",
+        "scripts/ci-browser-smoke.mjs"
+      ],
+      "summary": "Viết và chạy kiểm thử tự động kiểm tra Focus Board + Visual Agent Dashboard (DOM, overflow, axe contrast)."
+    }
+  ],
+  "workspace_changes": [
+    {
+      "file": "examples/demo-site/index.html",
+      "owner": "frontend-developer",
+      "action": "updated",
+      "detail": "Trang đích Focus Board kèm liên kết tới Visual Agent Dashboard ở footer."
+    },
+    {
+      "file": "examples/demo-site/dashboard.html",
+      "owner": "frontend-developer",
+      "action": "updated",
+      "detail": "Visual Agent Dashboard tải động TASK_TRACKER.json, hiển thị đủ 11 subagents, tiến độ, nhiệm vụ, file, lỗi, báo cáo, đạt chuẩn tương phản WCAG AA."
+    },
+    {
+      "file": "examples/demo-site/agent-state/TASK_TRACKER.json",
+      "owner": "Main Coordinator",
+      "action": "updated",
+      "detail": "Tách rõ files_owned (chỉ cho agent có quyền ghi) và outputs (cho agent read-only)."
+    },
+    {
+      "file": "examples/demo-site/screenshots/verify.json",
+      "owner": "qa-tester",
+      "action": "updated",
+      "detail": "Kết quả kiểm tra viewport 1440/768/390/320 cho cả index.html và dashboard.html."
+    },
+    {
+      "file": "examples/demo-site/screenshots/axe.json",
+      "owner": "qa-tester",
+      "action": "updated",
+      "detail": "Kết quả quét axe-core 0 violation trên cả index.html và dashboard.html."
+    }
+  ],
+  "open_issues": [
+    {
+      "id": "U1",
+      "severity": "P3",
+      "status": "open",
+      "title": "Select goal dùng native dropdown của hệ điều hành",
+      "detail": "Select #goal dùng phần tử native <select> để ưu tiên khả năng truy cập bàn phím và mobile; giao diện popup phụ thuộc trình duyệt."
+    }
+  ],
+  "reports": [
+    {
+      "name": "PROJECT.md",
+      "path": "agent-state/PROJECT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "researcher"
+      ]
+    },
+    {
+      "name": "DESIGN.md",
+      "path": "agent-state/DESIGN.md",
+      "writer": "ui-ux-designer",
+      "contributors": []
+    },
+    {
+      "name": "PAGE_SPEC.md",
+      "path": "agent-state/PAGE_SPEC.md",
+      "writer": "ui-ux-designer",
+      "contributors": []
+    },
+    {
+      "name": "NEW_WEB_PLAN.md",
+      "path": "agent-state/NEW_WEB_PLAN.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "frontend-developer"
+      ]
+    },
+    {
+      "name": "UI_REVIEW.md",
+      "path": "agent-state/UI_REVIEW.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "qa-tester"
+      ]
+    },
+    {
+      "name": "AUDIT_REPORT.md",
+      "path": "agent-state/AUDIT_REPORT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "user-auditor",
+        "lens-auditor",
+        "bug-skeptic",
+        "security-reviewer",
+        "report-editor"
+      ]
+    },
+    {
+      "name": "VERIFICATION_REPORT.md",
+      "path": "agent-state/VERIFICATION_REPORT.md",
+      "writer": "Main Coordinator",
+      "contributors": [
+        "verifier",
+        "qa-tester",
+        "test-engineer"
+      ]
+    },
+    {
+      "name": "HANDOFF.md",
+      "path": "agent-state/HANDOFF.md",
+      "writer": "Main Coordinator",
+      "contributors": []
+    }
+  ]
+}

@@ -1,7 +1,29 @@
 {
-  "url": "http://127.0.0.1:8123/",
-  "viewport": "1440x900",
+  "url": "http://127.0.0.1:8133/",
+  "viewport": "1440x900 + 390x844 + 320x700",
   "violations": [],
-  "passes": null,
-  "incomplete": 1
+  "passes": 0,
+  "incomplete": 3,
+  "pages": {
+    "index": {
+      "violations": [],
+      "passes": null,
+      "incomplete": 1
+    },
+    "dashboard": {
+      "violations": [],
+      "passes": null,
+      "incomplete": 0
+    },
+    "dashboardMobile": {
+      "violations": [],
+      "passes": null,
+      "incomplete": 1
+    },
+    "dashboardNarrow": {
+      "violations": [],
+      "passes": null,
+      "incomplete": 1
+    }
+  }
 }

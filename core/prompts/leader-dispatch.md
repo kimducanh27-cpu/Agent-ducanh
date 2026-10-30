@@ -62,16 +62,31 @@ Mỗi mission là một khối đóng gói theo `core/templates/subagent-mission
 - `/teamwork-preview` cũ; dùng `/teamwork`.
 - Chi tiết: `docs/tools/antigravity-cli.md`.
 
-## Model và tool
+## Kiến trúc 4 tầng & Danh mục 11 Subagent
 
-| Việc | Agent | Model | Tools | Policy |
-|---|---|---|---|---|
-| Persona/lens read-only | `user-auditor`, `lens-auditor` | `flash` | `view_file`, `grep_search` | `off` |
-| Phản biện bug | `bug-skeptic` | `pro` | `view_file`, `grep_search` | `off` |
-| Merge/chấm | `report-editor` | `pro` | `view_file`, `grep_search` | `off` |
-| Bảo mật | `security-reviewer` | `flash` | `view_file`, `grep_search` | `off` |
-| Verify | `verifier` | `inherit` | `view_file`, `grep_search`, `run_command` | `sandbox` |
-| Test | `test-engineer` | `pro` | view/grep/run/replace | `sandbox` |
+```text
+Visual Agent Dashboard (Tiến độ · Agent · Nhiệm vụ · File · Lỗi · Báo cáo — examples/demo-site/dashboard.html)
+  ↓
+Main Coordinator (Leader — giữ /browser, điều phối batch ≤3, phân quyền file ownership và kiểm chứng)
+  ↓
+6 Core App/Dev Subagents: researcher · ui-ux-designer · frontend-developer · qa-tester · security-reviewer · verifier
++ 5 Audit/TDD Subagents: user-auditor · lens-auditor · bug-skeptic · report-editor · test-engineer
+  ↓
+Task & Event Tracker (Lưu trạng thái thật từ các phiên Agent & thay đổi workspace — agent-state/TASK_TRACKER.json & RUNLOG.md)
+```
+
+| Nhóm / Việc | Agent | Model | Tools | Policy | Workspace |
+|---|---|---|---|---|---|
+| **Khảo sát & Research** | `researcher` | `flash` | `view_file`, `grep_search` | `"off"` | `share` |
+| **Thiết kế UI/UX (`DESIGN`/`PAGE_SPEC`)** | `ui-ux-designer` | `pro` | `view_file`, `grep_search`, `replace_file_content` | `"off"` | `branch` |
+| **Triển khai Frontend theo slice** | `frontend-developer` | `pro` | `view_file`, `grep_search`, `replace_file_content`, `run_command` | `"sandbox"` | `branch` |
+| **Kiểm thử luồng & Edge cases** | `qa-tester` | `pro` | `view_file`, `grep_search`, `replace_file_content`, `run_command` | `"sandbox"` | `branch` |
+| **Rà soát Bảo mật & Privacy** | `security-reviewer` | `flash` | `view_file`, `grep_search` | `"off"` | `share` |
+| **Nghiệm thu độc lập (AC/V)** | `verifier` | `inherit` | `view_file`, `grep_search`, `run_command` | `"sandbox"` | `share` |
+| **Persona/lens audit read-only** | `user-auditor`, `lens-auditor` | `flash` | `view_file`, `grep_search` | `"off"` | `share` |
+| **Phản biện bug P0/P1/P2** | `bug-skeptic` | `pro` | `view_file`, `grep_search` | `"off"` | `share` |
+| **Tổng hợp & chấm điểm báo cáo** | `report-editor` | `pro` | `view_file`, `grep_search` | `"off"` | `share` |
+| **Viết unit/regression test TDD** | `test-engineer` | `pro` | `view_file`, `grep_search`, `replace_file_content`, `run_command` | `"sandbox"` | `branch` |
 
 Custom subagent **không được cấp browser** (chưa được xác nhận có quyền). Browser chỉ ở main qua `/browser`.
 
@@ -80,7 +95,7 @@ Custom subagent **không được cấp browser** (chưa được xác nhận c�
 - Audit/read-only: `share` hoặc `inherit`; không ghi file.
 - Sửa/test: `branch`; một file chỉ một writer; leader merge.
 - Không để 2 subagent sửa cùng file; không để subagent tự merge.
-- Không sửa ngoài scope test/fixture; fix do main/`/teamwork`.
+- Không sửa ngoài scope được giao: `ui-ux-designer` chỉ sửa file spec (`DESIGN.md`/`PAGE_SPEC.md`/`UI_REVIEW.md`); `frontend-developer` chỉ sửa đúng file UI/feature được giao trong `branch`; `qa-tester`/`test-engineer` chỉ sửa file test/fixture.
 
 ## Validate output (5 check)
 

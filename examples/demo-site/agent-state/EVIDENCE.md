@@ -7,7 +7,8 @@
 - `../screenshots/narrow.png` — 320×700 full page.
 - `../screenshots/verify.json` — metrics/form/console.
 - `../screenshots/axe.json` — axe result.
-- `../screenshots/style-before-desktop.png`, `style-before-mobile.png` — trước signature.
+- `../screenshots/style-before-desktop.png`, `../screenshots/style-before-mobile.png` — trước signature.
+- `../screenshots/dashboard.png`, `../screenshots/dashboard-mobile.png`, `../screenshots/dashboard-narrow.png` — dashboard 1440/390/320.
 - `DESIGN.md`, `UI_REVIEW.md` — style contract + review.
 - `PAGE_SPEC.md` — mục tiêu trang, menu/IA, hierarchy, states, metrics.
 - `AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`.

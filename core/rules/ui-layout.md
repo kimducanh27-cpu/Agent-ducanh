@@ -38,9 +38,9 @@ Không trả lời được 1–3 → chưa thiết kế, chỉ đang trang trí
 - Không làm mọi thứ bold; không 3 card đều nhau tranh nhau.
 
 ## 5. Palette
-- 60% nền, 30% surface/neutral, 10% accent.
+- Gợi ý tỷ lệ 60% nền, 30% surface/neutral, 10% accent (tham khảo theo vai trò, không ép cứng theo `core/protocol/EXECUTION_SPEC.md`).
 - Accent chỉ cho hành động/trạng thái; semantic color chỉ success/warning/danger.
-- Text 4.5:1, UI 3:1; không pure black/white; kiểm bằng axe/Lighthouse.
+- Text 4.5:1, UI 3:1; tránh chữ `#000000` thuần trên nền `#FFFFFF` thuần (surface `#FFFFFF` hợp lệ khi đi cùng nền trang dịu như `#F7F8FA` hoặc `#FFF7ED`); kiểm bằng axe/Lighthouse.
 - 3 bảng màu mẫu: `docs/style/directions.md` (Editorial calm, Product precise, Warm expressive).
 - Dark mode optional; không tự đảo màu nếu chưa kiểm contrast.
 

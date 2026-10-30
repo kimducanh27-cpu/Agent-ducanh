@@ -14,7 +14,7 @@ project:
 
 scope:
   requirements: [R-1 landing, R-2 form demo, R-3 responsive]
-  findings: []
+  findings: [U1]
   tasks: [T-1 hero, T-2 sections, T-3 form validation, T-4 responsive]
   non_goals: [backend, auth, payment, tracking, real email, production deploy]
 
@@ -31,6 +31,9 @@ evidence:
     - examples/demo-site/screenshots/narrow.png
     - examples/demo-site/screenshots/style-before-desktop.png
     - examples/demo-site/screenshots/style-before-mobile.png
+    - examples/demo-site/screenshots/dashboard.png
+    - examples/demo-site/screenshots/dashboard-mobile.png
+    - examples/demo-site/screenshots/dashboard-narrow.png
   reports:
     - examples/demo-site/agent-state/NEW_WEB_PLAN.md
     - examples/demo-site/agent-state/AUDIT_REPORT.md
@@ -47,6 +50,7 @@ permissions:
   commit_push: no
   deploy: no
   payment_email: no
+  allow_destructive: no
 
 blockers: []
 
@@ -54,7 +58,7 @@ review:
   design_revision: demo-2
   state: awaiting_feedback
 
-next_kit: none
+next_kit: audit-fix
 resume:
   current_task: T-4 responsive
   next_step: owner review style (DESIGN/UI_REVIEW); optional U1 aria-current fix or performance audit

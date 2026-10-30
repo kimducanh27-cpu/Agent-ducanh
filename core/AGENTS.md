@@ -14,7 +14,7 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 
 1. **Browser-first:** kiểm tra UI/UX bằng browser thật; không kết luận chỉ từ code hoặc CLI. Thiếu browser → `blocked`, không ghi N/A.
 2. **Bằng chứng trước, kết luận sau:** mỗi finding/claim có URL/file, bước tái hiện, ảnh hoặc số đo. Không bịa số, link, tool, screenshot.
-3. **Audit là review-only:** không sửa code trong audit. Fix chỉ sau khi owner authorize phạm vi.
+3. **Audit là `review_only`:** không sửa code trong audit. Fix chỉ sau khi owner authorize phạm vi.
 4. **Plan trước, code sau:** việc nhiều bước phải có plan/AC/V; plan ready ≠ plan approved ≠ execution authorized.
 5. **5 + 10 trước khi fix:** tối thiểu 5 câu hỏi chặn + 10 tiêu chí đo được; ghi rõ cách đo, expected, trạng thái.
 6. **Một root cause mỗi vòng:** không sửa lan, không refactor ngoài scope, không thêm dependency nếu không cần.
@@ -28,13 +28,11 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 - Làm web mới/thêm tính năng/sửa lỗi: `implement`.
 - Đổi GUI/UI/UX: `ui_rework`.
 
-## Lite/Full
+## Lite/Full (`core/prompts/lite.md`)
 
-- **Lite:** 1 route/component, reversible, không auth/data/payment/migration/launch.
-  - 1 kit + 1 prompt; audit 1 lens; fix vẫn 5+10; before/after + handoff.
-- **Full:** web mới, audit toàn site, nhiều route, auth/data/payment/migration, launch.
-  - Protocol đầy đủ, 10 lens, verifier độc lập, human gate.
-- AI đề xuất; owner có thể nói “lite” hoặc “full”. Không dùng Lite cho dữ liệu/quyền/thanh toán.
+- **Lite:** 1 route/component nhỏ, reversible (1 kit + 1 prompt; giữ 5+10 + before/after + handoff).
+- **Full:** web mới, audit toàn site, nhiều route, auth/data/payment/migration/launch (10 lens + verifier độc lập).
+- AI đề xuất; owner chọn “lite”/“full”. Không dùng Lite cho dữ liệu/quyền/thanh toán.
 
 ## GitHub research
 
@@ -68,10 +66,10 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 ## Toolkit
 
 - `/web-kit` — router + nạp kit.
-- Antigravity subagent: `lens-auditor` (flash), `report-editor` (pro), `verifier`, `security-reviewer`, `test-engineer`; max 3/batch; custom subagent không được cấp browser.
+- Subagent (11): App/Dev (`researcher`, `ui-ux-designer`, `frontend-developer`, `qa-tester`, `security-reviewer`, `verifier`) + Audit (`user-auditor`, `bug-skeptic`, `lens-auditor`, `report-editor`, `test-engineer`); batch ≤3; không cấp browser.
 - Leader dispatch: packet, batch ≤3, validate, spot-check 3, repair 1; xem `core/prompts/leader-dispatch.md`.
 - Persona bug hunt: `user-auditor` ×10 (P01–P10), P0/P1/P2 qua `bug-skeptic`; preference cap P3.
-- Antigravity skills: `audit-web`, `fix-web`, `verify-web`, `perf-web`; browser chỉ qua `/browser`.
+- Antigravity skills (6): `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web`, `perf-web`; browser chỉ qua `/browser`.
 - Perf: `/perf-web` — 3 run, before/after; xem `core/prompts/perf-web.md`.
 - Release: `core/prompts/release-web.md` + `/release-web`; chỉ deploy khi owner cho phép.
 - UI/UX: đọc `core/rules/ui-quality.md`; before/after + `UI_REVIEW` + owner F-UI; không “Lighthouse = đẹp”.

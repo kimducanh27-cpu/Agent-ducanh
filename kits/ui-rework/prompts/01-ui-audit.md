@@ -5,7 +5,7 @@
 - Chụp before; đọc tokens/components; a11y/keyboard/responsive 360/768/1440/320.
 - Kiểm states: empty/loading/error/success/disabled; hierarchy/CTA.
 - Xác định style pack hiện tại + signature + mức nhất quán giữa các route.
-- Xác định loại web/trang + mục tiêu theo `site-goals.md`; kiểm menu/IA/hierarchy.
+- Xác định loại web/trang + mục tiêu theo `docs/style/site-goals.md`; kiểm menu/IA/hierarchy.
 - Danh sách “giữ lại” và “đổi”; chống “AI slop”.
 - Optional Impeccable `critique`: `docs/source`/`proposed`; không thay before/after.
 - Pattern/a11y reference: GitHub/W3C; ghi nguồn; không copy mù.

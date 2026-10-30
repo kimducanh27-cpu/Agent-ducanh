@@ -4,7 +4,7 @@
 Web đã có, cần kiểm tra tổng thể hoặc sửa lỗi. Nếu muốn thêm hành vi mới → `feature`; đổi giao diện → `ui-rework`.
 
 ## Chuẩn bị
-1. Copy **nội dung** `core/` vào root project.
+1. Copy `core/` vào root project (giữ `core/...`) và đặt `AGENTS.md` / `.agents/` / `.claude/` / `.qoder/` ở root.
 2. Copy thư mục này vào `<project>/kits/audit-fix/` (giữ tên `kits`).
 3. Điền `agent-state/PROJECT.md` (URL, scope, test account, non-goals).
 

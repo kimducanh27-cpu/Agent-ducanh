@@ -5,7 +5,7 @@ Owner nói “xấu”, “không ưng”, “màu không đều”, “quá AI�
 Không cần owner nhớ nhãn; hiểu phản hồi tự nhiên.
 
 ## Chuẩn bị
-1. Copy **nội dung** `core/` vào root project.
+1. Copy `core/` vào root project (giữ `core/...`) và đặt `AGENTS.md` / `.agents/` / `.claude/` / `.qoder/` ở root.
 2. Copy thư mục này vào `<project>/kits/ui-rework/` (giữ tên `kits`).
 3. Đọc PROJECT/HANDOFF; đọc `core/rules/ui-quality.md`; tạo `agent-state/DESIGN.md` từ template nếu chưa có.
 4. Chụp before nếu có.

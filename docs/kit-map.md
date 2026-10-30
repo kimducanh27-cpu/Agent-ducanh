@@ -10,9 +10,7 @@
 
 ## Lite hay Full?
 
-- **Lite:** 1 route/component, reversible, không auth/data/payment/migration/launch.
-- **Full:** web mới, audit toàn site, nhiều route, auth/data/payment/migration, launch.
-- AI đề xuất; owner nói “lite”/“full”. Lite vẫn verify + handoff.
+Theo `core/prompts/lite.md`: **Lite** dùng cho 1 route/component nhỏ, reversible; **Full** dùng cho web mới, audit toàn site, nhiều route, auth/data/payment/migration, launch.
 
 ## Lệnh gõ nhanh
 - Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`, `/perf-web`, `/release-web`, `/style-web`, `/ui-review`, `/page-web`.

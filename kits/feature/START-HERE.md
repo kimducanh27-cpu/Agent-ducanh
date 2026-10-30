@@ -4,7 +4,7 @@
 Web đã chạy, cần thêm/đổi hành vi nhưng không làm lại web. Nếu chỉ đổi giao diện → `ui-rework`; nếu là bug → `maintenance`.
 
 ## Chuẩn bị
-1. Copy **nội dung** `core/` vào root project.
+1. Copy `core/` vào root project (giữ `core/...`) và đặt `AGENTS.md` / `.agents/` / `.claude/` / `.qoder/` ở root.
 2. Copy thư mục này vào `<project>/kits/feature/` (giữ tên `kits`).
 3. Đọc `agent-state/PROJECT.md` và `HANDOFF.md`.
 

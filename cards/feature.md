@@ -9,7 +9,7 @@ Web có sẵn, cần thêm/đổi hành vi nhưng không làm lại web.
 ## AI làm
 1. Hỏi mục tiêu/non-goals.
 2. Lập impact map: route/component/data/API.
-3. Plan + AC/V + rollback.
+3. Lập kế hoạch + tiêu chí nghiệm thu/kiểm tra (AC/V) + phương án quay lui (rollback).
 4. Sửa tối thiểu, chạy regression.
 
 ## Bạn nhận

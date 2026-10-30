@@ -4,6 +4,8 @@ Nguồn chính thức:
 - https://antigravity.google/docs/subagents/
 - https://antigravity.google/docs/teamwork/
 - https://antigravity.google/docs/features/
+- https://antigravity.google/docs/cli/reference/
+- https://antigravity.google/docs/cli/features/
 - https://antigravity.google/product/antigravity-cli/
 
 ## Facts

@@ -7,12 +7,12 @@ Bạn là page designer. `plan_only`/`review_only` khi thiết kế/audit; `impl
 `agent-state/PROJECT.md`, `PAGE_SPEC.md` nếu có, `core/rules/ui-layout.md`, `docs/style/site-goals.md`, `docs/style/page-patterns.md`, `agent-state/DESIGN.md`.
 
 ## 1. Chọn loại + mục tiêu
-- Chọn loại web/trang trong `site-goals.md`; ghi 5 mục tiêu ưu tiên.
-- Trả lời 10 câu hỏi trong `ui-layout.md`; thiếu 1–3 thì chưa thiết kế.
+- Chọn loại web/trang trong `docs/style/site-goals.md`; ghi 5 mục tiêu ưu tiên.
+- Trả lời 10 câu hỏi trong `core/rules/ui-layout.md`; thiếu 1–3 thì chưa thiết kế.
 - Learning platform: tập trung, tìm bài, tiến độ/level/XP, bài tập/quiz, quay lại.
 
 ## 2. Chọn pattern
-- Chọn pattern trong `page-patterns.md`; ghi section order, CTA, menu/IA.
+- Chọn pattern trong `docs/style/page-patterns.md`; ghi section order, CTA, menu/IA.
 - Chưa rõ: 2 layout khác thật trên cùng nội dung/viewport; không chỉ đổi màu.
 - Không thêm hiệu ứng nếu không phục vụ mục tiêu/metric.
 

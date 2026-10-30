@@ -19,7 +19,7 @@ Mỗi tiêu chí: cách đo, expected, environment, trạng thái `pass/fail/blo
 10. Release note + rollback + handoff.
 
 ## Output
-- `agent-state/verification-report.md`.
+- `agent-state/VERIFICATION_REPORT.md`.
 - Owner summary 1 trang.
 - PASS/FAIL/BLOCKED; không nói “xong” nếu required fail.
 - Cập nhật `agent-state/HANDOFF.md`; next kit: audit-fix/feature/ui-rework hoặc none.
