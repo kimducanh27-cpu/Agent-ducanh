@@ -9,8 +9,9 @@ Bạn thấy “xấu”, “không ưng”, “màu không đều”, “quá A
 ## AI làm
 1. Chụp before, ghi F-UI cụ thể; đọc rule gu + DESIGN.md.
 2. Chọn style pack theo nội dung; 2 hướng khác pack nếu chưa rõ.
-3. Sửa token/component-first + signature; kiểm states/a11y/responsive.
-4. Before/after cùng viewport; ghi UI_REVIEW.
+3. Ghi PAGE_SPEC: mục tiêu, menu, hierarchy, states; chọn pattern.
+4. Sửa token/component-first + signature; kiểm states/a11y/responsive.
+5. Before/after cùng viewport; ghi UI_REVIEW.
 
 ## Bạn nhận
 Ảnh trước/sau, mô tả đã đổi, UI_REVIEW + trạng thái owner F-UI.

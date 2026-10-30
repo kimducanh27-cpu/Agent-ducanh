@@ -34,6 +34,7 @@
 - Release: `core/prompts/release-web.md` + `/release-web`; không phải skill để tránh tự deploy; chỉ chạy khi owner gọi.
 - UI: `ui-rework` + `core/rules/ui-quality.md` + `DESIGN.md`/`UI_REVIEW.md`; `/ui-review`; không thêm skill thứ 7.
 - Style: `core/rules/ui-style.md` + `docs/style/directions.md`; `/style-web`; chọn pack theo nội dung.
+- Page: `core/rules/ui-layout.md` + `docs/style/site-goals.md`; `/page-web`; mỗi route có `PAGE_SPEC`.
 - Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web`, `perf-web` (6; tránh thêm).
 
 ## Native commands

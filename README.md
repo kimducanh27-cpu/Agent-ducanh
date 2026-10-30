@@ -14,7 +14,7 @@ Tất cả dùng chung `core/` và một sổ dự án `agent-state/`. Kit sau �
 
 ## Bộ kit có gì
 
-- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, rule UI, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
+- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, rule UI/page, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
 - `kits/new-web/`: 4 prompt — hỏi brief, lập plan, build, verify.
 - `kits/audit-fix/`: audit 10 góc nhìn + 10 persona, fix, verify độc lập.
 - `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: 4 prompt mỗi kit.
@@ -62,7 +62,7 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Audit sâu `scripts/audit-demo.cjs` cần `axe-core`: đặt `AXE_PATH` hoặc cài ngoài project.
 - Lệnh Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
 - Eval: `evals/cases.json` + `node scripts/eval-kits.mjs`.
-- Check: `node scripts/check-docs.mjs`, `check-superpowers`, `check-antigravity`, `check-personas`, `check-dispatch`.
+- Check: `node scripts/check-docs.mjs`, `check-superpowers`, `check-antigravity`, `check-personas`, `check-dispatch`, `check-ui`, `check-style`, `check-layout`.
 - Checkpoint: `node scripts/checkpoint.mjs "label"`.
 - License MIT, SECURITY.md, VERSION, CHANGELOG.
 - Lite/Full: `core/prompts/lite.md`; GitHub research: `core/prompts/github-research.md`.
@@ -135,6 +135,16 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - `agent-state/DESIGN.md` ghi hướng đã chọn; `/style-web` để chọn/áp thử; không thêm skill Antigravity.
 - Demo Focus Board chọn **Editorial calm** + signature “3 nhịp”; có before/after, `DESIGN.md`, `UI_REVIEW.md`.
 - Kiểm bằng `node scripts/check-style.mjs`.
+
+## Page goals & layout (0.10.0)
+
+- `docs/style/site-goals.md`: 10 loại web; **learning platform** ưu tiên tập trung, tìm bài, tiến độ/XP, bài tập/quiz, quay lại; kèm e-commerce, SaaS, docs, community, media, portfolio, booking, nonprofit, dashboard.
+- `core/rules/ui-layout.md`: 10 câu hỏi mỗi trang, menu/navigation, phân cấp thị giác, palette 60-30-10, `PAGE_SPEC`.
+- `docs/style/page-patterns.md`: 9 pattern — learning dashboard, catalog, course detail, lesson, quiz, landing, docs, checkout/booking, dashboard/table.
+- `core/templates/page-spec.md` + `/page-web`: mỗi route có mục tiêu, CTA, menu/IA, hierarchy, states, metrics.
+- GitHub pattern references: freeCodeCamp, Open edX, Moodle, Oppia; chỉ đọc pattern, không copy code/assets.
+- Demo có `PAGE_SPEC.md`; ví dụ learning home ở `docs/style/examples/learning-home.md`.
+- Kiểm bằng `node scripts/check-layout.mjs`.
 
 ## Cấu trúc chính
 

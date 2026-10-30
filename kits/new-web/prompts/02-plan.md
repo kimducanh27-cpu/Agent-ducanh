@@ -9,10 +9,11 @@ Bạn là architect/design lead. Tạo plan reviewable, không code sản phẩm
 - Chưa chắc stack/dependency/design pattern → research GitHub đúng version, ghi `agent-state/RESEARCH.md`.
 - Impeccable optional (`shape`/`document`) để lấy hướng thiết kế; owner chọn; map `PRODUCT.md`/`DESIGN.md` vào `agent-state/PROJECT.md` + design spec; không copy mù.
 - Style: đọc `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung, ghi lý do vào `agent-state/DESIGN.md`.
+- Page: đọc `core/rules/ui-layout.md` + `docs/style/site-goals.md` + `docs/style/page-patterns.md`; mỗi route có `PAGE_SPEC.md`.
 
 
 ## Plan gồm
-1. **Sitemap/routes**: trang, mục đích, public/protected.
+1. **Sitemap/routes**: trang, mục đích, public/protected; `PAGE_SPEC` cho từng route.
 2. **Core flows**: 1–3 luồng chính; bước, trạng thái lỗi.
 3. **Style direction**: chọn 1 pack (Editorial calm / Product precise / Warm expressive) + signature; nếu chưa rõ, 2 hướng khác pack thật trên cùng nội dung; đề xuất 1 kèm lý do.
 4. **Design tokens**: màu theo vai trò, type scale, spacing, radius, states; ghi vào `agent-state/DESIGN.md`.

@@ -76,6 +76,7 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 - Release: `core/prompts/release-web.md` + `/release-web`; chỉ deploy khi owner cho phép.
 - UI/UX: đọc `core/rules/ui-quality.md`; before/after + `UI_REVIEW` + owner F-UI; không “Lighthouse = đẹp”.
 - Style: đọc `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
+- Page: đọc `core/rules/ui-layout.md` + `docs/style/site-goals.md`; mỗi route có `PAGE_SPEC`; `/page-web`.
 - `/toolbox` — dò/cài tool từ allowlist; app xác nhận.
 - Superpowers là tùy chọn; dùng đúng routing trong `core/toolbox/superpowers-routing.md`; tối đa 1 skill chính + 1 kiểm chứng mỗi bước.
 - Impeccable là optional cho `ui-rework`/`new-web`; `audit-fix` chỉ second opinion; không auto `/bolder`/`live`.

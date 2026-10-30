@@ -37,8 +37,10 @@ Không hỏi lại thông tin đã có trong `agent-state/PROJECT.md` hoặc `HA
 ## Stage phụ (không đổi kit)
 
 - Tối ưu tốc độ: giữ kit hiện tại + `/perf-web` hoặc `core/prompts/perf-web.md`.
+- Style: `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
+- Page: `core/rules/ui-layout.md` + `docs/style/site-goals.md` + `page-patterns.md`; `/page-web`.
 - Release/deploy: giữ kit hiện tại + `core/prompts/release-web.md`; chỉ deploy khi owner cho phép.
-- Perf/release không phải kit mới; không tạo kit thứ 6.
+- Perf/release/style/page không phải kit mới; không tạo kit thứ 6.
 
 ## Output router
 

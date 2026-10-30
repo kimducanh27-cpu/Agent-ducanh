@@ -31,6 +31,8 @@ jobs:
         run: node scripts/check-ui.mjs
       - name: Check UI style
         run: node scripts/check-style.mjs
+      - name: Check page layout
+        run: node scripts/check-layout.mjs
       - name: Run kit evals
         run: node scripts/eval-kits.mjs
 

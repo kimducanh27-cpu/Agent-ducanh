@@ -2,6 +2,7 @@
 
 - Visual/keyboard/contrast/responsive; browser thật.
 - Style consistency: đúng pack, signature, token; không trộn pack.
+- Page goals: menu/IA/hierarchy/states khớp `PAGE_SPEC`; không chỉ “đẹp”.
 - Motion: normal/reduce/none đúng MO; không screenshot-only.
 - Before/after cùng viewport; evidence đủ.
 - Ghi `UI_REVIEW.md` theo `core/templates/ui-review.md`.

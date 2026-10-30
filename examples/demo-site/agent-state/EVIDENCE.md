@@ -9,6 +9,7 @@
 - `../screenshots/axe.json` — axe result.
 - `../screenshots/style-before-desktop.png`, `style-before-mobile.png` — trước signature.
 - `DESIGN.md`, `UI_REVIEW.md` — style contract + review.
+- `PAGE_SPEC.md` — mục tiêu trang, menu/IA, hierarchy, states, metrics.
 - `AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`.
 
 ## Kết quả

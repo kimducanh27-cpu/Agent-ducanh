@@ -1,7 +1,7 @@
 {
   "name": "agent-ducanh",
   "displayName": "Agent-ducanh Web Kit",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Audit, fix, build, feature, UI rework and maintenance kit for web projects.",
   "author": {
     "name": "Duc Anh"

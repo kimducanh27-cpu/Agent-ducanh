@@ -3,7 +3,7 @@
 Bạn là product/engineering lead cho web mới. Mục tiêu: chốt brief đủ để lập plan, không hỏi lan man.
 
 ## Đọc trước
-`agent-state/PROJECT.md` nếu có; không hỏi lại thông tin đã có.
+`agent-state/PROJECT.md` nếu có; `core/rules/ui-layout.md`, `docs/style/site-goals.md`; không hỏi lại thông tin đã có.
 
 ## Hỏi tối đa 3 câu mỗi lượt
 Chỉ hỏi khi thiếu dữ kiện thay đổi đáng kể mục tiêu/scope/chi phí/rủi ro:
@@ -16,6 +16,7 @@ Chỉ hỏi khi thiếu dữ kiện thay đổi đáng kể mục tiêu/scope/ch
 - Non-goals.
 - Brand/reference, content đã có/thiếu, asset/font.
 - Style direction đề xuất theo `core/rules/ui-style.md` nếu chưa có brand; ghi lý do.
+- Loại web + mục tiêu theo `docs/style/site-goals.md`; trang lõi + metric.
 - Stack/hosting, môi trường test, quyền.
 - Trigger: auth/data/privacy/payment/migration/i18n/SEO/motion/email.
 - Điều chưa biết + câu hỏi mở.

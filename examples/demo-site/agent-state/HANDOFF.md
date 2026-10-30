@@ -37,6 +37,7 @@ evidence:
     - examples/demo-site/agent-state/VERIFICATION_REPORT.md
     - examples/demo-site/agent-state/DESIGN.md
     - examples/demo-site/agent-state/UI_REVIEW.md
+    - examples/demo-site/agent-state/PAGE_SPEC.md
     - examples/demo-site/screenshots/verify.json
     - examples/demo-site/screenshots/axe.json
 

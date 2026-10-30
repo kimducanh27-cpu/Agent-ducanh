@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0-layout — 2026-10-30
+
+- Added `core/rules/ui-layout.md`: 10 page questions, menu/navigation, visual hierarchy, palette rules, PAGE_SPEC.
+- Added `docs/style/site-goals.md`: learning platform goals first, then e-commerce, SaaS, docs, community, media, portfolio, booking, nonprofit, dashboard; GitHub pattern references.
+- Added `docs/style/page-patterns.md`: 9 page patterns with section order, CTA, states, mobile, anti-patterns.
+- Added `core/templates/page-spec.md`, `core/prompts/page-web.md`, `/page-web`, and demo/learning PAGE_SPEC examples.
+- Added `scripts/check-layout.mjs`; wired into CI/pre-commit/check-docs/eval; manifests 0.10.0.
+
 ## 0.9.0-style — 2026-10-30
 
 - Added `core/rules/ui-style.md`: AI chooses a style direction from content, audience, and task; one primary pack plus at most one accent.

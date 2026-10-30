@@ -1,6 +1,6 @@
 # ui-rework — luật riêng
 
-Đọc `core/AGENTS.md`, `core/protocol/README.md`, `core/rules/ui-quality.md`, `core/rules/ui-style.md`, `docs/style/directions.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`.
+Đọc `core/AGENTS.md`, `core/protocol/README.md`, `core/rules/ui-quality.md`, `core/rules/ui-style.md`, `core/rules/ui-layout.md`, `docs/style/directions.md`, `docs/style/site-goals.md`, `docs/style/page-patterns.md`, `core/templates/design-spec.md`, `core/templates/page-spec.md`, `core/templates/ui-review.md`.
 
 ## Mode
 `ui_rework`.
@@ -18,3 +18,5 @@
 10. Kết thúc bằng `UI_REVIEW.md`; owner F-UI accepted/changes_requested/pending; không “Lighthouse = đẹp”.
 11. Chọn style pack theo nội dung; 1 chính + tối đa 1 gia vị; 2 hướng phải khác pack thật, không chỉ đổi màu.
 12. Mỗi style có 1 signature element; không trộn 3 pack; không đổi style vì một màn hình.
+13. Mỗi route có `PAGE_SPEC.md`: mục tiêu, 10 câu hỏi, menu/IA, hierarchy, states, metric.
+14. Không thêm hiệu ứng nếu không phục vụ mục tiêu; learning ưu tiên tập trung/tìm/tiến độ/luyện/quay lại.
