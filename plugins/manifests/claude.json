@@ -1,12 +1,18 @@
 {
   "name": "agent-ducanh",
   "description": "Audit, fix, build, feature, UI rework and maintenance kit for web projects.",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": {
     "name": "Duc Anh"
   },
   "homepage": "https://github.com/kimducanh27-cpu/Agent-ducanh",
   "repository": "https://github.com/kimducanh27-cpu/Agent-ducanh",
   "license": "MIT",
-  "keywords": ["web", "ux-audit", "accessibility", "agent-workflow", "vietnamese"]
+  "keywords": [
+    "web",
+    "ux-audit",
+    "accessibility",
+    "agent-workflow",
+    "vietnamese"
+  ]
 }

@@ -57,7 +57,8 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 
 - Hooks: `core/hooks/pre-tool-check.mjs`, `post-edit-check.mjs`, `stop-evidence.mjs` + `core/.claude/settings.json.example`.
 - CI: `.github/workflows/validate.yml`; pre-commit: `.pre-commit-config.yaml`.
-- CI browser: `scripts/ci-browser-smoke.mjs` (portable Chrome); local full verify dùng `scripts/verify-demo.cjs`.
+- CI browser: `scripts/ci-browser-smoke.mjs` (portable Chrome); local full verify dùng `scripts/verify-demo.cjs` + `scripts/lib/cdp-harness.cjs` (portable, chỉ cần Chrome).
+- Audit sâu `scripts/audit-demo.cjs` cần `axe-core`: đặt `AXE_PATH` hoặc cài ngoài project.
 - Lệnh Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
 - Eval: `evals/cases.json` + `node scripts/eval-kits.mjs`.
 - Check: `node scripts/check-docs.mjs`, `check-superpowers`, `check-antigravity`, `check-personas`, `check-dispatch`.

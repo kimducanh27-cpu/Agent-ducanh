@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1-portable — 2026-10-30
+
+- Vendored the self-contained CDP harness at `scripts/lib/cdp-harness.cjs`.
+- `verify-demo.cjs` and `audit-demo.cjs` now use relative harness paths; no local drive dependency.
+- `check-docs` scans `.cjs` files (excluding known browser-path constants) to prevent regression.
+- Verified both deep scripts from a temporary working directory; axe 0 violations.
+
 ## 0.6.0-leader — 2026-10-30
 
 - Added `core/prompts/leader-dispatch.md`: recon → mission map → batch ≤3 → validate → spot-check 3 → repair once → merge → verify.

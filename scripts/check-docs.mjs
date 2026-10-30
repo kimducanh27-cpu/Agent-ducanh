@@ -74,6 +74,7 @@ const required = [
   "core/templates/subagent-mission.md",
   "core/templates/subagent-result.md",
   "scripts/check-dispatch.mjs",
+  "scripts/lib/cdp-harness.cjs",
   "kits/audit-fix/personas/index.md",
   "scripts/check-personas.mjs",
   "core/.agents/skills/audit-web/SKILL.md",
@@ -127,7 +128,7 @@ if (Buffer.byteLength(agents, "utf8") > 6000) failures.push("core/AGENTS.md > 6K
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (name === ".git" || name === "node_modules" || name === "scripts" || name === "dist") continue;
+    if (name === ".git" || name === "node_modules" || name === "dist") continue;
     const full = join(dir, name);
     const st = statSync(full);
     if (st.isDirectory()) walk(full, out);
@@ -136,9 +137,9 @@ function walk(dir, out = []) {
   return out;
 }
 
-const textExt = new Set([".md", ".json", ".html", ".css", ".js", ".mjs", ".txt", ".yml", ".yaml"]);
+const textExt = new Set([".md", ".json", ".html", ".css", ".js", ".mjs", ".cjs", ".txt", ".yml", ".yaml"]);
 const absolutePath = /(?:\b[A-Za-z]:[\\/]|\/(?:Users|home)\/|[\\/](?:Downloads|AppData)[\\/])/;
-const skipPathCheck = new Set(["docs/redaction.md"]);
+const skipPathCheck = new Set(["docs/redaction.md", "scripts/lib/cdp-harness.cjs"]);
 const secret = /(?:ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY)/;
 const email = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 

@@ -1,5 +1,5 @@
 const fs = require("node:fs");
-const { openSession } = require("C:/Users/ducti/.qoder/skills/headless-cdp-evidence/scripts/cdp-harness.cjs");
+const { openSession } = require("./lib/cdp-harness.cjs");
 
 const base = process.env.DEMO_BASE || "http://127.0.0.1:8138/";
 const outFile = "examples/demo-site/screenshots/axe.json";
