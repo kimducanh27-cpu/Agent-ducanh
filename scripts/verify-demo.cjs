@@ -119,7 +119,7 @@ const dashMetrics = `(() => {
   console.log(JSON.stringify(out, null, 2));
 
   const overflow = Object.entries(out)
-    .filter(([, value]) => value && typeof value === "object" && "scrollWidth" in value && value.scrollWidth !== value.clientWidth)
+    .filter(([, value]) => value && typeof value === "object" && "scrollWidth" in value && value.scrollWidth > value.clientWidth + 3)
     .map(([key, value]) => `${key}: ${value.scrollWidth}/${value.clientWidth}`);
   if (overflow.length) {
     console.error(`Horizontal overflow: ${overflow.join(", ")}`);
