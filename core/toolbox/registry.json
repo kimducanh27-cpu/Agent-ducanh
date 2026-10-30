@@ -1,0 +1,104 @@
+{
+  "version": "0.1-demo",
+  "policy": {
+    "allowlist_only": true,
+    "require_owner_confirmation": true,
+    "pin_versions": true,
+    "auto_update": false,
+    "store_secrets": false,
+    "on_failure": "rollback_or_blocked"
+  },
+  "tools": [
+    {
+      "id": "superpowers",
+      "capability": "process",
+      "source": "https://github.com/obra/superpowers",
+      "pin": "v6.3.0",
+      "install": {
+        "antigravity": "agy plugin install https://github.com/obra/superpowers",
+        "qoder": "search_extensions query=superpowers kinds=plugin; install_extension",
+        "claude": "/plugin install superpowers@claude-plugins-official",
+        "generic": "manual install from official repo"
+      },
+      "verify": "using-superpowers skill visible; skills list loads",
+      "fallback": "use core prompts without plugin",
+      "risk": "medium"
+    },
+    {
+      "id": "chrome-devtools-mcp",
+      "capability": "browser",
+      "source": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "pin": "latest verified minor",
+      "install": {
+        "antigravity": "Settings > Customizations > Add MCP; or mcp_config.json: npx -y chrome-devtools-mcp@latest",
+        "qoder": "search_extensions kinds=mcp query=chrome devtools; or manage_app_mcp add",
+        "claude": "claude mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest",
+        "generic": "npx -y chrome-devtools-mcp@latest"
+      },
+      "verify": "open page, take screenshot, list console",
+      "fallback": "Playwright MCP or blocked",
+      "risk": "medium"
+    },
+    {
+      "id": "playwright-mcp",
+      "capability": "browser-cross",
+      "source": "https://github.com/microsoft/playwright-mcp",
+      "pin": "latest verified minor",
+      "install": {
+        "antigravity": "Add MCP; command npx @playwright/mcp@latest",
+        "qoder": "search_extensions kinds=mcp query=playwright",
+        "claude": "claude mcp add playwright -- npx @playwright/mcp@latest",
+        "generic": "npx @playwright/mcp@latest"
+      },
+      "verify": "launch Chromium; install Firefox/WebKit only if needed",
+      "fallback": "Chrome DevTools only; mark Firefox/WebKit blocked",
+      "risk": "medium"
+    },
+    {
+      "id": "context7",
+      "capability": "docs",
+      "source": "https://github.com/upstash/context7",
+      "pin": "latest verified minor",
+      "install": {
+        "antigravity": "Add MCP; npx -y @upstash/context7-mcp@latest",
+        "qoder": "search_extensions kinds=mcp query=context7",
+        "claude": "claude mcp add context7 -- npx -y @upstash/context7-mcp@latest",
+        "generic": "npx -y @upstash/context7-mcp@latest"
+      },
+      "verify": "resolve a library doc query",
+      "fallback": "official docs via web fetch",
+      "risk": "low"
+    },
+    {
+      "id": "github-mcp",
+      "capability": "repo-context",
+      "source": "https://github.com/github/github-mcp-server",
+      "pin": "official remote",
+      "install": {
+        "antigravity": "Add MCP remote github; OAuth",
+        "qoder": "search_extensions kinds=mcp query=github",
+        "claude": "claude mcp add --transport http github https://api.githubcopilot.com/mcp/",
+        "generic": "official remote with OAuth"
+      },
+      "verify": "read repo metadata only",
+      "fallback": "web fetch public repo",
+      "risk": "medium"
+    },
+    {
+      "id": "impeccable",
+      "capability": "design",
+      "source": "https://github.com/pbakaus/impeccable",
+      "pin": "verified release/commit",
+      "install": {
+        "antigravity": "npx impeccable install",
+        "qoder": "npx impeccable install",
+        "claude": "npx impeccable install",
+        "generic": "npx impeccable install"
+      },
+      "verify": "impeccable context or /impeccable init works",
+      "fallback": "skip; use project design system",
+      "risk": "medium",
+      "optional": true
+    }
+  ]
+}

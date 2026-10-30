@@ -1,1 +1,106 @@
-# Agent-ducanh
+# Agent-ducanh — bộ kit AI làm website (Demo v0.1)
+
+Bộ kit cho AI agent làm website theo 5 việc:
+
+| Việc | Kit |
+|---|---|
+| Làm website mới | `kits/new-web/` |
+| Audit/fix web đang chạy | `kits/audit-fix/` |
+| Thêm tính năng | `kits/feature/` |
+| Đổi GUI/UI/UX | `kits/ui-rework/` |
+| Bug/hotfix/bảo trì | `kits/maintenance/` |
+
+Tất cả dùng chung `core/` và một sổ dự án `agent-state/`. Kit sau đọc `HANDOFF.md` để tiếp tục, không hỏi lại từ đầu.
+
+## Demo này có gì
+
+- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, checklist, skill `/web-kit`.
+- `kits/new-web/`: 4 prompt — hỏi brief, lập plan, build, verify.
+- `kits/audit-fix/`: audit 10 góc nhìn, fix, verify độc lập.
+- `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: khung + prompt tóm tắt (bản đầy đủ ở v0.2).
+- `examples/demo-site/`: một web tĩnh nhỏ đã có brief, để xem kit hoạt động thế nào.
+
+Chưa có trong demo: push GitHub, deploy, ảnh GDCT1 đã che PII, prompt đầy đủ cho 3 kit sau.
+
+## Dùng thử trong 5 bước
+
+1. Copy **nội dung** thư mục `core/` vào **root project** (để `AGENTS.md`, `.agents/`, `.qoder/`, `.claude/`, `router.md`, `protocol/` nằm ngay root).
+2. Copy thư mục `kits/` vào root, giữ đường dẫn `kits/<kit>/...`; hoặc chỉ copy kit cần dùng vào `kits/<kit>/`.
+3. Mở project bằng Antigravity 2.0 (hoặc Qoder/Claude Code).
+4. Gõ `/web-kit` và nói việc bạn muốn. Nếu không chắc, nó hỏi tối đa 3 câu.
+5. Đọc bản tóm tắt 1 trang, duyệt phạm vi. AI làm, kiểm tra bằng browser thật, rồi ghi `agent-state/HANDOFF.md`.
+
+Mỗi kit cũng có `START-HERE.md` để dùng riêng, không cần router.
+
+## Xem web demo
+
+Mở file `examples/demo-site/index.html` bằng browser, hoặc chạy một server tĩnh tại thư mục đó. Web demo có:
+
+- Trang chủ một trang, responsive.
+- Form đăng ký nhận kế hoạch mẫu (chỉ demo, không gửi email).
+- `agent-state/PROJECT.md` là brief đã điền.
+- `agent-state/HANDOFF.md` là ví dụ bàn giao sang `audit-fix`.
+
+## Demo đã kiểm
+
+- 1440/768/390/320: không overflow; `scrollWidth = clientWidth`.
+- Console/network: 0 error/exception/HTTP ≥400.
+- Form invalid/valid: đúng; focus field lỗi; không gửi network.
+- axe: 0 violation, 1 incomplete.
+- Ảnh: `examples/demo-site/screenshots/desktop.png`, `tablet.png`, `mobile.png`, `narrow.png`.
+- Kết quả máy đọc: `examples/demo-site/screenshots/verify.json`, `axe.json`.
+- Báo cáo mẫu: `examples/demo-site/agent-state/AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`, `OWNER_SUMMARY.md`.
+
+Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
+
+## P0 đã có
+
+- Hooks: `core/hooks/pre-tool-check.mjs`, `post-edit-check.mjs`, `stop-evidence.mjs` + `core/.claude/settings.json.example`.
+- CI: `.github/workflows/validate.yml`; pre-commit: `.pre-commit-config.yaml`.
+- Lệnh Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
+- Eval: `evals/cases.json` + `node scripts/eval-kits.mjs`.
+- Check: `node scripts/check-docs.mjs`, `node scripts/check-superpowers.mjs`.
+- Checkpoint: `node scripts/checkpoint.mjs "label"`.
+- License MIT, SECURITY.md, VERSION, CHANGELOG.
+- Lite/Full: `core/prompts/lite.md`; GitHub research: `core/prompts/github-research.md`.
+- Impeccable optional: `docs/tools/impeccable.md`.
+
+## P1 đã có
+
+- Đủ 10 lens A1–A10: `kits/audit-fix/lenses/`.
+- Full 4 prompt cho feature/ui-rework/maintenance.
+- Subagent Claude: `core/.claude/agents/` (lens-auditor, verifier, security-reviewer, test-engineer).
+- Qoder agent guide: `core/.qoder/agents/README.md`.
+- MCP config mẫu: `core/toolbox/mcp_config.example.json`.
+- Settings allow/deny: `core/.claude/settings.json.example`.
+- Memory: `examples/demo-site/agent-state/LESSONS.md`, `core/rules/context-budget.md`.
+- Eval mở rộng: 10 case.
+
+## P2 đã có
+
+- Plugin bundle: `plugins/` + `node scripts/package-plugins.mjs` → `dist/` (generated).
+- Cost/model/effort: `docs/operating/cost-and-models.md`.
+- Notification/schedule: `docs/operating/notifications-and-schedule.md`.
+- Session log: `core/hooks/session-log.mjs` + `core/templates/runlog.md`.
+- 5 thẻ non-tech: `cards/README.md`.
+
+## Cấu trúc chính
+
+```text
+core/                 # copy một lần
+kits/new-web/         # làm web mới
+kits/audit-fix/       # audit + fix
+kits/feature/         # thêm tính năng (khung)
+kits/ui-rework/       # đổi giao diện (khung)
+kits/maintenance/     # bug/hotfix (khung)
+examples/demo-site/   # web demo
+docs/kit-map.md       # chọn kit + chuyển kit
+scripts/check-docs.mjs
+```
+
+## An toàn
+
+- Không tự deploy, không thanh toán thật, không xóa dữ liệu.
+- Không đưa PII/secret/lệnh local lên repo public.
+- Không nói “xong” nếu chưa có bằng chứng; thiếu browser thì ghi `blocked`.
+- Superpowers là tùy chọn; kit vẫn chạy nếu không có plugin.

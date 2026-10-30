@@ -1,0 +1,62 @@
+[
+  {
+    "id": "E01",
+    "task": "Làm landing page mới cho khóa học online",
+    "expected_kit": "new-web",
+    "expected_mode": "plan_only"
+  },
+  {
+    "id": "E02",
+    "task": "Audit toàn bộ website đang chạy",
+    "expected_kit": "audit-fix",
+    "expected_mode": "review_only"
+  },
+  {
+    "id": "E03",
+    "task": "Thêm nút đăng ký nhận tin vào web hiện tại",
+    "expected_kit": "feature",
+    "expected_mode": "plan_only"
+  },
+  {
+    "id": "E04",
+    "task": "Màu chữ khó đọc, layout rối, đổi giao diện giúp tôi",
+    "expected_kit": "ui-rework",
+    "expected_mode": "ui_rework"
+  },
+  {
+    "id": "E05",
+    "task": "Nút thanh toán bị lỗi, bấm không phản hồi",
+    "expected_kit": "maintenance",
+    "expected_mode": "review_only"
+  },
+  {
+    "id": "E06",
+    "task": "Tôi không rõ nên làm gì với web hiện tại",
+    "expected_kit": "router",
+    "expected_mode": "none"
+  },
+  {
+    "id": "E07",
+    "task": "Fix lỗi nhỏ ở một component",
+    "expected_kit": "maintenance",
+    "expected_mode": "review_only"
+  },
+  {
+    "id": "E08",
+    "task": "Đổi giao diện trang chủ cho đẹp hơn",
+    "expected_kit": "ui-rework",
+    "expected_mode": "ui_rework"
+  },
+  {
+    "id": "E09",
+    "task": "Tối ưu tốc độ tải trang chủ",
+    "expected_kit": "maintenance",
+    "expected_mode": "review_only"
+  },
+  {
+    "id": "E10",
+    "task": "Đổi màu nút CTA",
+    "expected_kit": "ui-rework",
+    "expected_mode": "ui_rework"
+  }
+]

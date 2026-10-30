@@ -1,0 +1,6 @@
+_audit/
+agent-state/evidence/
+dist/
+*.zip
+.DS_Store
+Thumbs.db

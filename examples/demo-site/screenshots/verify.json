@@ -1,0 +1,100 @@
+{
+  "desktop": {
+    "title": "Focus Board — 3 việc mỗi ngày, xong là nghỉ",
+    "h1": "3 việc mỗi ngày.\nXong là nghỉ.",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "innerWidth": 1440,
+    "bodyHeight": 2339,
+    "h1Rect": {
+      "top": 206.109375,
+      "left": 160,
+      "width": 602.59375,
+      "height": 174.71875
+    },
+    "hasForm": true,
+    "navLinks": [
+      "Cách hoạt động",
+      "Mẫu một ngày",
+      "Nhận kế hoạch"
+    ]
+  },
+  "invalid": {
+    "nameError": "Nhập tên để mình biết gọi bạn là gì.",
+    "emailError": "Nhập email để nhận bản demo.",
+    "goalError": "Chọn một mục tiêu.",
+    "activeId": "name"
+  },
+  "success": {
+    "status": "Đã ghi nhận, Demo. Đây là bản demo — không có email nào được gửi.",
+    "nameInvalid": null,
+    "emailInvalid": null
+  },
+  "console": {
+    "consoleErrors": [],
+    "exceptions": [],
+    "httpErrors": [],
+    "external": [],
+    "dialogs": []
+  },
+  "mobile": {
+    "title": "Focus Board — 3 việc mỗi ngày, xong là nghỉ",
+    "h1": "3 việc mỗi ngày.\nXong là nghỉ.",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "innerWidth": 390,
+    "bodyHeight": 3357,
+    "h1Rect": {
+      "top": 187.640625,
+      "left": 12,
+      "width": 366,
+      "height": 98.25
+    },
+    "hasForm": true,
+    "navLinks": [
+      "Cách hoạt động",
+      "Mẫu một ngày",
+      "Nhận kế hoạch"
+    ]
+  },
+  "tablet": {
+    "title": "Focus Board — 3 việc mỗi ngày, xong là nghỉ",
+    "h1": "3 việc mỗi ngày.\nXong là nghỉ.",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "innerWidth": 768,
+    "bodyHeight": 2996,
+    "h1Rect": {
+      "top": 166.53125,
+      "left": 20,
+      "width": 728,
+      "height": 112.90625
+    },
+    "hasForm": true,
+    "navLinks": [
+      "Cách hoạt động",
+      "Mẫu một ngày",
+      "Nhận kế hoạch"
+    ]
+  },
+  "narrow": {
+    "title": "Focus Board — 3 việc mỗi ngày, xong là nghỉ",
+    "h1": "3 việc mỗi ngày.\nXong là nghỉ.",
+    "scrollWidth": 320,
+    "clientWidth": 320,
+    "innerWidth": 320,
+    "bodyHeight": 3741,
+    "h1Rect": {
+      "top": 220.578125,
+      "left": 12,
+      "width": 296,
+      "height": 80.625
+    },
+    "hasForm": true,
+    "navLinks": [
+      "Cách hoạt động",
+      "Mẫu một ngày",
+      "Nhận kế hoạch"
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Board — 3 việc mỗi ngày, xong là nghỉ</title>
+  <meta name="description" content="Focus Board là trang demo cho kế hoạch 3 việc mỗi ngày: chọn việc, hẹn giờ, nhìn lại tuần.">
+  <meta name="theme-color" content="#f6f1e7">
+  <meta property="og:title" content="Focus Board — 3 việc mỗi ngày">
+  <meta property="og:description" content="Một trang demo nhỏ cho kế hoạch 3 việc mỗi ngày.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Focus Board — về đầu trang">
+        Focus<span>Board</span>
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#how">Cách hoạt động</a>
+        <a href="#sample">Mẫu một ngày</a>
+        <a class="nav-cta" href="#signup">Nhận kế hoạch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Kế hoạch nhẹ cho ngày bận</p>
+        <h1 id="hero-title">3 việc mỗi ngày.<br><em>Xong là nghỉ.</em></h1>
+        <p class="lede">Không cần danh sách dài. Chọn ba việc quan trọng nhất, làm từng việc một, rồi đóng máy với một chút tự hào.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#signup">Nhận kế hoạch mẫu</a>
+          <a class="btn btn-ghost" href="#how">Xem cách hoạt động</a>
+        </div>
+        <ul class="micro-proof" aria-label="Điểm chính">
+          <li>Không tài khoản</li>
+          <li>Không theo dõi</li>
+          <li>Chỉ 5 phút mỗi sáng</li>
+        </ul>
+      </div>
+
+      <div class="hero-board" aria-label="Ví dụ bảng ba việc hôm nay">
+        <div class="board-head">
+          <span>Hôm nay</span>
+          <span class="board-date">Thứ Ba, 30.10</span>
+        </div>
+        <ol class="task-list">
+          <li class="task is-done">
+            <span class="task-check" aria-hidden="true"></span>
+            <span class="task-text">Viết xong đoạn mở đầu</span>
+            <span class="task-tag">25 phút</span>
+          </li>
+          <li class="task is-doing">
+            <span class="task-check" aria-hidden="true"></span>
+            <span class="task-text">Chỉnh layout trang chủ</span>
+            <span class="task-tag">đang làm</span>
+          </li>
+          <li class="task">
+            <span class="task-check" aria-hidden="true"></span>
+            <span class="task-text">Gửi bản nháp cho nhóm</span>
+            <span class="task-tag">15 phút</span>
+          </li>
+        </ol>
+        <p class="board-note">Một việc xong. Hai việc còn lại. Không thêm việc thứ tư.</p>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <p class="eyebrow">Cách hoạt động</p>
+        <h2 id="how-title">Một buổi sáng, ba bước.</h2>
+        <div class="step-grid">
+          <article class="step">
+            <span class="step-num">01</span>
+            <h3>Chọn ba việc</h3>
+            <p>Viết ra mọi thứ đang nghĩ, rồi khoanh đúng ba việc tạo ra khác biệt lớn nhất.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">02</span>
+            <h3>Hẹn giờ</h3>
+            <p>Mỗi việc một khung 25 phút. Hết giờ thì dừng, ghi lại chỗ đang làm, chuyển việc.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">03</span>
+            <h3>Nhìn lại</h3>
+            <p>Cuối ngày chỉ hỏi: việc nào xong, việc nào cần đổi cách làm? Không tự trách.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="sample" aria-labelledby="sample-title">
+      <div class="wrap sample-grid">
+        <div>
+          <p class="eyebrow">Mẫu một ngày</p>
+          <h2 id="sample-title">Không phải ngày hoàn hảo. Chỉ là ngày có chủ đích.</h2>
+          <p class="lede">Một ngày mẫu bắt đầu bằng 5 phút chọn việc, hai khối tập trung, và một lần dừng đúng lúc.</p>
+        </div>
+        <ol class="timeline" aria-label="Dòng thời gian một ngày mẫu">
+          <li><strong>08:10</strong><span>Chọn 3 việc. Gạch bỏ phần còn lại.</span></li>
+          <li><strong>08:30</strong><span>Khối 1: việc khó nhất. Không mở email.</span></li>
+          <li><strong>10:00</strong><span>Nghỉ 10 phút. Đi lại, uống nước.</span></li>
+          <li><strong>10:15</strong><span>Khối 2: việc quan trọng thứ hai.</span></li>
+          <li><strong>16:30</strong><span>Nhìn lại 2 phút. Ghi chú cho ngày mai.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section signup" id="signup" aria-labelledby="signup-title">
+      <div class="wrap signup-grid">
+        <div>
+          <p class="eyebrow">Nhận kế hoạch mẫu</p>
+          <h2 id="signup-title">Một trang giấy, ba việc, không lằng nhằng.</h2>
+          <p class="lede">Điền tên và email để xem bản demo. Trang này không gửi email và không lưu dữ liệu.</p>
+        </div>
+
+        <form id="signup-form" class="form" novalidate>
+          <div class="field">
+            <label for="name">Tên bạn</label>
+            <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" required>
+            <p class="field-error" id="name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="email-error" required>
+            <p class="field-error" id="email-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="goal">Bạn muốn cải thiện điều gì?</label>
+            <select id="goal" name="goal" aria-describedby="goal-error" required>
+              <option value="">Chọn một mục tiêu</option>
+              <option value="focus">Tập trung hơn</option>
+              <option value="less">Làm ít mà đều hơn</option>
+              <option value="review">Nhìn lại tuần rõ hơn</option>
+            </select>
+            <p class="field-error" id="goal-error" hidden></p>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Gửi bản demo</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="fineprint">Demo tĩnh: không gửi email, không lưu dữ liệu, không thanh toán.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Focus Board — demo cho bộ kit Agent-ducanh.</p>
+      <p><span id="year">2026</span> · Không theo dõi, không quảng cáo.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

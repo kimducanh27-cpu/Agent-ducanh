@@ -1,0 +1,18 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-docs
+        name: Agent-ducanh check docs/secrets
+        entry: node scripts/check-docs.mjs
+        language: system
+        pass_filenames: false
+      - id: check-superpowers
+        name: Agent-ducanh check Superpowers names
+        entry: node scripts/check-superpowers.mjs
+        language: system
+        pass_filenames: false
+      - id: eval-kits
+        name: Agent-ducanh eval routing
+        entry: node scripts/eval-kits.mjs
+        language: system
+        pass_filenames: false

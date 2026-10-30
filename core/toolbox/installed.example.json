@@ -1,0 +1,11 @@
+[
+  {
+    "id": "superpowers",
+    "version": "6.3.0",
+    "source": "https://github.com/obra/superpowers",
+    "installed_at": "2026-10-30",
+    "owner_approved": true,
+    "verified": true,
+    "verify_note": "using-superpowers loads"
+  }
+]
