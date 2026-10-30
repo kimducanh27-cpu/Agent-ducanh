@@ -1,6 +1,6 @@
 # new-web — luật riêng
 
-Đọc `core/AGENTS.md`, `core/router.md`, `core/protocol/README.md` trước.
+Đọc `core/AGENTS.md`, `core/router.md`, `core/protocol/README.md`, `core/rules/ui-style.md` trước.
 
 ## Mode
 - `plan_only` cho intake/plan.
@@ -15,7 +15,8 @@
 6. Browser-first; 320/360/768/1280/1440; thiếu browser = blocked.
 7. Không ép cookie/i18n/auth/DB/CMS/analytics nếu không cần.
 8. Không deploy/push nếu chưa được phép.
-9. Kết thúc: owner summary + handoff + next kit.
+9. Style: chọn pack theo nội dung + signature; ghi `agent-state/DESIGN.md`; không trộn 3 pack.
+10. Kết thúc: owner summary + handoff + next kit.
 
 ## Trigger
 - Motion: chọn none/subtle/expressive; MO-* nếu có.

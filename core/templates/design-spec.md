@@ -1,12 +1,17 @@
 # DESIGN — <project>
 
 > Bản ghi này là nguồn sự thật cho gu UI. Lưu tại `agent-state/DESIGN.md`.
-> Thay đổi token/component phải ghi lý do + before/after.
+> Thay đổi style/token/component phải ghi lý do + before/after.
 
-## 1. Nguyên tắc
+## 1. Style direction
+- Pack: Editorial calm / Product precise / Warm expressive
+- Vì sao (người dùng + task + cảm giác):
 - 3 từ khoá gu:
-- Điều cấm:
-- Tham chiếu (không copy mù):
+- Signature element:
+- Density:
+- Voice:
+- Anti-pattern (3 thứ cấm):
+- References (không copy mù):
 
 ## 2. Token 3 lớp
 

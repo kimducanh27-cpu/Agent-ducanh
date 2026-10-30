@@ -48,7 +48,8 @@ Mở file `examples/demo-site/index.html` bằng browser, hoặc chạy một se
 - Form invalid/valid: đúng; focus field lỗi; không gửi network.
 - axe: 0 violation, 1 incomplete.
 - Ảnh: `examples/demo-site/screenshots/desktop.png`, `tablet.png`, `mobile.png`, `narrow.png`.
-- Kết quả máy đọc: `examples/demo-site/screenshots/verify.json`, `axe.json`.
+- Style: `style-before-desktop.png` / `style-before-mobile.png` và ảnh sau; `agent-state/DESIGN.md` + `UI_REVIEW.md`.
+- Kết quả máy đọc: `examples/demo-site/screenshots/verify.json`, `axe.json`; axe 0 violation.
 - Báo cáo mẫu: `examples/demo-site/agent-state/AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`, `OWNER_SUMMARY.md`.
 
 Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
@@ -126,6 +127,14 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Template `core/templates/ui-review.md` → lưu `agent-state/UI_REVIEW.md` với before/after + owner F-UI.
 - Lệnh `/ui-review` read-only; không thêm skill Antigravity thứ 7.
 - Impeccable/Design Review chỉ là second opinion; không “Lighthouse = đẹp”.
+
+## UI style (0.9.0)
+
+- Rule `core/rules/ui-style.md`: AI chọn 1 hướng theo nội dung/người dùng/task, tối đa 1 gia vị; ghi 3 từ khoá, signature, density, voice, anti-pattern.
+- 3 hướng trong `docs/style/directions.md`: **Editorial calm**, **Product precise**, **Warm expressive** — palette, type, UX style, motion, do/don't.
+- `agent-state/DESIGN.md` ghi hướng đã chọn; `/style-web` để chọn/áp thử; không thêm skill Antigravity.
+- Demo Focus Board chọn **Editorial calm** + signature “3 nhịp”; có before/after, `DESIGN.md`, `UI_REVIEW.md`.
+- Kiểm bằng `node scripts/check-style.mjs`.
 
 ## Cấu trúc chính
 

@@ -15,7 +15,7 @@
 - AI đề xuất; owner nói “lite”/“full”. Lite vẫn verify + handoff.
 
 ## Lệnh gõ nhanh
-- Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`, `/perf-web`, `/release-web`.
+- Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`, `/perf-web`, `/release-web`, `/style-web`, `/ui-review`.
 - Antigravity/Qoder: `/web-kit new|audit|fix|verify|feature|ui|triage|perf|release`.
 
 ## Stage phụ
@@ -23,6 +23,7 @@
 - **Perf:** `/perf-web` — 3 run mobile/desktop, before/after, regression; không đoán từ code.
 - **Release:** `core/prompts/release-web.md` — gate, rollback, smoke; chỉ deploy khi owner cho phép.
 - **UI:** `ui-rework` + `core/rules/ui-quality.md`; lưu `DESIGN.md` và `UI_REVIEW.md`.
+- **Style:** `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
 - Các stage này dùng trong kit hiện tại, không phải kit mới.
 
 ## Optional

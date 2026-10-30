@@ -15,6 +15,7 @@ Alias: `/web-kit new|audit|fix|verify|feature|ui|triage|perf|release` → kit/st
 Chọn Lite/Full theo `core/prompts/lite.md`; GitHub research khi có trigger.
 Perf: `core/prompts/perf-web.md`; release: `core/prompts/release-web.md` (chỉ deploy khi owner cho phép).
 UI: `core/rules/ui-quality.md` + `agent-state/DESIGN.md`; ghi `UI_REVIEW.md`; `/ui-review`.
+Style: `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
 
 Browser: Chrome DevTools MCP/browser-use; nếu nhiều agent, serialize MCP hoặc dùng CDP riêng.
 Thiếu tool: `/toolbox` hoặc `blocked`.

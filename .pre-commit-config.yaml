@@ -31,6 +31,11 @@ repos:
         entry: node scripts/check-ui.mjs
         language: system
         pass_filenames: false
+      - id: check-style
+        name: Agent-ducanh check UI style
+        entry: node scripts/check-style.mjs
+        language: system
+        pass_filenames: false
       - id: eval-kits
         name: Agent-ducanh eval routing
         entry: node scripts/eval-kits.mjs

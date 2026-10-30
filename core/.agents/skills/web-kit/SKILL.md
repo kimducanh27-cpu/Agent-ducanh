@@ -37,4 +37,5 @@ Explicit Antigravity skills:
 
 Release: đọc `core/prompts/release-web.md`; dùng `/release-web` ở Claude/Qoder. Không phải skill Antigravity để tránh tự kích hoạt deploy.
 UI: đọc `core/rules/ui-quality.md` + `agent-state/DESIGN.md`; ghi `UI_REVIEW.md`; `/ui-review` (Claude/Qoder).
+Style: đọc `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
 

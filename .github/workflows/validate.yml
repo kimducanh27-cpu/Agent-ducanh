@@ -29,6 +29,8 @@ jobs:
         run: node scripts/check-dispatch.mjs
       - name: Check UI quality
         run: node scripts/check-ui.mjs
+      - name: Check UI style
+        run: node scripts/check-style.mjs
       - name: Run kit evals
         run: node scripts/eval-kits.mjs
 

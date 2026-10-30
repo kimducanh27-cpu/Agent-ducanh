@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.0-style — 2026-10-30
+
+- Added `core/rules/ui-style.md`: AI chooses a style direction from content, audience, and task; one primary pack plus at most one accent.
+- Added `docs/style/directions.md`: Editorial calm, Product precise, Warm expressive with palette, type, UX style, motion, signature, do/don't.
+- Extended `DESIGN.md` template with style direction, signature, density, voice, and anti-patterns.
+- Added `core/prompts/style-web.md` + read-only planning command `/style-web`; no 7th Antigravity skill.
+- Wired style into ui-rework/new-web prompts, docs, checks, CI, and plugin manifests 0.9.0.
+- Demo Focus Board: documented Editorial calm, added a three-beat signature, tokenized radii/warm-soft, fixed logo accessible-name mismatch; before/after evidence.
+
 ## 0.8.0-ui-quality — 2026-10-30
 
 - Added `core/rules/ui-quality.md`: 10 concrete UI/UX rules with evidence, states, a11y, responsive, tokens, motion, anti-AI-slop, and sign-off.

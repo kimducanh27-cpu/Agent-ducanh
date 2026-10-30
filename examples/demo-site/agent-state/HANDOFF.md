@@ -29,10 +29,14 @@ evidence:
     - examples/demo-site/screenshots/tablet.png
     - examples/demo-site/screenshots/mobile.png
     - examples/demo-site/screenshots/narrow.png
+    - examples/demo-site/screenshots/style-before-desktop.png
+    - examples/demo-site/screenshots/style-before-mobile.png
   reports:
     - examples/demo-site/agent-state/NEW_WEB_PLAN.md
     - examples/demo-site/agent-state/AUDIT_REPORT.md
     - examples/demo-site/agent-state/VERIFICATION_REPORT.md
+    - examples/demo-site/agent-state/DESIGN.md
+    - examples/demo-site/agent-state/UI_REVIEW.md
     - examples/demo-site/screenshots/verify.json
     - examples/demo-site/screenshots/axe.json
 
@@ -46,12 +50,12 @@ permissions:
 blockers: []
 
 review:
-  design_revision: demo-1
+  design_revision: demo-2
   state: awaiting_feedback
 
 next_kit: none
 resume:
   current_task: T-4 responsive
-  next_step: owner review; optional U1 aria-current fix or performance audit
+  next_step: owner review style (DESIGN/UI_REVIEW); optional U1 aria-current fix or performance audit
   notes: Demo verified in Chromium; A5/SR/Firefox/WebKit not_run. Form simulates success only.
 ```

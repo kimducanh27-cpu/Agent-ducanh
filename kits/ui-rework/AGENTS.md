@@ -1,6 +1,6 @@
 # ui-rework — luật riêng
 
-Đọc `core/AGENTS.md`, `core/protocol/README.md`, `core/rules/ui-quality.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`.
+Đọc `core/AGENTS.md`, `core/protocol/README.md`, `core/rules/ui-quality.md`, `core/rules/ui-style.md`, `docs/style/directions.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`.
 
 ## Mode
 `ui_rework`.
@@ -16,3 +16,5 @@
 8. Không nói owner đã ưng nếu chưa xác nhận.
 9. `agent-state/DESIGN.md` là nguồn sự thật; chưa có thì tạo từ template trước khi rework lớn.
 10. Kết thúc bằng `UI_REVIEW.md`; owner F-UI accepted/changes_requested/pending; không “Lighthouse = đẹp”.
+11. Chọn style pack theo nội dung; 1 chính + tối đa 1 gia vị; 2 hướng phải khác pack thật, không chỉ đổi màu.
+12. Mỗi style có 1 signature element; không trộn 3 pack; không đổi style vì một màn hình.

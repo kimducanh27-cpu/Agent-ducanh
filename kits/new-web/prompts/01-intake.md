@@ -9,12 +9,13 @@ Bạn là product/engineering lead cho web mới. Mục tiêu: chốt brief đ�
 Chỉ hỏi khi thiếu dữ kiện thay đổi đáng kể mục tiêu/scope/chi phí/rủi ro:
 1. Web làm gì, cho ai, hành động chính là gì?
 2. Bắt buộc phải có gì; **không làm** gì?
-3. Đã có brand/nội dung/stack/hosting chưa?
+3. Đã có brand/nội dung/stack/hosting chưa? Nếu chưa có brand, có muốn AI đề xuất hướng style không?
 
 ## Ghi vào `agent-state/PROJECT.md`
 - Mục tiêu, người dùng, core flow, success metric.
 - Non-goals.
 - Brand/reference, content đã có/thiếu, asset/font.
+- Style direction đề xuất theo `core/rules/ui-style.md` nếu chưa có brand; ghi lý do.
 - Stack/hosting, môi trường test, quyền.
 - Trigger: auth/data/privacy/payment/migration/i18n/SEO/motion/email.
 - Điều chưa biết + câu hỏi mở.

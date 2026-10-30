@@ -7,6 +7,8 @@
 - `../screenshots/narrow.png` — 320×700 full page.
 - `../screenshots/verify.json` — metrics/form/console.
 - `../screenshots/axe.json` — axe result.
+- `../screenshots/style-before-desktop.png`, `style-before-mobile.png` — trước signature.
+- `DESIGN.md`, `UI_REVIEW.md` — style contract + review.
 - `AUDIT_REPORT.md`, `VERIFICATION_REPORT.md`.
 
 ## Kết quả
@@ -15,6 +17,7 @@
 - Form invalid: 3 lỗi, focus `name`.
 - Form valid: status demo, không network.
 - axe: 0 violation, 1 incomplete.
+- Style: Editorial calm; signature “3 nhịp” dưới h1; token radius/warm-soft; logo aria-label khớp “FocusBoard”.
 
 ## Chưa kiểm
 - Performance trace 3 run.

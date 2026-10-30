@@ -18,6 +18,7 @@ function copyProjectDocs(dest) {
   }
   copyContents("kits", join(dest, "kits"));
   if (existsSync("docs/tools")) copyContents("docs/tools", join(dest, "docs", "tools"));
+  if (existsSync("docs/style")) copyContents("docs/style", join(dest, "docs", "style"));
 }
 
 function writeReadme(dest, app, installLine) {
