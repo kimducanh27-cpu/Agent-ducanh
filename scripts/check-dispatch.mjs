@@ -19,7 +19,7 @@ for (const [key, file] of Object.entries(paths)) {
 }
 
 const fields = [
-  "mission_id", "agent", "model", "tools", "command_policy", "workspace",
+  "mission_id", "agent", "model", "tools", "command_policy", "workspace", "transport",
   "persona/lens", "objective", "scope", "non_goals", "inputs", "evidence",
   "constraints", "output_schema", "stop_conditions", "budget", "acceptance"
 ];
@@ -28,7 +28,7 @@ for (const field of fields) {
   if (text.mission && !text.mission.includes(field)) failures.push(`subagent-mission missing field: ${field}`);
 }
 
-const loop = ["batch", "≤3", "validate", "spot-check", "repair", "share", "branch", "project_verified"];
+const loop = ["batch", "≤3", "validate", "spot-check", "repair", "share", "branch", "project_verified", "native", "cli", "teamwork"];
 for (const term of loop) {
   if (text.prompt && !text.prompt.toLowerCase().includes(term.toLowerCase())) {
     failures.push(`leader-dispatch missing rule: ${term}`);

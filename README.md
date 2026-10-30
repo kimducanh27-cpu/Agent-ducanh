@@ -107,11 +107,18 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 ## Leader dispatch (0.6.0)
 
 - Một vòng lặp chuẩn: recon → mission map → batch ≤3 → validate → spot-check 3 → repair 1 lần → merge → verify.
-- Mỗi mission đóng gói 17 field; không gửi chat history/secret/output mission khác.
+- Mỗi mission đóng gói 18 field; không gửi chat history/secret/output mission khác.
 - 10 persona chia 4 batch (3/3/3/1), không chạy 10 cùng lúc.
 - Output lỗi (`invalid`/`blocked`) không được sang skeptic/judge/score.
 - File: `core/prompts/leader-dispatch.md`, `core/templates/subagent-mission.md`, `subagent-result.md`, rule `70-leader-dispatch.md`.
 - Kiểm bằng `node scripts/check-dispatch.mjs`.
+
+## CLI và teamwork (0.11.0)
+
+- **CLI `agy`**: `/agents`, `-p/--print`, `@name`; dùng cho batch read-only, CI/log; không thay browser.
+- **`/teamwork`**: multi-file, Sentinel/Orchestrator/Worker, file ownership; `/teamwork-preview` là bản cũ.
+- **`transport`** trong mission: `native`, `cli`, `teamwork`; browser chỉ main `/browser`.
+- Không dùng CLI để kết luận UI; không auto-deploy. Chi tiết: `docs/tools/antigravity-cli.md`.
 
 ## Perf và release (0.7.0)
 

@@ -32,6 +32,7 @@
 - Impeccable cho ui-rework/new-web; audit-fix chỉ second opinion.
 - Lighthouse CI cho perf-web; xem `docs/tools/lighthouse-ci.md`.
 - Antigravity: `/audit-web` dùng 10 persona read-only; custom subagent không có browser.
+- CLI `agy -p`/`/agents` cho batch read-only; `/teamwork` cho multi-file; browser main. Xem `docs/tools/antigravity-cli.md`.
 
 ## Chuyển kit
 

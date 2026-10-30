@@ -69,14 +69,15 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 
 - `/web-kit` — router + nạp kit.
 - Antigravity subagent: `lens-auditor` (flash), `report-editor` (pro), `verifier`, `security-reviewer`, `test-engineer`; max 3/batch; custom subagent không được cấp browser.
-- Leader dispatch: mission packet, batch ≤3, validate, spot-check 3, repair 1 lần; xem `core/prompts/leader-dispatch.md`.
+- Leader dispatch: packet, batch ≤3, validate, spot-check 3, repair 1; xem `core/prompts/leader-dispatch.md`.
 - Persona bug hunt: `user-auditor` ×10 (P01–P10), P0/P1/P2 qua `bug-skeptic`; preference cap P3.
 - Antigravity skills: `audit-web`, `fix-web`, `verify-web`, `perf-web`; browser chỉ qua `/browser`.
-- Perf: `/perf-web` — 3 run, before/after, không đoán từ code; xem `core/prompts/perf-web.md`.
+- Perf: `/perf-web` — 3 run, before/after; xem `core/prompts/perf-web.md`.
 - Release: `core/prompts/release-web.md` + `/release-web`; chỉ deploy khi owner cho phép.
 - UI/UX: đọc `core/rules/ui-quality.md`; before/after + `UI_REVIEW` + owner F-UI; không “Lighthouse = đẹp”.
 - Style: đọc `core/rules/ui-style.md` + `docs/style/directions.md`; chọn pack theo nội dung; `/style-web`.
 - Page: đọc `core/rules/ui-layout.md` + `docs/style/site-goals.md`; mỗi route có `PAGE_SPEC`; `/page-web`.
+- CLI: `agy -p`/`/agents` cho batch read-only; `/teamwork` cho multi-file; browser chỉ main; xem `docs/tools/antigravity-cli.md`.
 - `/toolbox` — dò/cài tool từ allowlist; app xác nhận.
 - Superpowers là tùy chọn; dùng đúng routing trong `core/toolbox/superpowers-routing.md`; tối đa 1 skill chính + 1 kiểm chứng mỗi bước.
 - Impeccable là optional cho `ui-rework`/`new-web`; `audit-fix` chỉ second opinion; không auto `/bolder`/`live`.

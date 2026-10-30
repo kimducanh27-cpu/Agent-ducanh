@@ -19,7 +19,8 @@
 ## Leader dispatch
 - Leader = main agent; giữ browser, quyền ghi file cuối và merge.
 - Vòng lặp: recon → mission map → batch ≤3 → validate → spot-check 3 → repair 1 lần → merge → verify/handoff.
-- Mission packet đủ 17 field theo `core/templates/subagent-mission.md`; output theo `core/templates/subagent-result.md`.
+- Mission packet đủ 18 field theo `core/templates/subagent-mission.md`; output theo `core/templates/subagent-result.md`.
+- Transport: `native` (app), `cli` (`agy -p`/`/agents`, read-only batch), `teamwork` (multi-file); browser chỉ main. Xem `docs/tools/antigravity-cli.md`.
 - Không gửi chat history, output mission khác, secret/PII; subagent clean slate.
 - Read-only dùng `share`/`inherit`; ghi file dùng `branch`; một writer/file; leader merge.
 - Output `invalid`/`blocked` không sang skeptic/judge/score; repair lần 2 vẫn lỗi → `blocked`.

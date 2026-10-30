@@ -5,7 +5,7 @@ Leader là main agent: người duy nhất có browser (`/browser`), quyền ghi
 ## Vòng lặp 8 bước
 
 1. **Recon:** đọc `agent-state/PROJECT.md` + `HANDOFF.md`, URL/scope, evidence pack; xác nhận mode.
-2. **Mission map:** chia việc thành mission độc lập; gán agent/model/tool/workspace/output.
+2. **Mission map:** chia việc thành mission độc lập; gán agent/model/tool/workspace/transport/output.
 3. **Dispatch:** gửi từng batch ≤3 mission; chỉ gửi mission độc lập, không phụ thuộc nhau.
 4. **Validate:** kiểm schema, status, evidence, scope, secret/PII ngay khi batch xong.
 5. **Spot-check:** main dùng `/browser` kiểm 3 claim P0/P1/P2; không tin output suông.
@@ -15,7 +15,7 @@ Leader là main agent: người duy nhất có browser (`/browser`), quyền ghi
 
 ## Mission packet
 
-Mỗi mission là một khối đóng gói theo `core/templates/subagent-mission.md`, đủ 17 field:
+Mỗi mission là một khối đóng gói theo `core/templates/subagent-mission.md`, đủ 18 field:
 
 | Field | Ý nghĩa |
 |---|---|
@@ -25,6 +25,7 @@ Mỗi mission là một khối đóng gói theo `core/templates/subagent-mission
 | `tools` | Chỉ tool whitelist |
 | `command_policy` | `off`, `auto`, `eager`, `sandbox` |
 | `workspace` | `share`, `inherit`, `branch` |
+| `transport` | `native`, `cli`, `teamwork` |
 | `persona/lens` | P01–P10 hoặc A1–A10 |
 | `objective` | Một câu kết quả cần đạt |
 | `scope` | Route/component/trạng thái được xem |
@@ -47,6 +48,19 @@ Mỗi mission là một khối đóng gói theo `core/templates/subagent-mission
 - Batch sau chỉ chạy khi batch trước đã validate xong.
 - Mission phụ thuộc (skeptic, judge, verifier) chạy tuần tự sau batch nguồn.
 - Gặp budget/quota → dừng, ghi phần đã làm, không cắt schema.
+
+## Transport
+
+| Transport | Dùng khi | Không dùng khi |
+|---|---|---|
+| `native` | audit/fix tương tác, cần approval/browser | batch lớn/headless |
+| `cli` | batch read-only, CI, log; `agy -p`, `/agents`, `@name` | visual review, fix, browser |
+| `teamwork` | multi-file implementation, file ownership | audit visual, việc nhỏ |
+
+- Browser chỉ main `/browser`; CLI/teamwork không thay browser.
+- CLI không tự sửa code; fix do main/`/teamwork`.
+- `/teamwork-preview` cũ; dùng `/teamwork`.
+- Chi tiết: `docs/tools/antigravity-cli.md`.
 
 ## Model và tool
 

@@ -10,6 +10,7 @@
 - tools:
 - command_policy:
 - workspace:
+- transport: native | cli | teamwork
 
 ## Việc
 
@@ -36,6 +37,7 @@
 ```text
 Bạn là <agent>. Chỉ làm mission <mission_id>.
 
+Transport: <transport>
 Mục tiêu: <objective>
 Phạm vi: <scope>
 Không làm: <non_goals>

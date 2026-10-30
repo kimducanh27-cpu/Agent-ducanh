@@ -84,6 +84,7 @@ for (const file of [
   "scripts/check-style.mjs",
   "scripts/check-layout.mjs",
   "docs/tools/lighthouse-ci.md",
+  "docs/tools/antigravity-cli.md",
   "core/.agents/rules/50-antigravity-subagents.md",
   "docs/tools/antigravity-2.md",
   "core/toolbox/mcp_config.example.json",

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0-cli — 2026-10-30
+
+- Added `docs/tools/antigravity-cli.md`: CLI vs `/teamwork` vs native, official facts, decision matrix, limits.
+- Added `transport` to the 18-field mission packet: `native`, `cli`, `teamwork`.
+- CLI is limited to read-only batches; browser stays on main `/browser`; `/teamwork` keeps file ownership.
+- Corrected `/teamwork-preview` as old; use `/teamwork`.
+- Wired the CLI doc into checks; manifests 0.11.0.
+
 ## 0.10.0-layout — 2026-10-30
 
 - Added `core/rules/ui-layout.md`: 10 page questions, menu/navigation, visual hierarchy, palette rules, PAGE_SPEC.

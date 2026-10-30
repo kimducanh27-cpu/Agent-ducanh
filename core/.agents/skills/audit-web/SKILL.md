@@ -13,7 +13,7 @@ description: "Audit 10 persona người dùng bằng browser + subagent Antigrav
 2. Đọc `agent-state/PROJECT.md` + `HANDOFF.md`; xác nhận URL/scope.
 3. Main agent dùng `/browser` capture evidence một lần; ghi `agent-state/evidence/<run-id>/manifest.json`.
 4. Mission map 10 persona → 4 batch (3/3/3/1); mỗi mission theo `core/templates/subagent-mission.md`.
-5. Dispatch `user-auditor` theo batch ≤3. Không gửi history/secret/output mission khác; không browser, không code.
+5. Dispatch `user-auditor` theo batch ≤3, transport `native` hoặc `cli` read-only. Không gửi history/secret/output mission khác; không browser, không code.
 6. Validate từng output bằng `core/templates/subagent-result.md`; mission lỗi repair đúng mission đó 1 lần, không cascade.
 7. P0/P1/P2 confirmed → `bug-skeptic`; verdict confirmed/rejected/needs-repro. Preference cap P3.
 8. `report-editor` (model pro) merge/dedupe/score; chỉ dùng output `ok`.

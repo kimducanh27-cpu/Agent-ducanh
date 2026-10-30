@@ -82,7 +82,7 @@ try {
   failures.push(`antigravity plugin manifest invalid: ${error.message}`);
 }
 
-for (const file of ["docs/tools/antigravity-2.md", "core/prompts/persona-bug-hunt.md", "core/prompts/perf-web.md", "core/prompts/release-web.md", "docs/tools/lighthouse-ci.md", "kits/audit-fix/personas/index.md", "core/.agents/skills/audit-web/SKILL.md", "core/.agents/skills/fix-web/SKILL.md", "core/.agents/skills/verify-web/SKILL.md", "core/.agents/skills/perf-web/SKILL.md"]) {
+for (const file of ["docs/tools/antigravity-2.md", "docs/tools/antigravity-cli.md", "core/prompts/persona-bug-hunt.md", "core/prompts/perf-web.md", "core/prompts/release-web.md", "docs/tools/lighthouse-ci.md", "kits/audit-fix/personas/index.md", "core/.agents/skills/audit-web/SKILL.md", "core/.agents/skills/fix-web/SKILL.md", "core/.agents/skills/verify-web/SKILL.md", "core/.agents/skills/perf-web/SKILL.md"]) {
   if (!existsSync(file)) failures.push(`missing: ${file}`);
 }
 
