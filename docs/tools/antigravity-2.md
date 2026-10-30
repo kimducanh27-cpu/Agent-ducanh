@@ -32,6 +32,7 @@
 - Verify: `verifier` chạy `run_command` sandbox + main `/browser`.
 - Perf: `/perf-web` 3 run mobile/desktop, before/after; thiếu Lighthouse → blocked.
 - Release: `core/prompts/release-web.md` + `/release-web`; không phải skill để tránh tự deploy; chỉ chạy khi owner gọi.
+- UI: `ui-rework` + `core/rules/ui-quality.md` + `DESIGN.md`/`UI_REVIEW.md`; `/ui-review`; không thêm skill thứ 7.
 - Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web`, `perf-web` (6; tránh thêm).
 
 ## Native commands

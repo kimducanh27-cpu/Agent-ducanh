@@ -7,7 +7,8 @@ Không cần owner nhớ nhãn; hiểu phản hồi tự nhiên.
 ## Chuẩn bị
 1. Copy **nội dung** `core/` vào root project.
 2. Copy thư mục này vào `<project>/kits/ui-rework/` (giữ tên `kits`).
-3. Đọc PROJECT/HANDOFF; chụp before nếu có.
+3. Đọc PROJECT/HANDOFF; đọc `core/rules/ui-quality.md`; tạo `agent-state/DESIGN.md` từ template nếu chưa có.
+4. Chụp before nếu có.
 
 ## Chạy
 - Gõ `/web-kit` và nói phản hồi, hoặc đọc lần lượt:
@@ -20,5 +21,6 @@ Không cần owner nhớ nhãn; hiểu phản hồi tự nhiên.
 ## Nguyên tắc
 - Giữ phần đã được chấp nhận; không redesign toàn app nếu feedback local.
 - Token/component-first; không thêm UI kit nặng.
-- Before/after cùng route/viewport/fixture.
+- Before/after cùng route/viewport/fixture; `UI_REVIEW.md` theo template.
+- Owner F-UI accepted/changes_requested/pending; không “Lighthouse = đẹp”.
 - Không loop vô hạn; chờ feedback mới.

@@ -3,6 +3,8 @@
 - Visual/keyboard/contrast/responsive; browser thật.
 - Motion: normal/reduce/none đúng MO; không screenshot-only.
 - Before/after cùng viewport; evidence đủ.
-- Owner review state; không tự nói đã ưng.
+- Ghi `UI_REVIEW.md` theo `core/templates/ui-review.md`.
+- Owner F-UI: accepted/changes_requested/pending; không tự nói đã ưng.
 - Handoff + next kit (audit-fix nếu cần).
 - Nếu feedback mới → revision mới, không tự redesign vô hạn.
+- Không nói “Lighthouse = đẹp”.

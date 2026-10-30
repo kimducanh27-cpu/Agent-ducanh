@@ -36,4 +36,5 @@ Explicit Antigravity skills:
 - `/perf-web` — 3 run, before/after, regression; skill thứ 6.
 
 Release: đọc `core/prompts/release-web.md`; dùng `/release-web` ở Claude/Qoder. Không phải skill Antigravity để tránh tự kích hoạt deploy.
+UI: đọc `core/rules/ui-quality.md` + `agent-state/DESIGN.md`; ghi `UI_REVIEW.md`; `/ui-review` (Claude/Qoder).
 

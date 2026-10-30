@@ -2,7 +2,7 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "agent-ducanh",
   "displayName": "Agent-ducanh Web Kit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Audit, fix, build, feature, UI rework and maintenance kit for web projects.",
   "suggestedPrompts": [
     "Audit this website with 10 user personas",
@@ -10,7 +10,8 @@
     "Challenge the P1 bugs before scoring",
     "Fix one confirmed issue and verify it in the browser",
     "Verify the current fix without editing code",
-    "Measure performance with Lighthouse and verify before and after"
+    "Measure performance with Lighthouse and verify before and after",
+    "Review this UI against the design spec and accessibility rules"
   ],
   "category": "Developer Tools",
   "keywords": [

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0-ui-quality — 2026-10-30
+
+- Added `core/rules/ui-quality.md`: 10 concrete UI/UX rules with evidence, states, a11y, responsive, tokens, motion, anti-AI-slop, and sign-off.
+- Added `core/templates/design-spec.md` for `agent-state/DESIGN.md`.
+- Added `core/templates/ui-review.md` for `agent-state/UI_REVIEW.md`.
+- Added read-only `/ui-review` command; no 7th Antigravity skill.
+- Wired UI rule/templates into ui-rework kit, core AGENTS, kit map, checks, CI, and plugin manifests 0.8.0.
+
 ## 0.7.0-perf-release — 2026-10-30
 
 - Added `perf-web` as the 6th Antigravity skill: 3-run baseline, before/after, regression, lab-vs-field.

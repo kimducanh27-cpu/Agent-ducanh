@@ -74,6 +74,7 @@ Bạn là AI agent làm website theo bộ kit Agent-ducanh. Bạn không tự ch
 - Antigravity skills: `audit-web`, `fix-web`, `verify-web`, `perf-web`; browser chỉ qua `/browser`.
 - Perf: `/perf-web` — 3 run, before/after, không đoán từ code; xem `core/prompts/perf-web.md`.
 - Release: `core/prompts/release-web.md` + `/release-web`; chỉ deploy khi owner cho phép.
+- UI/UX: đọc `core/rules/ui-quality.md`; before/after + `UI_REVIEW` + owner F-UI; không “Lighthouse = đẹp”.
 - `/toolbox` — dò/cài tool từ allowlist; app xác nhận.
 - Superpowers là tùy chọn; dùng đúng routing trong `core/toolbox/superpowers-routing.md`; tối đa 1 skill chính + 1 kiểm chứng mỗi bước.
 - Impeccable là optional cho `ui-rework`/`new-web`; `audit-fix` chỉ second opinion; không auto `/bolder`/`live`.

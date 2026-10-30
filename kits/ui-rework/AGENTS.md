@@ -1,6 +1,6 @@
 # ui-rework — luật riêng
 
-Đọc `core/AGENTS.md`, `core/protocol/README.md`.
+Đọc `core/AGENTS.md`, `core/protocol/README.md`, `core/rules/ui-quality.md`, `core/templates/design-spec.md`, `core/templates/ui-review.md`.
 
 ## Mode
 `ui_rework`.
@@ -14,3 +14,5 @@
 6. Motion chỉ khi trigger: MO-* + reduced-motion; screenshot không chứng minh motion.
 7. Không loop vô hạn; review state + feedback mới.
 8. Không nói owner đã ưng nếu chưa xác nhận.
+9. `agent-state/DESIGN.md` là nguồn sự thật; chưa có thì tạo từ template trước khi rework lớn.
+10. Kết thúc bằng `UI_REVIEW.md`; owner F-UI accepted/changes_requested/pending; không “Lighthouse = đẹp”.

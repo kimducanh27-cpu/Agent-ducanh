@@ -14,7 +14,7 @@ Tất cả dùng chung `core/` và một sổ dự án `agent-state/`. Kit sau �
 
 ## Bộ kit có gì
 
-- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
+- `core/`: luật agent, router chọn kit, protocol web-agent/2.5, template brief/handoff, rule UI, checklist, skill `/web-kit`, `/audit-web`, `/fix-web`, `/verify-web`, `/perf-web`.
 - `kits/new-web/`: 4 prompt — hỏi brief, lập plan, build, verify.
 - `kits/audit-fix/`: audit 10 góc nhìn + 10 persona, fix, verify độc lập.
 - `kits/feature/`, `kits/ui-rework/`, `kits/maintenance/`: 4 prompt mỗi kit.
@@ -118,6 +118,14 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - **`release-web`** — prompt/command có cổng xác nhận, rollback và smoke production; cố tình không thành skill để AI không tự deploy.
 - File: `core/prompts/perf-web.md`, `core/prompts/release-web.md`, `core/templates/perf-report.md`, `core/templates/release-report.md`.
 - Lighthouse CI optional: `docs/tools/lighthouse-ci.md`; lệnh Claude: `/perf-web`, `/release-web`.
+
+## UI quality (0.8.0)
+
+- Rule `core/rules/ui-quality.md`: 10 điều về bằng chứng, hierarchy, states, a11y, responsive, token, motion, nội dung, chống “AI slop”, sign-off.
+- Template `core/templates/design-spec.md` → lưu `agent-state/DESIGN.md` làm nguồn sự thật cho gu.
+- Template `core/templates/ui-review.md` → lưu `agent-state/UI_REVIEW.md` với before/after + owner F-UI.
+- Lệnh `/ui-review` read-only; không thêm skill Antigravity thứ 7.
+- Impeccable/Design Review chỉ là second opinion; không “Lighthouse = đẹp”.
 
 ## Cấu trúc chính
 

@@ -22,7 +22,8 @@
 
 - **Perf:** `/perf-web` — 3 run mobile/desktop, before/after, regression; không đoán từ code.
 - **Release:** `core/prompts/release-web.md` — gate, rollback, smoke; chỉ deploy khi owner cho phép.
-- Hai stage này dùng trong kit hiện tại, không phải kit mới.
+- **UI:** `ui-rework` + `core/rules/ui-quality.md`; lưu `DESIGN.md` và `UI_REVIEW.md`.
+- Các stage này dùng trong kit hiện tại, không phải kit mới.
 
 ## Optional
 - GitHub research khi API/version/hành vi chưa chắc.

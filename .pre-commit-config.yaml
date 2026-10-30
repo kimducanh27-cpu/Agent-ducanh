@@ -26,6 +26,11 @@ repos:
         entry: node scripts/check-dispatch.mjs
         language: system
         pass_filenames: false
+      - id: check-ui
+        name: Agent-ducanh check UI quality
+        entry: node scripts/check-ui.mjs
+        language: system
+        pass_filenames: false
       - id: eval-kits
         name: Agent-ducanh eval routing
         entry: node scripts/eval-kits.mjs

@@ -5,4 +5,4 @@
 - Before/after cùng route/viewport/fixture.
 - Motion: reduced-motion, cleanup, cancel; screenshot không phải motion test.
 - Không đổi nghiệp vụ/data/API ngoài scope.
-- Cập nhật F-UI/decision/evidence.
+- Cập nhật F-UI/decision/evidence; cập nhật `DESIGN.md` nếu token/component đổi.
