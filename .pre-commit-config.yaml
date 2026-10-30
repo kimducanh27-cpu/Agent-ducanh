@@ -11,6 +11,21 @@ repos:
         entry: node scripts/check-superpowers.mjs
         language: system
         pass_filenames: false
+      - id: check-antigravity
+        name: Agent-ducanh check Antigravity subagents
+        entry: node scripts/check-antigravity.mjs
+        language: system
+        pass_filenames: false
+      - id: check-personas
+        name: Agent-ducanh check persona cards
+        entry: node scripts/check-personas.mjs
+        language: system
+        pass_filenames: false
+      - id: check-dispatch
+        name: Agent-ducanh check leader dispatch
+        entry: node scripts/check-dispatch.mjs
+        language: system
+        pass_filenames: false
       - id: eval-kits
         name: Agent-ducanh eval routing
         entry: node scripts/eval-kits.mjs

@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.6.0-leader — 2026-10-30
+
+- Added `core/prompts/leader-dispatch.md`: recon → mission map → batch ≤3 → validate → spot-check 3 → repair once → merge → verify.
+- Added mission/result templates with 17 required fields and status enum.
+- Added rule `70-leader-dispatch.md`; workspace safety (share/inherit vs branch, one writer/file).
+- Audit-web now maps 10 personas to 4 batches and rejects invalid output before scoring.
+- Added `scripts/check-dispatch.mjs`; wired into CI/pre-commit/check-docs/evals.
+- Plugin manifest 0.6.0 + leader dispatch suggested prompt.
+
+## 0.5.0-persona — 2026-10-30
+
+- Added 10 persona user-auditor cards P01–P10 (A1–A10).
+- Added `user-auditor` (flash) and `bug-skeptic` (pro) subagents.
+- Audit flow: personas find bugs → skeptic challenges P0/P1/P2 → report-editor judges.
+- Added persona-bug-hunt prompt, bug-report template, rule 60, check-personas.
+- Preference cap P3; no P0/P1 without evidence/repro.
+- Plugin manifest 0.5.0 + persona suggested prompts.
+
+## 0.4.0-antigravity — 2026-10-30
+
+- Deep Antigravity subagent profile: exact tool whitelist, models, command policy.
+- Added verifier, security-reviewer, test-engineer subagents; lens-auditor Flash, report-editor Pro.
+- Added audit-web/fix-web/verify-web skills; total 5 skills to avoid context overload.
+- Added `50-antigravity-subagents.md` rule and `docs/tools/antigravity-2.md`.
+- Added `scripts/check-antigravity.mjs`; wired into CI/pre-commit.
+- Plugin manifest version 0.4.0 + subagent suggested prompts.
+
 ## 0.3.0-p2 — 2026-10-30
 
 - Added plugin packaging: Antigravity, Claude Code, Qoder manifests + `scripts/package-plugins.mjs`.

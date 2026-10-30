@@ -21,6 +21,12 @@ jobs:
         run: node scripts/check-docs.mjs
       - name: Check Superpowers skill names
         run: node scripts/check-superpowers.mjs
+      - name: Check Antigravity subagents
+        run: node scripts/check-antigravity.mjs
+      - name: Check persona cards
+        run: node scripts/check-personas.mjs
+      - name: Check leader dispatch
+        run: node scripts/check-dispatch.mjs
       - name: Run kit evals
         run: node scripts/eval-kits.mjs
 
@@ -43,7 +49,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
           DEMO_BASE: http://127.0.0.1:8123/
-        run: node scripts/verify-demo.cjs
+        run: node scripts/ci-browser-smoke.mjs
       - name: Stop server
         if: always()
         run: kill $(cat /tmp/demo.pid) || true

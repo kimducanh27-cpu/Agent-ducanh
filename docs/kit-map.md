@@ -21,6 +21,7 @@
 ## Optional
 - GitHub research khi API/version/hành vi chưa chắc.
 - Impeccable cho ui-rework/new-web; audit-fix chỉ second opinion.
+- Antigravity: `/audit-web` dùng 5 subagent read-only; custom subagent không có browser.
 
 ## Chuyển kit
 

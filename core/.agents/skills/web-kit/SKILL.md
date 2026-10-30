@@ -28,3 +28,9 @@ Kit paths:
 - `kits/feature/`
 - `kits/ui-rework/`
 - `kits/maintenance/`
+
+Explicit Antigravity skills:
+- `/audit-web` — 10 persona + leader dispatch (batch ≤3) + `bug-skeptic` + `report-editor`; lens-auditor là second opinion.
+- `/fix-web` — owner authorize + 5+10 + verifier.
+- `/verify-web` — read-only verifier.
+

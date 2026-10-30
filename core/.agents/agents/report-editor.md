@@ -2,7 +2,7 @@
 name: report-editor
 description: "Merge finding, chấm điểm và soạn báo cáo; không browser, không sửa code."
 subagent: true
-model: inherit
+model: pro
 tools: [view_file, grep_search]
 commandExecutionPolicy: off
 ---

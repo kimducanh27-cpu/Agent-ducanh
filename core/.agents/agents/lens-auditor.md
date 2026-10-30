@@ -2,7 +2,7 @@
 name: lens-auditor
 description: "Đọc evidence pack và chấm một lens audit; không browser, không sửa code."
 subagent: true
-model: inherit
+model: flash
 tools: [view_file, grep_search]
 commandExecutionPolicy: off
 ---

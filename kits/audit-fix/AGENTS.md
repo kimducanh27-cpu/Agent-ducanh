@@ -5,6 +5,8 @@
 ## Audit
 - `review_only`; không sửa code.
 - 10 lens A1–A10; mỗi finding U-* có evidence level, URL, viewport, bước tái hiện.
+- Persona bug hunt: 10 `user-auditor` P01–P10, 4 batch (3/3/3/1); P0/P1/P2 qua `bug-skeptic`; preference cap P3.
+- Leader dispatch: mission packet, validate, repair 1 lần; xem `core/prompts/leader-dispatch.md`.
 - Không claim lens nếu chưa đo; thiếu browser → blocked.
 - Dedupe theo root cause; scorecard + top 10 + owner summary.
 - Kết thúc bằng đúng 1 câu hỏi: chọn việc nào để sửa trước.

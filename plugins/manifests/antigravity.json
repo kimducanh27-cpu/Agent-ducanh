@@ -2,12 +2,14 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "agent-ducanh",
   "displayName": "Agent-ducanh Web Kit",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "description": "Audit, fix, build, feature, UI rework and maintenance kit for web projects.",
   "suggestedPrompts": [
-    "Audit this website with the agent-ducanh kit",
-    "Build a new website from my brief",
-    "Add a feature without rewriting the app"
+    "Audit this website with 10 user personas",
+    "Dispatch 10 personas in batches of three and validate each mission",
+    "Challenge the P1 bugs before scoring",
+    "Fix one confirmed issue and verify it in the browser",
+    "Verify the current fix without editing code"
   ],
   "category": "Developer Tools",
   "keywords": ["web", "ux-audit", "accessibility", "agent-workflow", "vietnamese"],

@@ -57,9 +57,10 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 
 - Hooks: `core/hooks/pre-tool-check.mjs`, `post-edit-check.mjs`, `stop-evidence.mjs` + `core/.claude/settings.json.example`.
 - CI: `.github/workflows/validate.yml`; pre-commit: `.pre-commit-config.yaml`.
+- CI browser: `scripts/ci-browser-smoke.mjs` (portable Chrome); local full verify dùng `scripts/verify-demo.cjs`.
 - Lệnh Claude: `/new-web`, `/audit`, `/fix`, `/verify`, `/feature`, `/ui-rework`, `/triage`.
 - Eval: `evals/cases.json` + `node scripts/eval-kits.mjs`.
-- Check: `node scripts/check-docs.mjs`, `node scripts/check-superpowers.mjs`.
+- Check: `node scripts/check-docs.mjs`, `check-superpowers`, `check-antigravity`, `check-personas`, `check-dispatch`.
 - Checkpoint: `node scripts/checkpoint.mjs "label"`.
 - License MIT, SECURITY.md, VERSION, CHANGELOG.
 - Lite/Full: `core/prompts/lite.md`; GitHub research: `core/prompts/github-research.md`.
@@ -83,6 +84,32 @@ Chưa kiểm: performance trace, screen reader thật, Firefox/WebKit.
 - Notification/schedule: `docs/operating/notifications-and-schedule.md`.
 - Session log: `core/hooks/session-log.mjs` + `core/templates/runlog.md`.
 - 5 thẻ non-tech: `cards/README.md`.
+
+## Antigravity deep (0.4.0)
+
+- 5 subagent: `lens-auditor` (flash), `report-editor` (pro), `verifier`, `security-reviewer`, `test-engineer`.
+- Audit: `/browser` capture một lần → 10 lens auditor đọc evidence, batch ≤3 → report-editor → main confirm.
+- Custom subagent không có browser; chỉ `/browser` ở main.
+- Tool whitelist: `view_file`, `grep_search`, `run_command`, `replace_file_content`; kiểm bằng `node scripts/check-antigravity.mjs`.
+- Skills: `web-kit`, `toolbox`, `audit-web`, `fix-web`, `verify-web` (5).
+- Rule: `core/.agents/rules/50-antigravity-subagents.md`.
+
+## Persona bug hunt (0.5.0)
+
+- 10 persona P01–P10 trong `kits/audit-fix/personas/`.
+- Audit: `/browser` capture → `user-auditor` ×10, batch ≤3 → `bug-skeptic` P0/P1/P2 → `report-editor`.
+- Persona là người dùng, không phải developer; preference cap P3.
+- P0/P1 không có evidence/repro sẽ bị loại.
+- Kiểm bằng `node scripts/check-personas.mjs`.
+
+## Leader dispatch (0.6.0)
+
+- Một vòng lặp chuẩn: recon → mission map → batch ≤3 → validate → spot-check 3 → repair 1 lần → merge → verify.
+- Mỗi mission đóng gói 17 field; không gửi chat history/secret/output mission khác.
+- 10 persona chia 4 batch (3/3/3/1), không chạy 10 cùng lúc.
+- Output lỗi (`invalid`/`blocked`) không được sang skeptic/judge/score.
+- File: `core/prompts/leader-dispatch.md`, `core/templates/subagent-mission.md`, `subagent-result.md`, rule `70-leader-dispatch.md`.
+- Kiểm bằng `node scripts/check-dispatch.mjs`.
 
 ## Cấu trúc chính
 
